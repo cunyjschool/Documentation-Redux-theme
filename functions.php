@@ -37,6 +37,40 @@ class docredux {
 	 */
 	function create_taxonomies() {
 		
+		// Register the Courses taxonomy
+		$args = array(
+			'label' => 'Courses',
+			'labels' => array(
+				'name' => 'Courses',
+				'singular_name' => 'Course',
+				'search_items' =>  'Search Courses',
+				'popular_items' => 'Popular Courses',
+				'all_items' => 'All Courses',
+				'parent_item' => 'Parent Courses',
+				'parent_item_colon' => 'Parent Courses:',
+				'edit_item' => 'Edit Course', 
+				'update_item' => 'Update Course',
+				'add_new_item' => 'Add New Course',
+				'new_item_name' => 'New Course',
+				'separate_items_with_commas' => 'Separate courses with commas',
+				'add_or_remove_items' => 'Add or remove courses',
+				'choose_from_most_used' => 'Choose from the most common courses',
+				'menu_name' => 'Courses',
+			),
+			'show_tagcloud' => false,
+			'rewrite' => array(
+				'slug' => 'courses',
+				'hierarchical' => true,
+			),
+		);
+		
+		$post_types = array(
+			'post',
+			'docredux_doc',
+		);
+		register_taxonomy( 'docredux_courses', $post_types, $args );
+		
+		// Register the Topics taxonomy
 		$args = array(
 			'label' => 'Topics',
 			'labels' => array(
