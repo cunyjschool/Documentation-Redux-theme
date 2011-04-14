@@ -46,7 +46,7 @@ class docredux_doc
 				'not_found_in_trash' => 'No documentation found in Trash',
 				'parent' => 'Parent Documentation'
 	      	),
-			'menu_position' => 16,
+			'menu_position' => 8,
 			'public' => true,
 			'has_archive' => true,
 			'rewrite' => array(

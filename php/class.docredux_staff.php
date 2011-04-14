@@ -46,7 +46,7 @@ class docredux_staff
 				'not_found_in_trash' => 'No staff found in Trash',
 				'parent' => 'Parent Staff Member'
 	      	),
-			'menu_position' => 15,
+			'menu_position' => 9,
 			'public' => true,
 			'has_archive' => true,
 			'rewrite' => array(
