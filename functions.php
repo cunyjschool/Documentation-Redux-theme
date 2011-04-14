@@ -172,6 +172,72 @@ class docredux {
 		);
 		register_taxonomy( 'docredux_hardware', $post_types, $args );
 		
+		// Register the WordPress themes taxonomy
+		$args = array(
+			'label' => 'WordPress themes',
+			'labels' => array(
+				'name' => 'WordPress themes',
+				'singular_name' => 'WordPress theme',
+				'search_items' =>  'Search WordPress themes',
+				'popular_items' => 'Popular WordPress themes',
+				'all_items' => 'All WordPress themes',
+				'parent_item' => 'Parent WordPress themes',
+				'parent_item_colon' => 'Parent WordPress themes:',
+				'edit_item' => 'Edit WordPress theme', 
+				'update_item' => 'Update WordPress theme',
+				'add_new_item' => 'Add New WordPress theme',
+				'new_item_name' => 'New WordPress theme',
+				'separate_items_with_commas' => 'Separate WordPress themes with commas',
+				'add_or_remove_items' => 'Add or remove WordPress themes',
+				'choose_from_most_used' => 'Choose from the most common WordPress themes',
+				'menu_name' => 'WordPress themes',
+			),
+			'show_tagcloud' => false,
+			'rewrite' => array(
+				'slug' => 'themes',
+				'hierarchical' => true,
+			),
+		);
+		
+		$post_types = array(
+			'post',
+			'docredux_doc',
+		);
+		register_taxonomy( 'docredux_wpthemes', $post_types, $args );
+		
+		// Register the WordPress plugins taxonomy
+		$args = array(
+			'label' => 'WordPress plugins',
+			'labels' => array(
+				'name' => 'WordPress plugins',
+				'singular_name' => 'WordPress plugin',
+				'search_items' =>  'Search WordPress plugins',
+				'popular_items' => 'Popular WordPress plugins',
+				'all_items' => 'All WordPress plugins',
+				'parent_item' => 'Parent WordPress plugins',
+				'parent_item_colon' => 'Parent WordPress plugins:',
+				'edit_item' => 'Edit WordPress plugin', 
+				'update_item' => 'Update WordPress plugin',
+				'add_new_item' => 'Add New WordPress plugin',
+				'new_item_name' => 'New WordPress plugin',
+				'separate_items_with_commas' => 'Separate WordPress themes with plugins',
+				'add_or_remove_items' => 'Add or remove WordPress plugins',
+				'choose_from_most_used' => 'Choose from the most common WordPress plugins',
+				'menu_name' => 'WordPress plugins',
+			),
+			'show_tagcloud' => false,
+			'rewrite' => array(
+				'slug' => 'plugins',
+				'hierarchical' => true,
+			),
+		);
+		
+		$post_types = array(
+			'post',
+			'docredux_doc',
+		);
+		register_taxonomy( 'docredux_wpplugins', $post_types, $args );
+		
 	} // END create_taxonomies()
 	
 	/**
