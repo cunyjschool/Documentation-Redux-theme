@@ -104,6 +104,74 @@ class docredux {
 		);
 		register_taxonomy( 'docredux_topics', $post_types, $args );
 		
+		// Register the Software taxonomy
+		$args = array(
+			'label' => 'Software',
+			'labels' => array(
+				'name' => 'Software',
+				'singular_name' => 'Software',
+				'search_items' =>  'Search Software',
+				'popular_items' => 'Popular Software',
+				'all_items' => 'All Software',
+				'parent_item' => 'Parent Software',
+				'parent_item_colon' => 'Parent Software:',
+				'edit_item' => 'Edit Software', 
+				'update_item' => 'Update Software',
+				'add_new_item' => 'Add New Software',
+				'new_item_name' => 'New Software',
+				'separate_items_with_commas' => 'Separate software with commas',
+				'add_or_remove_items' => 'Add or remove software',
+				'choose_from_most_used' => 'Choose from the most common software',
+				'menu_name' => 'Software',
+			),
+			'show_tagcloud' => false,
+			'rewrite' => array(
+				'slug' => 'software',
+				'hierarchical' => true,
+			),
+		);
+		
+		$post_types = array(
+			'post',
+			'docredux_doc',
+			'docredux_staff',
+		);
+		register_taxonomy( 'docredux_software', $post_types, $args );
+		
+		// Register the Hardware taxonomy
+		$args = array(
+			'label' => 'Hardware',
+			'labels' => array(
+				'name' => 'Hardware',
+				'singular_name' => 'Hardware',
+				'search_items' =>  'Search Hardware',
+				'popular_items' => 'Popular Hardware',
+				'all_items' => 'All Hardware',
+				'parent_item' => 'Parent Hardware',
+				'parent_item_colon' => 'Parent Hardware:',
+				'edit_item' => 'Edit Hardware', 
+				'update_item' => 'Update Hardware',
+				'add_new_item' => 'Add New Hardware',
+				'new_item_name' => 'New Hardware',
+				'separate_items_with_commas' => 'Separate sardware with commas',
+				'add_or_remove_items' => 'Add or remove hardware',
+				'choose_from_most_used' => 'Choose from the most common hardware',
+				'menu_name' => 'Hardware',
+			),
+			'show_tagcloud' => false,
+			'rewrite' => array(
+				'slug' => 'hardware',
+				'hierarchical' => true,
+			),
+		);
+		
+		$post_types = array(
+			'post',
+			'docredux_doc',
+			'docredux_staff',
+		);
+		register_taxonomy( 'docredux_hardware', $post_types, $args );
+		
 	} // END create_taxonomies()
 	
 	/**
