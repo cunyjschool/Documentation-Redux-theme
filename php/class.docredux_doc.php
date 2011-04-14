@@ -1,13 +1,13 @@
 <?php
 /**
- * Staff custom post type
+ * Documentation custom post type
  * @author danielbachhuber
  * @since 0.1
  */
 
-if ( !class_exists( 'docredux_staff' ) ) {
+if ( !class_exists( 'docredux_doc' ) ) {
 	
-class docredux_staff
+class docredux_doc
 {
 	
 	/**
@@ -15,7 +15,7 @@ class docredux_staff
 	 */
 	function __construct() {
 		
-		// Add Staff post type
+		// Add Database post type
 		$this->create_post_type();
 		
 		// Set up metabox and related actions
@@ -34,23 +34,23 @@ class docredux_staff
 		
 		$args = array(
 			'labels' => array(
-	        	'name' => 'Staff',
-	        	'singular_name' => 'Staff Member',
-				'add_new_item' => 'Add New Staff Member',
-				'edit_item' => 'Edit Staff Member',
-				'new_item' => 'New Staff Member',
-				'view' => 'View Staff',
-				'view_item' => 'View Staff',
-				'search_items' => 'Search Staff Members',
-				'not_found' => 'No Staff Members found',
-				'not_found_in_trash' => 'No staff found in Trash',
-				'parent' => 'Parent Staff Member'
+	        	'name' => 'Documentation',
+	        	'singular_name' => 'Documentation',
+				'add_new_item' => 'Add New Documentation',
+				'edit_item' => 'Edit Documentation',
+				'new_item' => 'New Documentation',
+				'view' => 'View Documentation',
+				'view_item' => 'View Documentation',
+				'search_items' => 'Search Documentation',
+				'not_found' => 'No documentation found',
+				'not_found_in_trash' => 'No documentation found in Trash',
+				'parent' => 'Parent Documentation'
 	      	),
-			'menu_position' => 15,
+			'menu_position' => 16,
 			'public' => true,
 			'has_archive' => true,
 			'rewrite' => array(
-				'slug' => 'staff'
+				'slug' => 'documentation'
 			),
 			'supports' => array(
 				'title',
@@ -62,7 +62,7 @@ class docredux_staff
 			)
 	    );
 		
-		register_post_type( 'docredux_staff', $args );
+		register_post_type( 'docredux_doc', $args );
 		
 	} // END - create_post_type()
 	
@@ -71,7 +71,7 @@ class docredux_staff
 	 */
 	function add_post_meta_box() {
 		
-		add_meta_box( 'docredux_staff', __( 'Metadata', 'docredux_staff' ), array( &$this, 'post_meta_box' ), 'docredux_staff', 'side', 'high' );
+		add_meta_box( 'docredux_doc', __( 'Metadata', 'docredux_doc' ), array( &$this, 'post_meta_box' ), 'docredux_doc', 'side', 'high' );
 		
 	} // END add_post_meta_box()
 	
@@ -89,7 +89,7 @@ class docredux_staff
 	function save_post_meta_box( $post_id ) {
 		global $docredux, $post;
 		
-		if ( !wp_verify_nonce( $_POST['docredux_staff-nonce'], 'docredux_staff-nonce')) {
+		if ( !wp_verify_nonce( $_POST['docredux_doc-nonce'], 'docredux_doc-nonce')) {
 			return $post_id;  
 		}
 		
@@ -100,10 +100,10 @@ class docredux_staff
 		}		
 	} // END save_post_meta_box()
 	
-} // END class docredux_staff
+} // END class docredux_doc
 	
 	
-} // END if !class_exists( 'docredux_staff' )
+} // END if !class_exists( 'docredux_doc' )
 
 
 ?>

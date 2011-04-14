@@ -2,7 +2,7 @@
 
 define( 'DOCREDUX_VERSION', '0.0' );
 
-include_once( 'php/class.docredux_documentation.php' );
+include_once( 'php/class.docredux_doc.php' );
 include_once( 'php/class.docredux_staff.php' );
 
 if ( !class_exists( 'docredux' ) ) {
@@ -14,7 +14,7 @@ class docredux {
 	 */
 	function __construct() {
 		
-		$this->documentation = new docredux_documentation();
+		$this->documentation = new docredux_doc();
 		$this->staff = new docredux_staff();
 		
 		// Add support for post formats
@@ -65,7 +65,7 @@ class docredux {
 		
 		$post_types = array(
 			'post',
-			'docredux_documentation',
+			'docredux_doc',
 			'docredux_staff',
 		);
 		register_taxonomy( 'docredux_topics', $post_types, $args );
