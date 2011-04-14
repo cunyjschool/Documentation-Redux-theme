@@ -58,7 +58,12 @@ class docredux_doc
 				'excerpt',
 			),
 			'taxonomies' => array(
+				'docredux_courses',
+				'docredux_wpthemes',
+				'docredux_wpplugins',
 				'docredux_topics',
+				'docredux_software',
+				'docredux_hardware',
 			)
 	    );
 		

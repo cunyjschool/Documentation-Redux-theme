@@ -59,6 +59,8 @@ class docredux_staff
 			),
 			'taxonomies' => array(
 				'docredux_topics',
+				'docredux_software',
+				'docredux_hardware',
 			)
 	    );
 		
