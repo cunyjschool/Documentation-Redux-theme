@@ -111,6 +111,11 @@ body.orange .gradient {
 	font-style:italic;
 }
 
+.header .logo {
+	padding:0 20px;
+	margin-top:-10px;
+}
+
 .navigation {
 	border:1px solid #a8403a;
 }
