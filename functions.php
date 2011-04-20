@@ -21,6 +21,7 @@ class docredux {
 		add_action( 'after_setup_theme', array( &$this, 'add_post_formats' ) );
 		
 		add_action( 'init', array( &$this, 'create_taxonomies' ) );
+		add_action( 'init', array( &$this, 'enqueue_resources' ) );
 		
 	} // END __construct()
 	
@@ -30,6 +31,18 @@ class docredux {
 	function init() {
 		
 	} // END init()
+	
+	/**
+	 * enqueue_resources()
+	 * Enqueue any resources we need
+	 */
+	function enqueue_resources() {
+		
+		if ( !is_admin() ) {
+			wp_enqueue_style( 'docredux_primary_css', get_bloginfo('template_directory') . '/style.css', false, DOCREDUX_VERSION );
+		}
+		
+	} // END enqueue_resources()
 	
 	/**
 	 * create_taxonomies()
