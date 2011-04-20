@@ -22,17 +22,13 @@ h5 { font-size:1em; }
 	clear:both;	
 }
 
-html {
-	min-width:1008px;
-}
-
 body {
-	min-width:968px;
+	min-width:960px;
 	color:#444444;
 	font-family:Helvetica,Arial,Verdana,sans-serif;
 	font-size:85%;
 	line-height:1.5em;
-	background: url('bg-400-paper.jpg') repeat;
+	background: url('images/bg-400-paper.jpg') repeat;
 }
 
 .gradient {
@@ -75,15 +71,11 @@ body.orange .gradient {
 }
 
 .paper {
-	background: url('bg-400-paper-light.jpg') repeat;
+	background: url('images/bg-400-paper-light.jpg') repeat;
 }
 
 .shadow {
 	-moz-box-shadow:3px 3px 5px #777777;
-}
-
-.full-width {
-	width:100%;
 }
 
 .left {
@@ -94,18 +86,29 @@ body.orange .gradient {
 	float:right;
 }
 
-/* Header */
-.header, .main {
-	padding:20px 20px 0 20px;
+.full-width {
+	width:100%;
 }
 
+.container {
+	width:960px;
+	margin:0 auto;
+}
+
+.w600 {
+	width:600px;
+	margin:0 10px 0 20px;
+}
+
+.w300 {
+	width:300px;
+	margin:0 20px 0 10px;
+}
+
+/* Header */
 .header h4 {
 	margin:10px 20px 20px;
 	font-style:italic;
-}
-
-.header img.logo {
-	margin-top:-10px;
 }
 
 .navigation {
@@ -168,11 +171,6 @@ body.blue .navigation ul.navbar > li a:hover {
 }
 
 /* Content */
-
-.main {
-	margin:10px;
-}
-
 .main a {
 	text-decoration:none;
 	color:#a8403a;
@@ -201,15 +199,11 @@ body.blue .main a {
 }
 
 /* Sidebar */
-.sidebar {
-	width:300px;
-}
-
 .sidebar .widget {
-	margin-bottom:20px;
+	margin:20px 0;
 }
 
-.sidebar .widget > div {
+.sidebar .widget > div, .sidebar .widget a {
 	padding:10px;
 }
 
@@ -231,7 +225,6 @@ body.blue .widget h4 {
 }
 
 .sidebar .widget a {
-	padding:10px;
 	display:block;
 }
 
@@ -244,10 +237,11 @@ body.blue .widget h4 {
 	margin:0;
 }
 
-input[type="text"] {
+.sidebar input[type="text"] {
 	font-size:1em;
 	padding:5px;
 	color:#cccccc;
+	width:94%;
 }
 
 /* Footer */
@@ -263,16 +257,18 @@ input[type="text"] {
 }
 
 .posts {
-	width:624px;
-	padding:20px;
 	border-right:1px dashed #444444;
 	border-left:1px dashed #444444;
+	width:558px;
+	padding:20px;
+	margin-left:20px;
 }
 
 .events {
-	width:253px;
-	padding:20px;
 	border-right:1px dashed #444444;
+	width:259px;
+	padding:20px 30px;
+	margin-right:20px;
 }
 
 .events ul {
@@ -301,11 +297,6 @@ input[type="text"] {
 
 .footer a {
 	color:#ccc;
-}
-
-body.fixed .container  {
-	width:1024px;
-	margin:0 auto;
 }
 
 .footer .container {

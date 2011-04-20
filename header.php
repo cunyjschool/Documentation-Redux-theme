@@ -25,21 +25,22 @@
 
 <body <?php body_class(); ?>>
 
-
 <div class="header">
-	<h4 class="left">All things technology for the CUNY Graduate School of Journalism</h4>
-	<img src="cunyj-logo_h360.png" class="logo right"/>
-	<div class="clear"></div>
-	<div class="navigation gradient no-corners shadow full-width">
-		<ul class="navbar">
-			<li><a href="#" class="gradient border left"><img src="home.png" /></a></li>
-			<li><a href="#" class="gradient border left">Courses</a></li>
-			<li><a href="#" class="gradient border left">Topics</a></li>
-			<li><a href="#" class="gradient border left">Software/Web</a></li>
-			<li><a href="#" class="gradient border left">Hardware/Equipment</a></li>
-			<li><a href="#" class="gradient border left">WordPress Themes</a></li>
-			<li><a href="#" class="gradient border left">WordPress Plugins</a></li>
-		</ul>
+	<div class="container">
+		<h4 class="left">All things technology for the CUNY Graduate School of Journalism</h4>
+		<img src="<?php bloginfo('template_directory'); ?>/images/cunyj-logo_h360.png" class="logo right"/>
 		<div class="clear"></div>
-	</div>
-</div>
+		<div class="navigation gradient no-corners shadow full-width">
+			<ul class="navbar">
+				<li><a href="#" class="gradient border left"><img src="<?php bloginfo('template_directory'); ?>/images/home.png" /></a></li>
+				<li><a href="#" class="gradient border left">Courses</a></li>
+				<li><a href="#" class="gradient border left">Topics</a></li>
+				<li><a href="#" class="gradient border left">Software/Web</a></li>
+				<li><a href="#" class="gradient border left">Hardware/Equipment</a></li>
+				<li><a href="#" class="gradient border left">WordPress Themes</a></li>
+				<li><a href="#" class="gradient border left">WordPress Plugins</a></li>
+			</ul>
+			<div class="clear"></div>
+		</div>
+	</div><!-- END .container -->
+</div><!-- END .header -->

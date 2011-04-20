@@ -1,7 +1,7 @@
-<div class="sidebar right">
+<div class="sidebar right w300">
 	<div class="widget">
 		<h4>Search </h4>
-		<div class="no-bottom-corners paper"><input type="text" value="Documentation, news, events..." class="full-width"></div>
+		<div class="no-bottom-corners paper"><input type="text" value="Documentation, news, events..."></div>
 	</div>
 	<div class="widget">
 		<h4 class="">Forms</h4>
