@@ -91,7 +91,7 @@ class docredux_staff
 	function save_post_meta_box( $post_id ) {
 		global $docredux, $post;
 		
-		if ( !wp_verify_nonce( $_POST['docredux_staff-nonce'], 'docredux_staff-nonce')) {
+		if ( isset( $_POST['docredux_staff-nonce'] ) && !wp_verify_nonce( $_POST['docredux_staff-nonce'], 'docredux_staff-nonce')) {
 			return $post_id;  
 		}
 		

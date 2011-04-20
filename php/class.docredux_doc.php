@@ -94,7 +94,7 @@ class docredux_doc
 	function save_post_meta_box( $post_id ) {
 		global $docredux, $post;
 		
-		if ( !wp_verify_nonce( $_POST['docredux_doc-nonce'], 'docredux_doc-nonce')) {
+		if ( isset( $_POST['docredux_doc-nonce'] ) && !wp_verify_nonce( $_POST['docredux_doc-nonce'], 'docredux_doc-nonce')) {
 			return $post_id;  
 		}
 		
