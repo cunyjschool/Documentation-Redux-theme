@@ -30,7 +30,7 @@
 	<h4 class="left">All things technology for the CUNY Graduate School of Journalism</h4>
 	<img src="cunyj-logo_h360.png" class="logo right"/>
 	<div class="clear"></div>
-	<div id="navigation" class="gradient no-corners shadow full-width">
+	<div class="navigation gradient no-corners shadow full-width">
 		<ul class="navbar">
 			<li><a href="#" class="gradient border left"><img src="home.png" /></a></li>
 			<li><a href="#" class="gradient border left">Courses</a></li>
