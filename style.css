@@ -9,7 +9,7 @@ License: GNU General Public License
 License URI: license.txt
 */
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; border-collapse:collapse;}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; border-collapse:collapse; outline:none;}
 
 h1 { font-size:3em; margin-bottom:10px; padding-left:5px;}
 h2 { font-size:2em; font-weight:bold; }
@@ -124,7 +124,6 @@ ul#menu-header-menu > li > a{
 	margin:-1px;
 	border:1px solid #a8403a;
 	height:20px;
-	outline:none;
 	background: -moz-linear-gradient(center top, #c74b46, #a8403a) repeat scroll 0 0 #a8403a;
 	background: -webkit-gradient(linear, left top, left bottom, from(#c74b46), to(#a8403a));
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c74b46', endColorstr='#a8403a');
@@ -199,7 +198,7 @@ ul#menu-header-menu ul.sub-menu {
 /* Homepage */
 .big-search {
 	padding:10px;
-	margin-bottom:20px;
+	margin:20px 0;
 }
 
 /* Documentation single */

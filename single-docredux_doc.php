@@ -21,8 +21,7 @@
 					
 					<div class="meta">
 						<span><?php the_time('l, F jS, Y') ?></span> &mdash;
-						<span><?php the_category() ?></span>
-					
+						<span><?php get_the_term_list( $post->ID, 'docredux_courses', '', ', ', '' ) ?></span>
 					</div><!-- END .meta -->	
 			
 					<?php the_content() ?>
