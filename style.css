@@ -147,6 +147,7 @@ body.orange .navigation {
 	margin:-1px;
 	border:1px solid #a8403a;
 	height:20px;
+	outline:none;
 }
 
 body.blue .navigation ul.navbar > li a {
@@ -203,6 +204,12 @@ body.blue .main a {
 	line-height:1.7em;
 }
 
+/* Homepage */
+.big-search {
+	padding:10px;
+	margin-bottom:20px;
+}
+
 /* Sidebar */
 .sidebar .widget {
 	margin:20px 0;
@@ -242,11 +249,11 @@ body.blue .widget h4 {
 	margin:0;
 }
 
-.sidebar input[type="text"] {
+input[type="text"] {
 	font-size:1em;
 	padding:5px;
 	color:#cccccc;
-	width:94%;
+	width:97%;
 }
 
 /* Footer */

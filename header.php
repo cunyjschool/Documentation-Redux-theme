@@ -32,7 +32,7 @@
 		<div class="clear"></div>
 		<div class="navigation gradient no-corners shadow full-width">
 			<ul class="navbar">
-				<li><a href="#" class="gradient border left"><img src="<?php bloginfo('template_directory'); ?>/images/home.png" /></a></li>
+				<li><a href="<?php bloginfo('url'); ?>" class="gradient border left"><img src="<?php bloginfo('template_directory'); ?>/images/home.png" /></a></li>
 				<li><a href="#" class="gradient border left">Courses</a></li>
 				<li><a href="#" class="gradient border left">Topics</a></li>
 				<li><a href="#" class="gradient border left">Software/Web</a></li>

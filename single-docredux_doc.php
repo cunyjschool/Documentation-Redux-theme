@@ -7,16 +7,21 @@
 
 <?php get_header(); ?>
 
-<div class="wrap">
+<div class="main">
+	<div class="container">
+		<div class="content left w600">
+
+
+
+
+		</div><!-- END .content -->
 	
-	<div class="main">
-		
 		<?php get_sidebar(); ?>
-		
-		<?php /* @todo display the documentation information here */ ?>
-		
-	</div><!-- END .main -->
 	
-</div><!-- END .wrap -->
+		<div class="clear"></div>
+
+	</div><!-- END .container -->
+
+</div><!-- END .main -->
 
 <?php get_footer(); ?>

@@ -1,8 +1,10 @@
 <div class="sidebar right w300">
-	<div class="widget">
-		<h4>Search </h4>
-		<div class="no-bottom-corners paper"><input type="text" value="Documentation, news, events..."></div>
-	</div>
+	<?php if ( !is_home() ) { ?>
+		<div class="widget">
+			<h4>Search </h4>
+			<div class="no-bottom-corners paper"><input type="text" value="Documentation, news, events..."></div>
+		</div>
+	<?php } ?>
 	<div class="widget">
 		<h4 class="">Forms</h4>
 		<ul class="paper no-bottom-corners">

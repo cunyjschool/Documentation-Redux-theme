@@ -4,9 +4,11 @@
 	<div class="container">
 		<div class="content left w600">
 			<div class="featured">
-				<p>The tech team is here to help! We have archived solutions to your most frequent problems and posted useful documentation to help you beef up your web skills.</p><p>Please, take a few minutes to explore the site, the answer to your question might just be few clicks away.</p>
+				<p>The tech team is here to help! We have archived solutions to your most frequent problems and posted useful documentation to help you beef up your web skills.</p><p>Please, take a few minutes to explore the site. The answer to your question might just be a few clicks away.</p>
 			</div>
-			<div class="clear"></div>
+			<div class="big-search paper no-corners">
+				<input type="text" class="full-width" value="Seach documentation, news, events...">
+			</div>
 	
 			<table class="paper full-width">
 				<tr>
