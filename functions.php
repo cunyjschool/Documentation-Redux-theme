@@ -22,6 +22,7 @@ class docredux {
 		
 		add_action( 'init', array( &$this, 'create_taxonomies' ) );
 		add_action( 'init', array( &$this, 'enqueue_resources' ) );
+		add_action( 'init', array( &$this, 'register_menus' ) );
 		
 	} // END __construct()
 	
@@ -31,6 +32,19 @@ class docredux {
 	function init() {
 		
 	} // END init()
+	
+	/**
+	 * register_menus()
+	 * Register menus
+	 */
+	function register_menus() {
+	  register_nav_menus(
+	    array( 
+			'header-menu' => __( 'Header Menu' )
+		)
+	  );
+	} // END register_menus()
+	
 	
 	/**
 	 * enqueue_resources()
@@ -252,7 +266,7 @@ class docredux {
 		register_taxonomy( 'docredux_wpplugins', $post_types, $args );
 		
 	} // END create_taxonomies()
-	
+
 	/**
 	 * add_post_formats()
 	 */
