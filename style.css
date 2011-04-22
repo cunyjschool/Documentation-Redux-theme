@@ -113,6 +113,8 @@ body {
 	border-radius:5px;
 	border:1px solid #a8403a;
 	-moz-box-shadow:3px 3px 5px #777777;
+	-webkit-box-shadow:3px 3px 5px #777777;
+	box-shadow:3px 3px 5px #777777;
 }
 
 ul#menu-header-menu > li{
@@ -237,10 +239,14 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 	padding:3px;
 	background:#fff;
 	-moz-box-shadow:3px 3px 5px #777777;
+	-webkit-box-shadow:3px 3px 5px #777777;
+	box-shadow:3px 3px 5px #777777;
 }
 
 .entry-footer {
 	-moz-box-shadow:3px 3px 5px #777777;
+	-webkit-box-shadow:3px 3px 5px #777777;
+	box-shadow:3px 3px 5px #777777;
 	padding:20px;
 	margin-left:-15px;
 }
