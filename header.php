@@ -28,7 +28,7 @@
 <div class="header">
 	<div class="container">
 		<h4 class="left">All things technology for the CUNY Graduate School of Journalism</h4>
-		<img src="<?php bloginfo('template_directory'); ?>/images/cunyj-logo_h360.png" class="logo right"/>
+		<a href="http://www.journalism.cuny.edu/" alt="The CUNY Graduate School of Journalism" ><img src="<?php bloginfo('template_directory'); ?>/images/cunyj-logo_h360.png" class="logo right"/></a>
 		<div class="clear"></div>
 		<?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
 		</div>
