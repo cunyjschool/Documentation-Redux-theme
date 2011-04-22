@@ -76,12 +76,12 @@ body {
 
 .w600 {
 	width:600px;
-	margin:0 10px 0 20px;
+	margin:0 15px;
 }
 
 .w300 {
 	width:300px;
-	margin:0 20px 0 10px;
+	margin:0 15px;
 }
 
 /* Header */
@@ -262,7 +262,7 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 	background:#f9f9f9;
 }
 
-.sidebar .widget li {
+.sidebar .widget li, .posts ul, .events ul {
 	list-style:none;
 	margin:0;
 }
@@ -277,6 +277,7 @@ input[type="text"] {
 /* Footer */
 .footer {
 	margin-top:20px;
+	padding:40px 0;
 	color:#999;
 	-moz-box-shadow:0 0 10px #444444;
 	-webkit-box-shadow:0 0 10px #444444;
@@ -286,36 +287,27 @@ input[type="text"] {
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#444444', endColorstr='#222222');
 }
 
-.posts {
+.footer a {
+	color:#ccc;
+}
+
+.footer .container {
+	width:984px;
+}
+
+.posts, .events {
 	border-right:1px dashed #444444;
-	border-left:1px dashed #444444;
-	width:558px;
 	padding:20px;
-	margin-left:20px;
+	margin:0;
 }
 
-.events {
-	border-right:1px dashed #444444;
-	width:259px;
-	padding:20px 30px;
-	margin-right:20px;
+.posts {
+	border-left:1px dashed #444444;
 }
 
-.events ul {
-	margin-top:10px;
-}
-
-.events ul li {
-	padding:10px 0;
-}
-
-.posts ul, .events ul {
-	list-style:none;
-}
-
-.posts ul li {
-	padding:20px 5px;
+.posts ul li, .events ul li {
 	clear:both;
+	margin:20px 0;
 }
 
 .posts ul li img {
@@ -323,13 +315,4 @@ input[type="text"] {
 	padding:3px;
 	background:#ccc;
 	width:60px;
-}
-
-.footer a {
-	color:#ccc;
-}
-
-.footer .container {
-	padding:20px 40px 40px;
-	width:960px;
 }

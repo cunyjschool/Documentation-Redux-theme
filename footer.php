@@ -1,6 +1,6 @@
 <div class="footer">
 	<div class="container">
-		<div class="posts left">
+		<div class="w600 posts left">
 			<h4 class="">Recent blog posts</h4>
 			<?php
 				$args = array(
@@ -23,7 +23,7 @@
 
 		</div>
 	
-		<div class="right events">
+		<div class="w300 events right">
 			<h4>Upcoming Events</h4>
 			<ul>
 				<li><a href="#">Foobar Event</a>&mdash; Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>

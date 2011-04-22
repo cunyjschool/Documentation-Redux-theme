@@ -16,7 +16,7 @@
 			
 			<div class="archive pads">
 			
-					<h2>Archive</h2>			
+					<h2>Documentation Archive</h2>			
 
 			  		<?php if ( have_posts()) : ?>
 
