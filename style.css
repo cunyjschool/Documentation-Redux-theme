@@ -242,11 +242,11 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 }
 
 /* Archive */
-.archive .excerpt {
-	padding:20px 0;
+.archive .excerpt, .archive .doc-index {
+	margin:20px 0;
 }
 
-.archive p {
+.archive .excerpt p {
 	margin-top:10px;
 }
 
@@ -272,6 +272,10 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 
 .sidebar .widget a {
 	display:block;
+}
+
+.sidebar .widget p {
+	margin-top:10px;
 }
 
 .sidebar .widget ul li a {

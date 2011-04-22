@@ -22,9 +22,9 @@
 
 				 	<?php while (have_posts()) : the_post(); ?>
 
-						<div class="excerpt" id="post-<?php the_ID(); ?>">
+						<div class="doc-index" id="post-<?php the_ID(); ?>">
 
-							<h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
+							<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
 
 							<div class="meta">
 								<?php 
@@ -33,8 +33,8 @@
 									if ($current_user->user_level == 10 ) {
 										edit_post_link('Edit this post', '', ' — ');
 									}
-		 							the_time('l, F jS, Y');
-									echo ' &mdash; ';
+									// the_time('l, F jS, Y');
+									// echo ' &mdash; ';
 									echo get_the_term_list( $post->ID, 'docredux_courses', '', ', ', '' );
 									echo get_the_term_list( $post->ID, 'docredux_topics', ', ', ', ', '' );
 									echo get_the_term_list( $post->ID, 'docredux_hardware', ', ', ', ', '' );
@@ -44,9 +44,9 @@
 								?>
 							</div><!-- END .meta -->
 
-							<?php the_excerpt(); ?>
+							<!-- <?php the_excerpt(); ?> -->
 
-						</div><!-- END - .post -->
+						</div><!-- END - .doc-index -->
 
 				<?php endwhile; ?>
 
