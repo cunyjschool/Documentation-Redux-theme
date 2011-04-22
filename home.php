@@ -9,7 +9,6 @@
 			<div class="big-search paper no-corners">
 				<input type="text" class="full-width" value="Seach documentation, news, events...">
 			</div>
-	
 			<table class="paper full-width">
 				<tr>
 					<td class="border">
