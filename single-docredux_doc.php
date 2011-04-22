@@ -31,6 +31,10 @@
 								echo ' &mdash; ';
 								echo get_the_term_list( $post->ID, 'docredux_courses', '', ', ', '' );
 								echo get_the_term_list( $post->ID, 'docredux_topics', ', ', ', ', '' );
+								echo get_the_term_list( $post->ID, 'docredux_hardware', ', ', ', ', '' );
+								echo get_the_term_list( $post->ID, 'docredux_software', ', ', ', ', '' );
+								echo get_the_term_list( $post->ID, 'docredux_wpthemes', ', ', ', ', '' );
+								echo get_the_term_list( $post->ID, 'docredux_wpplugins', ', ', ', ', '' );
 							?>
 						</span>
 					</div><!-- END .meta -->	
