@@ -4,7 +4,7 @@
 			<h4 class="">Recent blog posts</h4>
 			<?php
 				$args = array(
-					'showposts' => 4
+					'showposts' => 3
 				);
 				$news_posts = new WP_Query( $args ); ?>
 			<ul>
