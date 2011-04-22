@@ -15,11 +15,24 @@
 	<div class="widget">
 		<h4>Web team on duty</h4>
 		<div class="paper no-bottom-corners">
-			<a href="<?php bloginfo('url') ?>/<?php the_author() ?>"><?php echo get_avatar( get_the_author_meta(), '60' ); ?></a>
-			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci.</p>
-			<a href="<?php bloginfo('url') ?>/<?php the_author() ?>"><?php echo get_avatar( get_the_author_meta(), '60' ); ?></a>
-			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci.</p>
-			<p><a href="<?php bloginfo('url') ?>/staff/">See all IT Staff &rarr;</a></p>
+			<?php
+				$args = array(
+					'post__not_in' => array($post->ID),
+					'post_type' => 'docredux_staff',
+					'showposts' => -1
+				);
+				$news_posts = new WP_Query( $args ); ?>
+	  		<?php if ( $news_posts->have_posts() ) : ?>
+			<?php while ( $news_posts->have_posts() ) : $news_posts->the_post(); ?>
+				<div class="on-duty">
+					<?php echo get_avatar( get_the_author_meta(), '60' ); ?>
+					<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
+					<?php the_excerpt(); ?>
+				</div>
+	    	<?php endwhile; else: ?>
+				<p>There are currently no staff members.</p>
+			<?php endif; ?>
+				<p><a href="<?php bloginfo('url') ?>/staff/">See all IT Staff &rarr;</a></p>
 		</div>			
 	</div>	
 </div><!-- END .sidebar -->

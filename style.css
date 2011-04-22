@@ -89,6 +89,12 @@ body {
 	margin:0 15px;
 }
 
+.avatar{
+	margin:0 20px 10px 0;
+	float:left;
+	border:3px solid #fff;
+}
+
 /* Header */
 .header h4 {
 	margin:10px 20px 20px;
@@ -252,11 +258,16 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 }
 
 /* Archive */
-.archive .excerpt, .archive .doc-index {
+.archive .excerpt, .archive .doc-index, .archive .staff-index {
 	margin:20px 0;
+	clear:both;
 }
 
-.archive .excerpt p {
+.archive .excerpt p, .archive .staff-index p {
+	margin-top:10px;
+}
+
+.staff-index .avatar {
 	margin-top:10px;
 }
 
@@ -269,27 +280,22 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 	padding:10px 20px;
 }
 
-.sidebar .avatar{
-	margin:10px 20px 10px 0;
-	float:left;
-	border:3px solid #fff;
-}
-
-.sidebar .widget h4 {
+.sidebar .widget > h4 {
 	padding:5px 8px;
 	border-bottom:2px solid #c74b46;
 }
 
-.sidebar .widget a {
-	display:block;
+.sidebar .widget .on-duty {
+	margin-bottom:20px;
 }
 
-.sidebar .widget p {
-	margin-top:10px;
+.sidebar .widget .on-duty h4{
+	margin:10px 0 0 0;
 }
 
 .sidebar .widget ul li a {
 	padding:10px 20px;
+	display:block;
 }
 
 .sidebar .widget a:hover {

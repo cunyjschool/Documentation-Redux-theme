@@ -31,7 +31,7 @@
 				<li><a href="#">Event Bonanza</a>&mdash; Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
 				<li><a href="#">Too Many Events?</a>&mdash; Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
 				<li><a href="#">How Many Events is Too Many Events, I ask You?</a>&mdash; Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-				<li><a>More events &rarr;</a></li>
+				<li><a href="<?php bloginfo('url') ?>/staff/">More events &rarr;</a></li>
 			</ul>
 		</div>
 	</div><!-- END .container -->
