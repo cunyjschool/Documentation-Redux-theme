@@ -17,22 +17,33 @@
 			
 				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 				
-					<h3><?php the_title() ?></h3>
+					<h2><?php the_title() ?></h2>
 					
 					<div class="meta">
-						<span><?php the_time('l, F jS, Y') ?></span> &mdash;
-						<span><?php echo get_the_term_list( $post->ID, 'docredux_courses', '', ', ', '' ) ?><?php echo get_the_term_list( $post->ID, 'docredux_topics', ', ', ', ', '' ) ?></span>
+						<span>
+							<?php 
+								global $current_user;	
+								get_currentuserinfo();
+								if ($current_user->user_level == 10 ) {
+									edit_post_link('Edit this post', '', ' — ');
+								}
+	 							the_time('l, F jS, Y');
+								echo ' &mdash; ';
+								echo get_the_term_list( $post->ID, 'docredux_courses', '', ', ', '' );
+								echo get_the_term_list( $post->ID, 'docredux_topics', ', ', ', ', '' );
+							?>
+						</span>
 					</div><!-- END .meta -->	
 			
 					<?php the_content() ?>
 					
-					<div class="helpful pads">
+					<div class="entry-footer pads">
 						<h4>Was this helpful?</h4>
 						<button>Yes</button>
 						<button>No</button>
 					</div>
 					
-					<div class="related pads">
+					<div class="entry-footer pads">
 						<h4>Related documentation</h4>
 						<?php
 						$backup = $post;
