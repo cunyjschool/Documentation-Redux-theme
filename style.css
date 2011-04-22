@@ -254,16 +254,14 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 	margin:20px 0;
 }
 
-.sidebar .widget > div, .sidebar .widget a {
-	padding:10px;
+.sidebar div.no-bottom-corners {
+	padding:10px 20px;
 }
 
-.sidebar .widget p {
-	margin:10px;
-}
-
-.sidebar .widget img{
-	margin:10px 20px 10px 10px;
+.sidebar .avatar{
+	margin:10px 20px 10px 0;
+	float:left;
+	border:3px solid #fff;
 }
 
 .sidebar .widget h4 {
@@ -273,6 +271,10 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 
 .sidebar .widget a {
 	display:block;
+}
+
+.sidebar .widget ul li a {
+	padding:10px 20px;
 }
 
 .sidebar .widget a:hover {
@@ -312,24 +314,23 @@ input[type="text"] {
 	width:984px;
 }
 
-.posts, .events {
+.footer .posts, .footer .events {
 	border-right:1px dashed #444444;
 	padding:20px;
 	margin:0;
 }
 
-.posts {
+.footer .posts {
 	border-left:1px dashed #444444;
 }
 
-.posts ul li, .events ul li {
+.footer .posts ul li, .footer .events ul li {
 	clear:both;
 	margin:20px 0;
 }
 
-.posts ul li img {
-	margin-right:20px;
-	padding:3px;
-	background:#ccc;
+.footer .posts ul li img {
+	margin:0 20px 10px 0;
+	border:3px solid #ccc;
 	width:60px;
 }
