@@ -216,9 +216,13 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 }
 
 /* Homepage */
-.big-search {
+.home .big-search {
 	padding:10px;
 	margin:20px 0;
+}
+
+.home .content {
+	margin:15px;
 }
 
 /* Documentation single */

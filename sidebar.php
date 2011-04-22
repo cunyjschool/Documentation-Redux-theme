@@ -15,9 +15,9 @@
 	<div class="widget">
 		<h4>Web team on duty</h4>
 		<div class="paper no-bottom-corners">
-			<?php echo get_avatar( get_the_author_meta(), '50' ); ?>
+			<a href="<?php bloginfo('url') ?>/<?php the_author() ?>"><?php echo get_avatar( get_the_author_meta(), '60' ); ?></a>
 			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci.</p>
-			<?php echo get_avatar( get_the_author_meta(), '50' ); ?>
+			<a href="<?php bloginfo('url') ?>/<?php the_author() ?>"><?php echo get_avatar( get_the_author_meta(), '60' ); ?></a>
 			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci.</p>
 			<p><a href="<?php bloginfo('url') ?>/staff/">See all IT Staff &rarr;</a></p>
 		</div>			
