@@ -20,23 +20,21 @@
 					<h2><?php the_title() ?></h2>
 					
 					<div class="meta">
-						<span>
-							<?php 
-								global $current_user;	
-								get_currentuserinfo();
-								if ($current_user->user_level == 10 ) {
-									edit_post_link('Edit this post', '', ' — ');
-								}
-	 							the_time('l, F jS, Y');
-								echo ' &mdash; ';
-								echo get_the_term_list( $post->ID, 'docredux_courses', '', ', ', '' );
-								echo get_the_term_list( $post->ID, 'docredux_topics', ', ', ', ', '' );
-								echo get_the_term_list( $post->ID, 'docredux_hardware', ', ', ', ', '' );
-								echo get_the_term_list( $post->ID, 'docredux_software', ', ', ', ', '' );
-								echo get_the_term_list( $post->ID, 'docredux_wpthemes', ', ', ', ', '' );
-								echo get_the_term_list( $post->ID, 'docredux_wpplugins', ', ', ', ', '' );
-							?>
-						</span>
+						<?php 
+							global $current_user;	
+							get_currentuserinfo();
+							if ($current_user->user_level == 10 ) {
+								edit_post_link('Edit this post', '', ' — ');
+							}
+ 							the_time('l, F jS, Y');
+							echo ' &mdash; ';
+							echo get_the_term_list( $post->ID, 'docredux_courses', '', ', ', '' );
+							echo get_the_term_list( $post->ID, 'docredux_topics', ', ', ', ', '' );
+							echo get_the_term_list( $post->ID, 'docredux_hardware', ', ', ', ', '' );
+							echo get_the_term_list( $post->ID, 'docredux_software', ', ', ', ', '' );
+							echo get_the_term_list( $post->ID, 'docredux_wpthemes', ', ', ', ', '' );
+							echo get_the_term_list( $post->ID, 'docredux_wpplugins', ', ', ', ', '' );
+						?>
 					</div><!-- END .meta -->	
 			
 					<?php the_content() ?>
