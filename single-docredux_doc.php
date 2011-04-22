@@ -13,7 +13,7 @@
 		
 		<div class="content left w600">
 			
-			<div class="entry">
+			<div class="entry pads">
 			
 				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 				
@@ -21,10 +21,52 @@
 					
 					<div class="meta">
 						<span><?php the_time('l, F jS, Y') ?></span> &mdash;
-						<span><?php get_the_term_list( $post->ID, 'docredux_courses', '', ', ', '' ) ?></span>
+						<span><?php echo get_the_term_list( $post->ID, 'docredux_courses', '', ', ', '' ) ?><?php echo get_the_term_list( $post->ID, 'docredux_topics', ', ', ', ', '' ) ?></span>
 					</div><!-- END .meta -->	
 			
 					<?php the_content() ?>
+					
+					<div class="helpful pads">
+						<h4>Was this helpful?</h4>
+						<button>Yes</button>
+						<button>No</button>
+					</div>
+					
+					<div class="related pads">
+						<h4>Related documentation</h4>
+						<?php
+						$backup = $post;
+						$found_none = '<p>No related documentation found.</p>';
+						$taxonomy = 'docredux_courses';
+						// $param_type = 'courses';
+						$tax_args=array('orderby' => 'none');
+						$tags = wp_get_post_terms( $post->ID , $taxonomy, $tax_args);
+						if ($tags) {
+							foreach ($tags as $tag) {
+								$args=array(
+									// "$param_type" => $tag->slug,
+									'post__not_in' => array($post->ID),
+									'post_type' => 'docredux_doc',
+									'showposts'=> -1,
+								);
+								$my_query = null;
+								$my_query = new WP_Query($args);
+								if( $my_query->have_posts() ) { ?>
+									<ul><?php 
+									while ($my_query->have_posts()) : $my_query->the_post(); ?>
+										<li><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a></li>
+									<?php $found_none = '';
+								endwhile;
+								}
+							}
+						}
+						if ($found_none) {
+						echo $found_none;
+						}
+						$post = $backup;
+						wp_reset_query();
+						?>
+					</div>
 			
 				<?php endwhile ; endif; ?>
 			

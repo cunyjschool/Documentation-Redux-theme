@@ -53,10 +53,6 @@ body {
 	background: url('images/bg-400-paper-light.jpg') repeat;
 }
 
-.shadow {
-	-moz-box-shadow:3px 3px 5px #777777;
-}
-
 .left {
 	float:left;
 }
@@ -107,6 +103,7 @@ body {
 	-moz-border-radius:5px;
 	border-radius:5px;
 	border:1px solid #a8403a;
+	-moz-box-shadow:3px 3px 5px #777777;
 }
 
 ul#menu-header-menu > li{
@@ -143,6 +140,8 @@ ul#menu-header-menu > li a:hover {
 
 ul#menu-header-menu ul.sub-menu {
 	position:absolute;
+	-moz-box-shadow:3px 3px 5px #777777;
+	border:1px solid #444444;
 	visibility:hidden;
 }
 
@@ -165,10 +164,6 @@ ul#menu-header-menu ul.sub-menu > li > a {
 ul#menu-header-menu ul.sub-menu > li > a:hover {
 	background: #fff;
 	color:#a8403a;
-}
-
-ul#menu-header-menu ul.sub-menu {
-	border:1px solid #444444;
 }
 
 /* Content */
@@ -202,13 +197,21 @@ ul#menu-header-menu ul.sub-menu {
 }
 
 /* Documentation single */
-.entry {
-	margin-top:30px;
-}
-
 .meta {
 	color:#999999;
 	margin:5px 0;
+}
+
+.entry img.alignleft{
+	float:left;
+	margin:0 30px 10px 0;
+	padding:3px;
+	background:#fff;
+	-moz-box-shadow:3px 3px 5px #777777;
+}
+
+.pads {
+	margin:30px 0;
 }
 
 /* Sidebar */
@@ -231,10 +234,6 @@ ul#menu-header-menu ul.sub-menu {
 .sidebar .widget h4 {
 	padding:5px 8px;
 	border-bottom:2px solid #c74b46;
-}
-
-body.blue .widget h4 {
-	border-bottom:2px solid #487da9;
 }
 
 .sidebar .widget a {
@@ -297,7 +296,7 @@ input[type="text"] {
 }
 
 .posts ul li {
-	padding:20px;
+	padding:20px 5px;
 	clear:both;
 }
 
