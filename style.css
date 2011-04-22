@@ -238,6 +238,7 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 .entry-footer {
 	-moz-box-shadow:3px 3px 5px #777777;
 	padding:20px;
+	margin-left:-15px;
 }
 
 /* Archive */
