@@ -2,12 +2,25 @@
 	<div class="container">
 		<div class="posts left">
 			<h4 class="">Recent blog posts</h4>
-			<ul class="">
-				<li><a href="#"><img class="left" src="http://www.journalism.cuny.edu/files/2009/09/armstrong-lisa.jpg" /><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci.</p></a></li>
-				<li><a href="#"><img class="left" src="http://www.journalism.cuny.edu/files/2010/01/Karen-photo-323x400.jpg" /><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci.</p></a></li>
-				<li><a href="#"><img class="left" src="http://www.journalism.cuny.edu/files/2008/10/svoboda-wayne.jpg" /><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci.</p></a></li>
+			<?php
+				$args = array(
+					'showposts' => 4
+				);
+				$news_posts = new WP_Query( $args ); ?>
+			<ul>
+	  		<?php if ( $news_posts->have_posts() ) : ?>
+			<?php while ( $news_posts->have_posts() ) : $news_posts->the_post(); ?>
+				<li>
+					<img class="left" src="http://www.journalism.cuny.edu/files/2009/09/armstrong-lisa.jpg" />
+					<a href="<?php the_permalink() ?>"><h4 class="left"><?php the_title(); ?></h4></a><span>&nbsp;&mdash; <?php the_date(); ?></span><br />
+					<?php the_excerpt() ?>
+				</li>
+	    	<?php endwhile; else: ?>
+				<li>There are currently no blog posts.</li>
+			<?php endif; ?>
 				<li><a>More blog posts &rarr;</a></li>
 			</ul>
+
 		</div>
 	
 		<div class="right events">
