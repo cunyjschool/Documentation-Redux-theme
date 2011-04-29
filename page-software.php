@@ -16,7 +16,7 @@ Template Name: Page - Software
 			
 					<h2>Software</h2>
 					
-					<table class="paper full-width pads tax-index">
+					<table class="paper full-width tax-index">
 				        <tr class="bold">
 				            <td>Program</td>
 				            <td>Documentation</td>

@@ -16,7 +16,7 @@ Template Name: Page - Plugins
 			
 					<h2>WordPress Plugins</h2>
 					
-					<table class="paper full-width pads tax-index">
+					<table class="paper full-width tax-index">
 				        <tr class="bold">
 				            <td>Plugin</td>
 				            <td>Documentation</td>

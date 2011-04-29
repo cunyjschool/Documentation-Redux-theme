@@ -16,7 +16,7 @@ Template Name: Page - Themes
 			
 					<h2>WordPress Themes</h2>
 					
-					<table class="paper full-width pads tax-index">
+					<table class="paper full-width tax-index">
 				        <tr class="bold">
 				            <td>Theme</td>
 				            <td>Documentation</td>

@@ -238,15 +238,6 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 	text-decoration:underline;
 }
 
-.main .content li {
-	margin:10px 10px 10px 35px;
-}
-
-.main td {
-	padding:20px;
-	border:1px solid #e3e6db;
-}
-
 .main .content p {
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -263,6 +254,15 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 }
 
 .home .content li, .single .content li {
+	margin:10px 10px 10px 35px;
+}
+
+.home .main td {
+	padding:20px;
+	border:1px solid #e3e6db;
+}
+
+.home .main .content li {
 	margin:10px 10px 10px 35px;
 }
 
@@ -301,8 +301,13 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 }
 
 /* Page Templates */
-.page td ul li{
-	margin:0 0 0 15px;
+.page td li{
+	margin:5px 0 5px 15px;
+}
+
+.page .main td {
+	padding:10px 20px;
+	border:1px solid #e3e6db;
 }
 
 /* Archive */

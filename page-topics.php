@@ -16,7 +16,7 @@ Template Name: Page - Topics
 			
 					<h2>Topics</h2>
 					
-					<table class="paper full-width pads tax-index">
+					<table class="paper full-width tax-index">
 				        <tr class="bold">
 				            <td>Topic</td>
 				            <td>Documentation</td>

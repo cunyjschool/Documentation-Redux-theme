@@ -16,7 +16,7 @@ Template Name: Page - Hardware
 			
 					<h2>Hardware</h2>
 					
-					<table class="paper full-width pads tax-index">
+					<table class="paper full-width tax-index">
 				        <tr class="bold">
 				            <td>Equipment</td>
 				            <td>Documentation</td>
