@@ -25,7 +25,11 @@
 	  		<?php if ( $news_posts->have_posts() ) : ?>
 			<?php while ( $news_posts->have_posts() ) : $news_posts->the_post(); ?>
 				<div class="on-duty">
-					<?php echo get_avatar( get_the_author_meta(), '60' ); ?>
+					<?php 
+                        //if ( has_post_thumbnail() ) {
+                        //    the_post_thumbnail();
+                        //} 
+                    ?>
 					<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
 					<?php the_excerpt(); ?>
 				</div>

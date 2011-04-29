@@ -4,6 +4,7 @@
 			<h4 class="">Recent blog posts</h4>
 			<?php
 				$args = array(
+                    'post_type' => 'post',
 					'showposts' => 3
 				);
 				$news_posts = new WP_Query( $args ); ?>
@@ -18,7 +19,7 @@
 	    	<?php endwhile; else: ?>
 				<li>There are currently no blog posts.</li>
 			<?php endif; ?>
-				<li><a>More blog posts &rarr;</a></li>
+				<li><a href="<?php bloginfo('url') ?>/tech-blog/">More blog posts &rarr;</a></li>
 			</ul>
 
 		</div>

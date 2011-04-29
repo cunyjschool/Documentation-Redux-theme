@@ -239,8 +239,7 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 }
 
 .main .content p {
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin: 10px 15px 10px 0;
 }
 
 /* Homepage */
@@ -269,17 +268,13 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 /* Documentation single */
 .content .meta {
 	color:#999999;
-	margin-top: 20px;
-	padding-top: 5px;
-	padding-left: 10px;
-	padding-right: 10px;
-	padding-bottom: 5px;
+	margin: 15px 10px 30px -5px;
+	padding: 5px 10px;
 	border: 1px solid #CCCCCC;
 }
 
 .content .meta p {
-	margin-top: 3px;
-	margin-bottom: 3px;
+	margin:0;
 }
 
 .content .entry img.alignleft{
