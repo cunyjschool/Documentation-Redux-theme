@@ -16,25 +16,48 @@ Template Name: Page - Hardware
 			
 					<h2>Hardware</h2>
 					
-					<?php $main_ingredients = get_terms('docredux_hardware');
-					foreach($main_ingredients as $main_ingredient) {
-					  $individual_hardware = new WP_Query(array(
-					    'post_type' => 'docredux_doc',
-					    'post_per_page'=>-1,
-					    'taxonomy'=>'docredux_hardware',
-					    'term' => $main_ingredient->slug,
-					  ));
-					  $link = get_term_link(intval($main_ingredient->term_id),'docredux_hardware');
-					  echo "<div class=\"doc-index\" ><h4><a href=\"{$link}\">{$main_ingredient->name}</a></h4>";
-					  echo '<ul>';
-					  while ( $individual_hardware->have_posts() ) {
-					    $individual_hardware->the_post();
-					    $link = get_permalink($post->ID);
-					    $title = get_the_title();
-					    echo "<li><a href=\"{$link}\">{$title}</a></li>";
-					  }
-					  echo '</ul></div>';
-					} ?>
+					<table class="paper full-width pads">
+				        <tr>
+				            <td>Equipment</td>
+				            <td>Documentation</td>
+				            <td>Posts</td>
+				        </tr>
+						<?php $all_hardware = get_terms('docredux_hardware');
+						foreach($all_hardware as $hardware) {
+						  $hardware_docs = new WP_Query(array(
+                            'post_type' => 'docredux_doc',
+						    'post_per_page'=>-1,
+						    'taxonomy'=>'docredux_hardware',
+						    'term' => $hardware->slug,
+						  ));
+						  $hardware_posts = new WP_Query(array(
+                            'post_type' => 'post',
+  						    'post_per_page'=>-1,
+  						    'taxonomy'=>'docredux_hardware',
+  						    'term' => $hardware->slug,
+  						  ));
+						  $link = get_term_link(intval($hardware->term_id),'docredux_hardware');
+						  echo "<tr>";
+                          echo "<td><h4><a href=\"{$link}\">{$hardware->name}</a></h4></td>";
+						  echo '<td><ul>';
+						  while ( $hardware_docs->have_posts() ) {
+						    $hardware_docs->the_post();
+						    $link = get_permalink($post->ID);
+						    $title = get_the_title();
+						    echo "<li><a href=\"{$link}\">{$title}</a></li>";
+						  }
+						  echo '</ul></td>';
+						  echo '<td><ul>';
+						  while ( $hardware_posts->have_posts() ) {
+						    $hardware_posts->the_post();
+						    $link = get_permalink($post->ID);
+						    $title = get_the_title();
+						    echo "<li><a href=\"{$link}\">{$title}</a></li>";
+						  }
+						  echo '</ul></td>';
+						  echo '</tr>';
+						} ?>
+					</table>
 			
 			</div><!-- END .archive -->
 
