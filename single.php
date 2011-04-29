@@ -18,6 +18,8 @@
 				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 				
 					<h2><?php the_title() ?></h2>
+							
+					<?php the_content() ?>
 					
 					<div class="meta">
 						<?php 
@@ -34,34 +36,41 @@
 							echo get_the_term_list( $post->ID, 'docredux_wpthemes', ', ', ', ', '' );
 							echo get_the_term_list( $post->ID, 'docredux_wpplugins', ', ', ', ', '' );
 						?>
-					</div><!-- END .meta -->	
-			
-					<?php the_content() ?>
+					</div><!-- END .meta -->
 					
 					<div class="entry-footer paper no-corners pads">
-						<h4>Related posts</h4>
+						<h4>Related documents</h4>
 						<?php
-						$tags = wp_get_post_tags($post->ID);
+						$backup = $post;
+						$found_none = '<p>No related documents found.</p>';
+						$taxonomy = 'docredux_courses';
+						// $param_type = 'courses';
+						$tax_args=array('orderby' => 'none');
+						$tags = wp_get_post_terms( $post->ID , $taxonomy, $tax_args);
 						if ($tags) {
-							$tag_ids = array();
-							foreach($tags as $individual_tag) $tag_ids[] = $individual_tag->term_id;
-
-							$args=array(
-								'tag__in' => $tag_ids,
-								'post__not_in' => array($post->ID),
-								'showposts'=>5, // Number of related posts that will be shown.
-							);
-							$my_query = new wp_query($args);
-							if( $my_query->have_posts() ) {
-								while ($my_query->have_posts()) {
-									$my_query->the_post();
-								?>
-									<li><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></li>
-								<?php
+							foreach ($tags as $tag) {
+								$args=array(
+									// "$param_type" => $tag->slug,
+									'post__not_in' => array($post->ID),
+									'post_type' => 'docredux_doc',
+									'showposts'=> -1,
+								);
+								$my_query = null;
+								$my_query = new WP_Query($args);
+								if( $my_query->have_posts() ) { ?>
+									<ul><?php 
+									while ($my_query->have_posts()) : $my_query->the_post(); ?>
+										<li><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a></li>
+									<?php $found_none = '';
+								endwhile;
 								}
-								echo '</ul>';
 							}
 						}
+						if ($found_none) {
+						echo $found_none;
+						}
+						$post = $backup;
+						wp_reset_query();
 						?>
 					</div>
 			

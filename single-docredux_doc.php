@@ -53,16 +53,14 @@
 						<?php
 						$backup = $post;
 						$found_none = '<p>No related documentation found.</p>';
-						$taxonomy = 'docredux_courses';
-						// $param_type = 'courses';
-						$tax_args=array('orderby' => 'none');
+						$taxonomy = 'docredux_hardware';
+						$tax_args = array('orderby' => 'none');
 						$tags = wp_get_post_terms( $post->ID , $taxonomy, $tax_args);
 						if ($tags) {
 							foreach ($tags as $tag) {
-								$args=array(
-									// "$param_type" => $tag->slug,
+								$args = array(
 									'post__not_in' => array($post->ID),
-									'post_type' => 'docredux_doc',
+									'post_type' => array('docredux_doc','post'),
 									'showposts'=> -1,
 								);
 								$my_query = null;

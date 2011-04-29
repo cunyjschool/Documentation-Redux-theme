@@ -1,10 +1,3 @@
-<?php
-/**
- * @todo This is a archive page for a course term. Show all related content
- */
-
-?>
-
 <?php get_header(); ?>
 
 <div class="main">

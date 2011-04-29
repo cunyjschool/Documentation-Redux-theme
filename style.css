@@ -121,6 +121,12 @@ h5 {
 	border:3px solid #fff;
 }
 
+.meta {
+	color:#999999;
+	padding: 5px 10px;
+	border: 1px solid #CCCCCC;
+}
+
 /* Search */
 .search-button {
 	
@@ -266,6 +272,10 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 	margin: 10px 15px 10px 0;
 }
 
+.content .archive h2 {
+	text-transform:capitalize;
+}
+
 /* Homepage */
 .home .search {
 	padding:10px;
@@ -301,10 +311,7 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 
 /* Documentation single */
 .single .content .meta {
-	color:#999999;
-	margin: 0 10px 20px -5px;
-	padding: 5px 10px;
-	border: 1px solid #CCCCCC;
+	margin: 20px 10px 20px -5px;
 }
 
 .content .meta p {
@@ -345,10 +352,7 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 }
 
 .page .content .meta, .archive .content .meta, .search .content .meta {
-	color:#999999;
 	margin: 15px 10px 30px -5px;
-	padding: 5px 10px;
-	border: 1px solid #CCCCCC;
 }
 
 /* Archive */

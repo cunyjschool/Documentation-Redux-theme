@@ -10,19 +10,19 @@
 				<?php include (TEMPLATEPATH . '/searchform.php'); ?>				
 			</div>
 			
-			<div class="paper featured-topics-items">
-			    
-			    <div class="home-left-column widget-column left">
-			    <?php dynamic_sidebar('home-left-column'); ?>
-			    </div>
-			    
-			    <div class="home-right-column widget-column right">
-			    <?php dynamic_sidebar('home-right-column'); ?>
-			    </div>
-			    
-			    <div class="clear"></div>
-			    
-			</div>
+            <div class="paper featured-topics-items">
+                
+                <div class="home-left-column widget-column left">
+                <?php dynamic_sidebar('home-left-column'); ?>
+                </div>
+                
+                <div class="home-right-column widget-column right">
+                <?php dynamic_sidebar('home-right-column'); ?>
+                </div>
+                
+                <div class="clear"></div>
+                
+            </div>
 			
 		</div><!-- END .content -->
 	
