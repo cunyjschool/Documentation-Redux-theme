@@ -33,7 +33,8 @@
 									if ($current_user->user_level == 10 ) {
 										edit_post_link('Edit this post', '', ' — ');
 									}
-									echo get_the_term_list( $post->ID, 'docredux_courses', ' — ', ', ', '' );
+									
+									echo get_the_term_list( $post->ID, 'docredux_courses', '', ', ', '' );
 									echo get_the_term_list( $post->ID, 'docredux_topics', ', ', ', ', '' );
 									echo get_the_term_list( $post->ID, 'docredux_hardware', ', ', ', ', '' );
 									echo get_the_term_list( $post->ID, 'docredux_software', ', ', ', ', '' );
