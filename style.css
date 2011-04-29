@@ -280,12 +280,12 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 	margin:10px 10px 10px 35px;
 }
 
-.home .main td {
+.home .main .featured-topics-items .widget {
 	padding:20px;
 	border:1px solid #e3e6db;
 }
 
-.home .main .content li {
+.home .main .featured-topics-items .widget li {
 	margin:10px 10px 10px 35px;
 }
 
