@@ -15,7 +15,7 @@
 					<?php if ( has_post_thumbnail()) { 	   
 					   the_post_thumbnail(  array(60,60), array('class' => 'avatar')); 
 					}?>
-					<a href="<?php the_permalink() ?>"><h4 class="left"><?php the_title(); ?></h4></a><span>&nbsp;&mdash; <?php the_date(); ?></span><br />
+					<a href="<?php the_permalink() ?>"><h4 class="left"><?php the_title(); ?></h4></a><span>&nbsp;&mdash; <?php the_time( 'l, M. jS, Y' ); ?></span><br />
 					<?php the_excerpt() ?>
 				</li>
 	    	<?php endwhile; else: ?>
