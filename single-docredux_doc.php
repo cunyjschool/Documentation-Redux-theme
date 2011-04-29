@@ -33,13 +33,8 @@
 						?>
 					</div><!-- END .meta -->	
 			
-					<?php the_content() ?>
-					
-					<div class="entry-footer paper no-corners pads">
-						<h4>Was this documentation helpful?</h4>
-						<br />
-						<button>Yes</button>
-						<button>No</button>
+					<div class="entry">
+						<?php the_content(); ?>
 					</div>
 					
 					<div class="entry-footer paper no-corners pads">
