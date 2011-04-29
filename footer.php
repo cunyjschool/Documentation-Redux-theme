@@ -12,7 +12,9 @@
 	  		<?php if ( $news_posts->have_posts() ) : ?>
 			<?php while ( $news_posts->have_posts() ) : $news_posts->the_post(); ?>
 				<li>
-					<img class="left" src="http://www.journalism.cuny.edu/files/2009/09/armstrong-lisa.jpg" />
+					<?php if ( has_post_thumbnail()) { 	   
+					   the_post_thumbnail(  array(60,60), array('class' => 'avatar')); 
+					}?>
 					<a href="<?php the_permalink() ?>"><h4 class="left"><?php the_title(); ?></h4></a><span>&nbsp;&mdash; <?php the_date(); ?></span><br />
 					<?php the_excerpt() ?>
 				</li>

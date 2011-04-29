@@ -21,15 +21,13 @@
 					'post_type' => 'docredux_staff',
 					'showposts' => -1
 				);
-				$news_posts = new WP_Query( $args ); ?>
-	  		<?php if ( $news_posts->have_posts() ) : ?>
-			<?php while ( $news_posts->have_posts() ) : $news_posts->the_post(); ?>
+				$staff = new WP_Query( $args ); ?>
+	  		<?php if ( $staff->have_posts() ) : ?>
+			<?php while ( $staff->have_posts() ) : $staff->the_post(); ?>
 				<div class="on-duty">
-					<?php 
-                        //if ( has_post_thumbnail() ) {
-                        //    the_post_thumbnail();
-                        //} 
-                    ?>
+					<?php if ( has_post_thumbnail()) { 	   
+					   the_post_thumbnail(  array(60,60), array('class' => 'avatar')); 
+					}?>
 					<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
 					<?php the_excerpt(); ?>
 				</div>

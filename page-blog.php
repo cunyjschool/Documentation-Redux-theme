@@ -32,11 +32,9 @@ Template Name: Page - Blog
 
 							<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
 							<?php the_excerpt(); ?>
-							<?php if ( has_post_thumbnail()) { 
-							   
-							   the_post_thumbnail(); 
-							
-							}?>
+        					<?php if ( has_post_thumbnail()) { 	   
+        					   the_post_thumbnail(  'thumbnail', array('class' => 'avatar') ); 
+        					}?>
                             
                             <div class="clear"></div>
 
