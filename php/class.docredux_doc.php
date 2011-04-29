@@ -50,7 +50,8 @@ class docredux_doc
 				'title',
 				'editor',
 				'excerpt',
-				'author'
+				'author',
+				'thumbnail'
 			),
 			'taxonomies' => array(
 				'docredux_courses',

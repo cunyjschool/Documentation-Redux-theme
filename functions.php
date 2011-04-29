@@ -20,6 +20,7 @@ class docredux {
 		// Add support for post formats
 		add_action( 'after_setup_theme', array( &$this, 'add_post_formats' ) );
 		
+		add_action( 'init', array( &$this, 'init' ) );
 		add_action( 'init', array( &$this, 'create_taxonomies' ) );
 		add_action( 'init', array( &$this, 'enqueue_resources' ) );
 		add_action( 'init', array( &$this, 'register_menus' ) );
@@ -30,6 +31,8 @@ class docredux {
 	 * init()
 	 */
 	function init() {
+	    
+	    add_theme_support( 'post-thumbnails' );
 		
 	} // END init()
 	

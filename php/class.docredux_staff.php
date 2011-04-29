@@ -56,6 +56,7 @@ class docredux_staff
 				'title',
 				'editor',
 				'excerpt',
+				'thumbnail' 
 			),
 			'taxonomies' => array(
 				'docredux_topics',
