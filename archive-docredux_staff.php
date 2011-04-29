@@ -26,7 +26,9 @@
 
 							<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
 
-							<?php echo get_avatar( get_the_author_meta(), '60' ); ?><?php the_excerpt(); ?>
+							<?php if ( has_post_thumbnail()) { 	   
+        					   the_post_thumbnail(  array(60,60), array('class' => 'avatar')); 
+        					}?>
 
 						</div><!-- END - .staff-index -->
 

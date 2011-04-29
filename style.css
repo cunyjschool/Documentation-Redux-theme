@@ -305,6 +305,11 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 	border:1px solid #e3e6db;
 }
 
+.page table {
+	margin:10px 0 0 -10px;
+	width:610px;
+}
+
 /* Archive */
 .archive .excerpt, .archive .doc-index, .archive .staff-index {
 	margin:20px 0;
