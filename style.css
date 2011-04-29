@@ -21,7 +21,7 @@ body {
 	color:#444444;
 	font-family: "Helvetica Neue", "Helvetica", Arial,Verdana,sans-serif;
 	font-size:12px;
-	line-height:18px;
+	line-height:20px;
 	background: url('images/bg-400-paper.jpg') repeat;
 	margin-top:10px;
 }
@@ -272,10 +272,6 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 	margin: 10px 15px 10px 0;
 }
 
-.content .archive h2 {
-	text-transform:capitalize;
-}
-
 /* Homepage */
 .home .search {
 	padding:10px;
@@ -318,14 +314,22 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 	margin:0;
 }
 
-.content .entry img.alignleft{
-	float:left;
-	margin:0 30px 10px 0;
+.content .entry img {
 	padding:3px;
 	background:#fff;
 	-moz-box-shadow:3px 3px 5px #777777;
 	-webkit-box-shadow:3px 3px 5px #777777;
 	box-shadow:3px 3px 5px #777777;
+}
+
+.content .entry img.alignleft{
+	float:left;
+	margin:10px 30px 20px 0;
+}
+
+.content .entry img.alignright{
+	float:right;
+	margin:10px 0 20px 30px;
 }
 
 .entry-footer {
@@ -367,6 +371,10 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 
 .staff-index .avatar {
 	margin-top:10px;
+}
+
+.content .archive h2 {
+	text-transform:capitalize;
 }
 
 /* Sidebar */
