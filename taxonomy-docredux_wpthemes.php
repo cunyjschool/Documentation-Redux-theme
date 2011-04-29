@@ -15,10 +15,10 @@
 			
 			<div class="archive pads">
 			
-					<h2><?php $terms = get_the_term_list( $post->ID, 'docredux_wpthemes', '', ', ', '' ); echo strip_tags( $terms ); ?></h2>			
+					<?php if ( have_posts()) : ?>
 
-			  		<?php if ( have_posts()) : ?>
-
+    				 	<h2><?php $terms = get_the_term_list( $post->ID, 'docredux_wpthemes', '', ', ', '' ); echo strip_tags( $terms ); ?></h2>
+				 	
 				 	<?php while (have_posts()) : the_post(); ?>
 
 						<div class="excerpt" id="post-<?php the_ID(); ?>">

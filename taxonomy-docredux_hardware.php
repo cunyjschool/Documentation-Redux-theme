@@ -14,10 +14,10 @@
 		<div class="content left w600">
 			
 			<div class="archive pads">
-			
-					<h2><?php $terms = get_the_term_list( $post->ID, 'docredux_hardware', '', ', ', '' ); echo strip_tags( $terms ); ?></h2>			
 
 			  		<?php if ( have_posts()) : ?>
+			  		    
+			  		    <h2><?php $terms = get_the_term_list( $post->ID, 'docredux_hardware', '', ', ', '' ); echo strip_tags( $terms ); ?></h2>
 
 				 	<?php while (have_posts()) : the_post(); ?>
 
