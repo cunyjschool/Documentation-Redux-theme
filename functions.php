@@ -180,7 +180,7 @@ class docredux {
 				'update_item' => 'Update Hardware',
 				'add_new_item' => 'Add New Hardware',
 				'new_item_name' => 'New Hardware',
-				'separate_items_with_commas' => 'Separate sardware with commas',
+				'separate_items_with_commas' => 'Separate hardware with commas',
 				'add_or_remove_items' => 'Add or remove hardware',
 				'choose_from_most_used' => 'Choose from the most common hardware',
 				'menu_name' => 'Hardware',
