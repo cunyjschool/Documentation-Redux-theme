@@ -266,9 +266,9 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 }
 
 /* Documentation single */
-.content .meta {
+.single .content .meta {
 	color:#999999;
-	margin: 15px 10px 30px -5px;
+	margin: 0 10px 20px -5px;
 	padding: 5px 10px;
 	border: 1px solid #CCCCCC;
 }
@@ -308,6 +308,13 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 .page table {
 	margin:10px 0 0 -10px;
 	width:610px;
+}
+
+.page .content .meta, .archive .content .meta {
+	color:#999999;
+	margin: 15px 10px 30px -5px;
+	padding: 5px 10px;
+	border: 1px solid #CCCCCC;
 }
 
 /* Archive */

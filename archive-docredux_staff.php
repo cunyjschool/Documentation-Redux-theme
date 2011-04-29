@@ -16,7 +16,7 @@
 			
 			<div class="archive pads">
 			
-					<h2>Documentation Archive</h2>			
+					<h2>Tech Staff</h2>			
 
 			  		<?php if ( have_posts()) : ?>
 
@@ -25,6 +25,7 @@
 						<div class="staff-index" id="post-<?php the_ID(); ?>">
 
 							<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
+							<?php the_excerpt() ?>
 
 							<?php if ( has_post_thumbnail()) { 	   
         					   the_post_thumbnail(  array(60,60), array('class' => 'avatar')); 
