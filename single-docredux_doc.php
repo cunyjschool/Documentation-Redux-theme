@@ -17,15 +17,11 @@
 			
 				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 				
-					<h2><?php the_title() ?></h2>
+					<h2><?php the_title(); ?></h2>
 					
 					<div class="meta">
-						<?php 
-							global $current_user;	
-							get_currentuserinfo();
-							if ($current_user->user_level == 10 ) {
-								edit_post_link('Edit this post', '', ' — ');
-							}
+						<?php
+							edit_post_link('Edit this post', '', ' — ');
  							the_time('l, F jS, Y');
 							echo ' &mdash; ';
 							echo get_the_term_list( $post->ID, 'docredux_courses', '', ', ', '' );
