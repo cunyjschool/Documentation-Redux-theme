@@ -280,9 +280,19 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 	margin:10px 10px 10px 35px;
 }
 
+.home .main .featured-topics-items {
+	border:1px solid #e3e6db;
+}
+
+.home .main .featured-topics-items .widget-column {
+	width:300px;
+	margin-left:-1px;
+}
+
 .home .main .featured-topics-items .widget {
 	padding:20px;
 	border:1px solid #e3e6db;
+	margin-bottom:-1px;
 }
 
 .home .main .featured-topics-items .widget li {
