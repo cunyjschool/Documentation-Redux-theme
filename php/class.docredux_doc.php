@@ -16,13 +16,7 @@ class docredux_doc
 	function __construct() {
 		
 		// Add Database post type
-		$this->create_post_type();
-		
-		// Set up metabox and related actions
-		add_action('admin_menu', array(&$this, 'add_post_meta_box'));
-		add_action('save_post', array(&$this, 'save_post_meta_box'));
-		add_action('edit_post', array(&$this, 'save_post_meta_box'));
-		add_action('publish_post', array(&$this, 'save_post_meta_box'));		
+		$this->create_post_type();		
 		
 	} // END __construct()
 	
@@ -56,6 +50,7 @@ class docredux_doc
 				'title',
 				'editor',
 				'excerpt',
+				'author'
 			),
 			'taxonomies' => array(
 				'docredux_courses',
@@ -70,40 +65,6 @@ class docredux_doc
 		register_post_type( 'docredux_doc', $args );
 		
 	} // END - create_post_type()
-	
-	/**
-	 * add_post_meta_box()
-	 */
-	function add_post_meta_box() {
-		
-		add_meta_box( 'docredux_doc', __( 'Metadata', 'docredux_doc' ), array( &$this, 'post_meta_box' ), 'docredux_doc', 'side', 'high' );
-		
-	} // END add_post_meta_box()
-	
-	/**
-	 * The HTML representation of our meta box.
-	 */
-	function post_meta_box() {
-		global $post, $docredux;
-		
-	} // END post_meta_box()
-	
-	/**
-	 * Save new values entered by the user
-	 */
-	function save_post_meta_box( $post_id ) {
-		global $docredux, $post;
-		
-		if ( isset( $_POST['docredux_doc-nonce'] ) && !wp_verify_nonce( $_POST['docredux_doc-nonce'], 'docredux_doc-nonce')) {
-			return $post_id;  
-		}
-		
-		if ( !wp_is_post_revision( $post_id ) && !wp_is_post_autosave( $post_id ) ) {
-			
-			// @todo Save whatever you need to save
-		
-		}		
-	} // END save_post_meta_box()
 	
 } // END class docredux_doc
 	
