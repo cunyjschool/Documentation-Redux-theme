@@ -24,6 +24,7 @@
 						<div class="excerpt" id="post-<?php the_ID(); ?>">
 
 							<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
+							<?php the_excerpt(); ?>
 
 							<div class="meta">
 								<?php 
@@ -41,8 +42,6 @@
 									echo get_the_term_list( $post->ID, 'docredux_wpplugins', ', ', ', ', '' );
 								?>
 							</div><!-- END .meta -->
-
-							<?php the_excerpt(); ?>
 
 						</div><!-- END - .post -->
 
