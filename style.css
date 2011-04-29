@@ -121,6 +121,30 @@ h5 {
 	border:3px solid #fff;
 }
 
+/* Search */
+.search-button {
+	
+}
+
+.search-box {
+	
+}
+
+.search input[type="text"] {
+	font-size:12px;
+	padding:3px;
+}
+
+.content .search input[type="text"]  {
+	width:85%;
+	margin-right:10px;
+}
+
+.sidebar .search input[type="text"] {
+	width:68%;
+	margin-right:10px;
+}
+
 /* Header */
 
 .header {
@@ -243,7 +267,7 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 }
 
 /* Homepage */
-.home .big-search {
+.home .search {
 	padding:10px;
 	margin:20px 0;
 }
@@ -365,13 +389,6 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 .sidebar .widget li, .posts ul, .events ul {
 	list-style:none;
 	margin:0;
-}
-
-input[type="text"] {
-	font-size:1em;
-	padding:5px;
-	color:#cccccc;
-	width:97%;
 }
 
 /* Footer */

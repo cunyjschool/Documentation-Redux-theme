@@ -2,7 +2,7 @@
 	<?php if ( !is_home() ) { ?>
 		<div class="widget">
 			<h4>Search </h4>
-			<div class="no-bottom-corners paper"><input type="text" value="Documentation, news, events..."></div>
+			<div class="search no-bottom-corners paper"><?php include (TEMPLATEPATH . '/searchform.php'); ?></div>
 		</div>
 	<?php } ?>
 	<div class="widget">

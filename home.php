@@ -6,8 +6,8 @@
 			<div class="featured">
 				<p>The tech team is here to help! We have archived solutions to your most frequent problems and posted useful documentation to help you beef up your web skills.</p><p>Please, take a few minutes to explore the site. The answer to your question might just be a few clicks away.</p>
 			</div>
-			<div class="big-search paper no-corners">
-				<input type="text" class="full-width" value="Seach documentation, news, events...">
+			<div class="search paper no-corners">
+				<?php include (TEMPLATEPATH . '/searchform.php'); ?>				
 			</div>
 			<table class="paper full-width">
 				<tr>
