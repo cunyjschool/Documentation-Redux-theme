@@ -334,7 +334,7 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 	width:610px;
 }
 
-.page .content .meta, .archive .content .meta {
+.page .content .meta, .archive .content .meta, .search .content .meta {
 	color:#999999;
 	margin: 15px 10px 30px -5px;
 	padding: 5px 10px;
