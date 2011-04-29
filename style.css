@@ -101,6 +101,11 @@ body {
 }
 
 /* Header */
+
+.header {
+	padding-top: 15px;
+}
+
 .header h4 {
 	margin:10px 20px 20px;
 	font-style:italic;
