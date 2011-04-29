@@ -18,24 +18,35 @@
 				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 				
 					<h2><?php the_title(); ?></h2>
-					
-					<div class="meta">
-						<?php
-							edit_post_link('Edit this post', '', ' — ');
- 							the_time('l, F jS, Y');
-							echo ' &mdash; ';
-							echo get_the_term_list( $post->ID, 'docredux_courses', '', ', ', '' );
-							echo get_the_term_list( $post->ID, 'docredux_topics', ', ', ', ', '' );
-							echo get_the_term_list( $post->ID, 'docredux_hardware', ', ', ', ', '' );
-							echo get_the_term_list( $post->ID, 'docredux_software', ', ', ', ', '' );
-							echo get_the_term_list( $post->ID, 'docredux_wpthemes', ', ', ', ', '' );
-							echo get_the_term_list( $post->ID, 'docredux_wpplugins', ', ', ', ', '' );
-						?>
-					</div><!-- END .meta -->	
 			
 					<div class="entry">
 						<?php the_content(); ?>
 					</div>
+					
+					<div class="meta">
+						<p>Maintained by <?php if ( function_exists( 'coauthors_posts_links' ) ) { coauthors_posts_links(); } else { the_author_posts_link(); } ?></p>
+						<p>Last updated at <?php the_modified_time( 'g:i a l, M. jS, Y' ); ?></p>
+						<?php if ( $courses = get_the_term_list( $post->ID, 'docredux_courses', '', ', ', '' ) ) : ?>
+							<p>Courses: <?php echo $courses; ?></p>
+						<?php endif; ?>
+						<?php if ( $topics = get_the_term_list( $post->ID, 'docredux_topics', '', ', ', '' ) ) : ?>
+							<p>Topics: <?php echo $topics; ?></p>
+						<?php endif; ?>
+						<?php if ( $hardware = get_the_term_list( $post->ID, 'docredux_hardware', '', ', ', '' ) ) : ?>
+							<p>Hardware: <?php echo $hardware; ?></p>
+						<?php endif; ?>
+						<?php if ( $software = get_the_term_list( $post->ID, 'docredux_software', '', ', ', '' ) ) : ?>
+							<p>Software: <?php echo $software; ?></p>
+						<?php endif; ?>
+						<?php if ( $wpthemes = get_the_term_list( $post->ID, 'docredux_wpthemes', '', ', ', '' ) ) : ?>
+							<p>WordPress themes: <?php echo $wpthemes; ?></p>
+						<?php endif; ?>
+						<?php if ( $wpplugins = get_the_term_list( $post->ID, 'docredux_wpplugins', '', ', ', '' ) ) : ?>
+							<p>WordPress plugins: <?php echo $wpplugins; ?></p>
+						<?php endif; ?>
+						<?php edit_post_link( 'Edit this documentation', '<p>', '</p>' ); ?>
+					</div><!-- END .meta -->
+					
 					
 					<div class="entry-footer paper no-corners pads">
 						<h4>Related documentation</h4>
