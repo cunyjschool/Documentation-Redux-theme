@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Page - Hardware
+Template Name: Page - Courses
 */
 ?>
 
@@ -14,42 +14,42 @@ Template Name: Page - Hardware
 			
 			<div class="archive pads">
 			
-					<h2>Hardware</h2>
+					<h2>Courses</h2>
 					
 					<table class="paper full-width pads tax-index">
 				        <tr class="bold">
-				            <td>Equipment</td>
+				            <td>Course</td>
 				            <td>Documentation</td>
 				            <td>Posts</td>
 				        </tr>
-						<?php $all_hardware = get_terms('docredux_hardware');
-						foreach($all_hardware as $hardware) {
-						  $hardware_docs = new WP_Query(array(
+						<?php $all_courses = get_terms('docredux_courses');
+						foreach($all_courses as $courses) {
+						  $courses_docs = new WP_Query(array(
                             'post_type' => 'docredux_doc',
 						    'post_per_page'=>-1,
-						    'taxonomy'=>'docredux_hardware',
-						    'term' => $hardware->slug,
+						    'taxonomy'=>'docredux_courses',
+						    'term' => $courses->slug,
 						  ));
-						  $hardware_posts = new WP_Query(array(
+						  $courses_posts = new WP_Query(array(
                             'post_type' => 'post',
   						    'post_per_page'=>-1,
-  						    'taxonomy'=>'docredux_hardware',
-  						    'term' => $hardware->slug,
+  						    'taxonomy'=>'docredux_courses',
+  						    'term' => $courses->slug,
   						  ));
-						  $link = get_term_link(intval($hardware->term_id),'docredux_hardware');
+						  $link = get_term_link(intval($courses->term_id),'docredux_courses');
 						  echo "<tr>";
-                          echo "<td><h4><a href=\"{$link}\">{$hardware->name}</a></h4></td>";
+                          echo "<td><h4><a href=\"{$link}\">{$courses->name}</a></h4></td>";
 						  echo '<td><ul>';
-						  while ( $hardware_docs->have_posts() ) {
-						    $hardware_docs->the_post();
+						  while ( $courses_docs->have_posts() ) {
+						    $courses_docs->the_post();
 						    $link = get_permalink($post->ID);
 						    $title = get_the_title();
 						    echo "<li><a href=\"{$link}\">{$title}</a></li>";
 						  }
 						  echo '</ul></td>';
 						  echo '<td><ul>';
-						  while ( $hardware_posts->have_posts() ) {
-						    $hardware_posts->the_post();
+						  while ( $courses_posts->have_posts() ) {
+						    $courses_posts->the_post();
 						    $link = get_permalink($post->ID);
 						    $title = get_the_title();
 						    echo "<li><a href=\"{$link}\">{$title}</a></li>";

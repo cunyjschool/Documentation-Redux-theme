@@ -29,6 +29,7 @@ body {
 	font-size:85%;
 	line-height:1.5em;
 	background: url('images/bg-400-paper.jpg') repeat;
+	margin-top:25px;
 }
 
 .no-corners {
@@ -63,6 +64,10 @@ body {
 
 .center {
 	text-align:center;
+}
+
+.bold {
+	font-weight: bold;
 }
 
 .full-width {
@@ -207,10 +212,6 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 	text-decoration:underline;
 }
 
-.main .content li {
-	margin:10px 10px 10px 35px;
-}
-
 .main td{
 	padding:20px;
 	border:1px solid #e3e6db;
@@ -229,6 +230,10 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 
 .home .content {
 	margin:15px;
+}
+
+.home .content li, .single .content li {
+	margin:10px 10px 10px 35px;
 }
 
 /* Documentation single */
@@ -253,6 +258,11 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 	box-shadow:3px 3px 5px #777777;
 	padding:20px;
 	margin-left:-15px;
+}
+
+/* Page Templates */
+.page td ul li{
+	margin:0 0 0 15px;
 }
 
 /* Archive */
