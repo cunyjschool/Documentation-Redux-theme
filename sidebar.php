@@ -19,7 +19,7 @@
 				$args = array(
 					'post__not_in' => array($post->ID),
 					'post_type' => 'docredux_staff',
-					'showposts' => -1
+					'showposts' => 4
 				);
 				$staff = new WP_Query( $args ); ?>
 	  		<?php if ( $staff->have_posts() ) : ?>
