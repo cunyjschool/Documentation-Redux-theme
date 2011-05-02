@@ -1,11 +1,3 @@
-<?php
-/**
- * @todo This will be a landing page for all staff.
- * It should automatically list all the staff we have
- */
-
-?>
-
 <?php get_header(); ?>
 
 <div class="main">
@@ -25,11 +17,14 @@
 						<div class="staff-index" id="post-<?php the_ID(); ?>">
 
 							<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
-							<?php the_excerpt() ?>
+							
+							<div class="entry">
+								<?php the_excerpt(); ?>
+							</div>
 
-							<?php if ( has_post_thumbnail()) { 	   
-        					   the_post_thumbnail(  array(60,60), array('class' => 'avatar')); 
-        					}?>
+							<?php if ( has_post_thumbnail() ) { 	   
+        					   the_post_thumbnail( array(60,60), array('class' => 'avatar') ); 
+        					} ?>
 
 						</div><!-- END - .staff-index -->
 

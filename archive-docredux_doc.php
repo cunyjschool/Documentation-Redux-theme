@@ -1,11 +1,3 @@
-<?php
-/**
- * @todo This will be a landing page for all documentation.
- * It should automatically list all documentation we have, sorted by terms.
- */
-
-?>
-
 <?php get_header(); ?>
 
 <div class="main">
