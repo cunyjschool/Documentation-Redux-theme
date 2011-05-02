@@ -10,7 +10,7 @@
 
 			  		<?php if ( have_posts()) : ?>
 			  		    
-			  		    <h2>Tag: <?php single_tag_title(); ?></h2>
+			  		    <h2><?php $terms = get_the_term_list( $post->ID, 'docredux_wpplugins', '', ', ', '' ); echo strip_tags( $terms ); ?></h2>
 
 				 	<?php while (have_posts()) : the_post(); ?>
 
@@ -21,11 +21,8 @@
 
 							<div class="meta">
 								<?php 
-									global $current_user;	
-									get_currentuserinfo();
-									if ($current_user->user_level == 10 ) {
-										edit_post_link('Edit this post', '', ' — ');
-									}
+									edit_post_link('Edit this post', '', ' — ');
+									
 		 							the_time('l, F jS, Y');
 									echo get_the_term_list( $post->ID, 'docredux_courses', ' — ', ', ', '' );
 									echo get_the_term_list( $post->ID, 'docredux_topics', ', ', ', ', '' );
@@ -65,3 +62,4 @@
 </div><!-- END .main -->
 
 <?php get_footer(); ?>
+

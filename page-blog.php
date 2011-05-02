@@ -1,3 +1,9 @@
+<?php
+/*
+Template Name: Page - Blog
+*/
+?>
+
 <?php get_header(); ?>
 
 <div class="main">
@@ -6,28 +12,37 @@
 		
 		<div class="content left w600">
 			
-			<div class="archive pads">			
+			<div class="archive pads">
+			
+					<h2>Tech Blog</h2>			
 
-			  		<?php if ( have_posts()) : ?>
-			  		    
-			  		    <h2>Tag: <?php single_tag_title(); ?></h2>
+			  		<?php 
+                        $args=array(
+                          'post_type' => 'post',
+                          'posts_per_page' => -1,
+                        );
+                        $temp = $wp_query;
+                        $blog_posts = new WP_Query($args); 
 
-				 	<?php while (have_posts()) : the_post(); ?>
+                        if ( $blog_posts->have_posts() ) :
 
-						<div class="excerpt" id="post-<?php the_ID(); ?>">
+                        while ( $blog_posts->have_posts() ) : $blog_posts->the_post(); ?>
+
+						<div class="doc-index" id="post-<?php the_ID(); ?>">
 
 							<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
 							<?php the_excerpt(); ?>
+        					<?php if ( has_post_thumbnail()) { 	   
+        					   the_post_thumbnail(  'thumbnail', array('class' => 'avatar') ); 
+        					}?>
+                            
+                            <div class="clear"></div>
 
 							<div class="meta">
 								<?php 
-									global $current_user;	
-									get_currentuserinfo();
-									if ($current_user->user_level == 10 ) {
-										edit_post_link('Edit this post', '', ' — ');
-									}
-		 							the_time('l, F jS, Y');
-									echo get_the_term_list( $post->ID, 'docredux_courses', ' — ', ', ', '' );
+									edit_post_link('Edit this post', '', ' — ');
+									
+									echo get_the_term_list( $post->ID, 'docredux_courses', '', ', ', '' );
 									echo get_the_term_list( $post->ID, 'docredux_topics', ', ', ', ', '' );
 									echo get_the_term_list( $post->ID, 'docredux_hardware', ', ', ', ', '' );
 									echo get_the_term_list( $post->ID, 'docredux_software', ', ', ', ', '' );
@@ -36,7 +51,7 @@
 								?>
 							</div><!-- END .meta -->
 
-						</div><!-- END - .post -->
+						</div><!-- END - .doc-index -->
 
 				<?php endwhile; ?>
 

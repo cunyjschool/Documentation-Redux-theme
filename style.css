@@ -3,8 +3,454 @@ Theme Name: Documentation Redux
 Theme URI: http://tech.journalism.cuny.edu/
 Description: Dedicated theme for CUNY J-School tech documentation
 Author: Joe Filippazzo, Daniel Bachhuber
-Author URI: http://tech.journalism.cuny.edu/tech-staff/
-Version: 0.0
+Author URI: http://tech.journalism.cuny.edu/staff/
+Version: 0.1
 License: GNU General Public License
 License URI: license.txt
 */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, sub, sup, tt, var, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; border-collapse:collapse; outline:none;}
+
+.clear {
+	display:block;
+	clear:both;	
+}
+
+body {
+	min-width:960px;
+	color:#444444;
+	font-family: "Helvetica Neue", "Helvetica", Arial,Verdana,sans-serif;
+	font-size:12px;
+	line-height:20px;
+	background: url('images/bg-400-paper.jpg') repeat;
+	margin-top:10px;
+}
+
+h1 {
+	font-size:3em;
+	margin-bottom:10px;
+	padding-left:5px;
+}
+
+h2 {
+	font-size:24px;
+	font-weight:300;
+	letter-spacing: 0.3px;
+	padding-top: 10px;
+	padding-bottom: 15px;
+}
+
+h3 {
+	font-size:18px; font-weight:bold;
+}
+
+h4 {
+	font-size:14px;
+	font-weight:bold;
+}
+
+h5 {
+	font-size:1em;
+}
+
+.no-corners {
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+}
+
+.no-top-corners {
+	-webkit-border-radius:5px 5px 0 0;
+	-moz-border-radius:5px 5px 0 0;
+	border-radius:5px 5px 0 0;
+}
+
+.no-bottom-corners {
+	-webkit-border-radius:0 0 5px 5px;
+	-moz-border-radius:0 0 5px 5px;
+	border-radius:0 0 5px 5px;
+}
+
+.paper {
+	background: url('images/bg-400-paper-light.jpg') repeat;
+}
+
+.left {
+	float:left;
+}
+
+.right {
+	float:right;
+}
+
+.center {
+	text-align:center;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.full-width {
+	width:100%;
+}
+
+.pads {
+	margin-top:30px;
+	margin-bottom:30px;
+}
+
+.container {
+	width:960px;
+	margin:0 auto;
+}
+
+.w600 {
+	width:600px;
+	margin:0 15px;
+}
+
+.w300 {
+	width:300px;
+	margin:0 15px;
+}
+
+.avatar{
+	margin:0 20px 10px 0;
+	float:left;
+	border:3px solid #fff;
+}
+
+.meta {
+	color:#999999;
+	padding: 5px 10px;
+	border: 1px solid #CCCCCC;
+}
+
+/* Search */
+.search-button {
+	
+}
+
+.search-box {
+	
+}
+
+.search input[type="text"] {
+	font-size:12px;
+	padding:3px;
+}
+
+.content .search input[type="text"]  {
+	width:85%;
+	margin-right:10px;
+}
+
+.sidebar .search input[type="text"] {
+	width:68%;
+	margin-right:10px;
+}
+
+/* Header */
+
+.header {
+	padding-top: 10px;
+}
+
+.header h4 {
+	margin:10px 20px 25px;
+	font-style:italic;
+}
+
+.header .logo {
+	padding:0 20px;
+	margin-top:-10px;
+}
+
+.menu-header-menu-container {
+	border:1px solid #a8403a;
+	background: -moz-linear-gradient(center top, #c74b46, #a8403a) repeat scroll 0 0 #a8403a;
+	background: -webkit-gradient(linear, left top, left bottom, from(#c74b46), to(#a8403a));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c74b46', endColorstr='#a8403a');
+	border:1px solid #e3e6db;
+	width:100%;
+	height:40px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	border:1px solid #a8403a;
+	-moz-box-shadow:3px 3px 5px #777777;
+	-webkit-box-shadow:3px 3px 5px #777777;
+	box-shadow:3px 3px 5px #777777;
+}
+
+ul#menu-header-menu > li {
+	list-style:none;
+	float:left;
+}
+
+ul#menu-header-menu > li > a {
+	padding:10px 15px;
+	list-style:none;
+	display:inline-block;
+	font-weight:bold;
+	text-decoration:none;
+	color:#ffffff;
+	margin:-1px;
+	border:1px solid #a8403a;
+	height:20px;
+	background: -moz-linear-gradient(center top, #c74b46, #a8403a) repeat scroll 0 0 #a8403a;
+	background: -webkit-gradient(linear, left top, left bottom, from(#c74b46), to(#a8403a));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c74b46', endColorstr='#a8403a');
+}
+
+ul#menu-header-menu > li:first-child, ul#menu-header-menu > li:first-child a {
+	-webkit-border-radius:5px 0 0 5px;
+	-moz-border-radius:5px 0 0 5px;
+	border-radius:5px 0 0 5px;
+}
+
+ul#menu-header-menu > li:last-child, ul#menu-header-menu > li:last-child > a {
+	-webkit-border-radius:0 5px 5px 0;
+	-moz-border-radius:0 5px 5px 0;
+	border-radius:0 5px 5px 0;
+	float:right;
+}
+
+ul#menu-header-menu > li a:hover {
+	background: -moz-linear-gradient(center top, #e1423d, #c74b46) repeat scroll 0 0 #c74b46;
+	background: -webkit-gradient(linear, left top, left bottom, from(#e1423d), to(#c74b46));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e1423d', endColorstr='#c74b46');
+}
+
+ul#menu-header-menu ul.sub-menu {
+	position:absolute;
+	-moz-box-shadow:3px 3px 5px #777777;
+	-webkit-box-shadow:3px 3px 5px #777777;
+	box-shadow:3px 3px 5px #777777;
+	border:1px solid #444444;
+	visibility:hidden;
+}
+
+ul#menu-header-menu > li:hover > ul.sub-menu {
+	visibility:visible;
+}
+
+ul#menu-header-menu ul.sub-menu > li {
+	list-style:none;
+}
+
+ul#menu-header-menu ul.sub-menu > li > a {
+	display:block;
+	padding:10px 15px;
+	background: url('images/bg-400-paper-light.jpg') repeat;
+	color:#444444;
+	text-decoration:none;
+}
+
+ul#menu-header-menu > li:last-child > ul.sub-menu {
+	margin-top:40px;
+	margin-left:-112px;
+}
+
+ul#menu-header-menu ul.sub-menu > li > a:hover {
+	background: #fff;
+	color:#a8403a;
+}
+
+/* Content */
+.main a {
+	text-decoration:none;
+	color:#a8403a;
+}
+
+.main a:hover {
+	text-decoration:underline;
+}
+
+.main .content p {
+	margin: 10px 15px 10px 0;
+}
+
+/* Homepage */
+.home .search {
+	padding:10px;
+	margin:20px 0;
+}
+
+.home .content {
+	margin:15px;
+}
+
+.home .content li, .single .content li {
+	margin:10px 10px 10px 35px;
+}
+
+.home .main .featured-topics-items {
+	border:1px solid #e3e6db;
+}
+
+.home .main .featured-topics-items .widget-column {
+	width:300px;
+	margin-left:-1px;
+}
+
+.home .main .featured-topics-items .widget {
+	padding:20px;
+	border:1px solid #e3e6db;
+	margin-bottom:-1px;
+}
+
+.home .main .featured-topics-items .widget li {
+	margin:10px 10px 10px 35px;
+}
+
+/* Documentation single */
+.single .content .meta {
+	margin: 20px 10px 20px -5px;
+}
+
+.content .meta p {
+	margin:0;
+}
+
+.content .entry img {
+	padding:3px;
+	background:#fff;
+	-moz-box-shadow:3px 3px 5px #777777;
+	-webkit-box-shadow:3px 3px 5px #777777;
+	box-shadow:3px 3px 5px #777777;
+}
+
+.content .entry img.alignleft{
+	float:left;
+	margin:10px 30px 20px 0;
+}
+
+.content .entry img.alignright{
+	float:right;
+	margin:10px 0 20px 30px;
+}
+
+.entry-footer {
+	-moz-box-shadow:3px 3px 5px #777777;
+	-webkit-box-shadow:3px 3px 5px #777777;
+	box-shadow:3px 3px 5px #777777;
+	padding:20px;
+	margin-left:-15px;
+}
+
+/* Page Templates */
+.page td li{
+	margin:5px 0 5px 15px;
+}
+
+.page .main td {
+	padding:10px 20px;
+	border:1px solid #e3e6db;
+}
+
+.page table {
+	margin:10px 0 0 -10px;
+	width:610px;
+}
+
+.page .content .meta, .archive .content .meta, .search .content .meta {
+	margin: 15px 10px 30px -5px;
+}
+
+/* Archive */
+.archive .excerpt, .archive .doc-index, .archive .staff-index {
+	margin:20px 0;
+	clear:both;
+}
+
+.archive .excerpt p, .archive .staff-index p {
+	margin-top:10px;
+}
+
+.staff-index .avatar {
+	margin-top:10px;
+}
+
+.content .archive h2 {
+	text-transform:capitalize;
+}
+
+/* Sidebar */
+.sidebar .widget {
+	margin:20px 0;
+}
+
+.sidebar div.no-bottom-corners {
+	padding:10px 20px;
+}
+
+.sidebar .widget > h4 {
+	padding:5px 8px;
+	border-bottom:2px solid #c74b46;
+}
+
+.sidebar .widget .on-duty {
+	margin-bottom:20px;
+}
+
+.sidebar .widget .on-duty h4{
+	margin:10px 0 0 0;
+}
+
+.sidebar .widget ul li a {
+	padding:10px 20px;
+	display:block;
+}
+
+.sidebar .widget a:hover {
+	background:#f9f9f9;
+}
+
+.sidebar .widget li, .posts ul, .events ul {
+	list-style:none;
+	margin:0;
+}
+
+/* Footer */
+.footer {
+	margin-top:20px;
+	padding:30px 0;
+	color:#999;
+	-moz-box-shadow:0 0 10px #444444;
+	-webkit-box-shadow:0 0 10px #444444;
+	box-shadow:0 0 10px #444444;
+	background: -moz-linear-gradient(center top, #2a2a2a, #222222) repeat scroll 0 0;
+	background: -webkit-gradient(linear, left top, left bottom, from(#444444), to(#222222));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#444444', endColorstr='#222222');
+}
+
+.footer a {
+	color:#ccc;
+}
+
+.footer .container {
+	width:984px;
+}
+
+.footer .posts, .footer .events {
+	border-right:1px dashed #444444;
+	padding:10px 20px;
+	margin:0;
+}
+
+.footer .posts {
+	border-left:1px dashed #444444;
+}
+
+.footer .posts ul li, .footer .events ul li {
+	clear:both;
+	margin:20px 0;
+}
+
+.footer .posts ul li img {
+	margin:0 20px 10px 0;
+	border:3px solid #ccc;
+	width:60px;
+}
