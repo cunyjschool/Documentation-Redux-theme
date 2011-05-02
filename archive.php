@@ -1,10 +1,3 @@
-<?php
-/**
- * This will be a landing page for all blog posts.
- */
-
-?>
-
 <?php get_header(); ?>
 
 <div class="main">
@@ -15,22 +8,22 @@
 			
 			<div class="archive pads">
 			
-					<h2>Archive</h2>			
+				<h2>Archive</h2>			
 
-			  		<?php if ( have_posts()) : ?>
+		  		<?php if ( have_posts()) : ?>
 
-				 	<?php while (have_posts()) : the_post(); ?>
+			 	<?php while (have_posts()) : the_post(); ?>
 
-						<div class="staff-index" id="post-<?php the_ID(); ?>">
+					<div class="post-index" id="post-<?php the_ID(); ?>">
 
-							<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
+						<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
 
-							<?php the_excerpt(); ?>
-							<?php if ( has_post_thumbnail()) { 	   
-        					   the_post_thumbnail('thumbnail', array('class' => 'avatar')); 
-        					}?>
+						<?php the_excerpt(); ?>
+						<?php if ( has_post_thumbnail()) { 	   
+       					   the_post_thumbnail( 'thumbnail', array('class' => 'avatar') ); 
+       					}?>
 
-						</div><!-- END - .staff-index -->
+					</div><!-- END - .post-index -->
 
 				<?php endwhile; ?>
 
