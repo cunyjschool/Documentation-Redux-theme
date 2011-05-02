@@ -1,11 +1,16 @@
 <?php get_header(); ?>
 
 <div class="main">
+	
 	<div class="container">
+		
 		<div class="content left w600">
+			
 			<div class="featured">
-				<p>The tech team is here to help! We have archived solutions to your most frequent problems and posted useful documentation to help you beef up your web skills.</p><p>Please, take a few minutes to explore the site. The answer to your question might just be a few clicks away.</p>
-			</div>
+				<p>The tech team is here to help! We have archived solutions to your most frequent problems and posted useful documentation to help you beef up your web skills.</p>
+				<p>Please, take a few minutes to explore the site. The answer to your question might just be a few clicks away.</p>
+			</div><!-- END .featured -->
+			
 			<div class="search paper no-corners">
 				<?php include (TEMPLATEPATH . '/searchform.php'); ?>				
 			</div>
@@ -22,7 +27,7 @@
                 
                 <div class="clear"></div>
                 
-            </div>
+            </div><!-- END .featured-topics-items -->
 			
 		</div><!-- END .content -->
 	
