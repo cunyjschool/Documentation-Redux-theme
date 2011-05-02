@@ -1,10 +1,3 @@
-<?php
-/**
- * @todo This is a single staff page
- */
-
-?>
-
 <?php get_header(); ?>
 
 <div class="main">

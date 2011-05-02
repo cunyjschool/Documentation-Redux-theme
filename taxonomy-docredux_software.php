@@ -1,10 +1,3 @@
-<?php
-/**
- * @todo This is a archive page for a software term. Show all related content
- */
-
-?>
-
 <?php get_header(); ?>
 
 <div class="main">
@@ -24,15 +17,15 @@
 						<div class="excerpt" id="post-<?php the_ID(); ?>">
 
 							<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
-							<?php the_excerpt(); ?>
+							
+							<div class="entry">
+								<?php the_excerpt(); ?>
+							</div>
 
 							<div class="meta">
 								<?php 
-									global $current_user;	
-									get_currentuserinfo();
-									if ($current_user->user_level == 10 ) {
-										edit_post_link('Edit this post', '', ' — ');
-									}
+									edit_post_link('Edit this post', '', ' — ');
+
 		 							the_time('l, F jS, Y');
 									echo get_the_term_list( $post->ID, 'docredux_courses', ' — ', ', ', '' );
 									echo get_the_term_list( $post->ID, 'docredux_topics', ', ', ', ', '' );

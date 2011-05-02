@@ -1,10 +1,3 @@
-<?php
-/**
- * @todo This is a single post
- */
-
-?>
-
 <?php get_header(); ?>
 
 <div class="main">
@@ -23,11 +16,8 @@
 					
 					<div class="meta">
 						<?php 
-							global $current_user;	
-							get_currentuserinfo();
-							if ($current_user->user_level == 10 ) {
-								edit_post_link('Edit this post', '', ' — ');
-							}
+							edit_post_link('Edit this post', '', ' — ');
+
  							the_time('l, F jS, Y');
 							echo get_the_term_list( $post->ID, 'docredux_courses', ' — ', ', ', '' );
 							echo get_the_term_list( $post->ID, 'docredux_topics', ', ', ', ', '' );
