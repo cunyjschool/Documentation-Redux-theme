@@ -429,6 +429,7 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 	-moz-box-shadow:0 0 10px #444444;
 	-webkit-box-shadow:0 0 10px #444444;
 	box-shadow:0 0 10px #444444;
+	background: #2a2a2a url('images/black-gradient.png') repeat-x;
 	background: -moz-linear-gradient(center top, #2a2a2a, #222222) repeat scroll 0 0;
 	background: -webkit-gradient(linear, left top, left bottom, from(#444444), to(#222222));
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#444444', endColorstr='#222222');
