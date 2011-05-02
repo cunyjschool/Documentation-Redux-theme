@@ -127,6 +127,11 @@ h5 {
 	border: 1px solid #CCCCCC;
 }
 
+.fail-whale img{
+	margin:40px 65px 0;
+	width:450px;
+}
+
 /* Search */
 .search-button {
 	
