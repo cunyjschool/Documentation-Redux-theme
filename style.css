@@ -174,6 +174,7 @@ h5 {
 
 .menu-header-menu-container {
 	border:1px solid #a8403a;
+	background: #c74b46 url('images/red-gradient.png') repeat-x;
 	background: -moz-linear-gradient(center top, #c74b46, #a8403a) repeat scroll 0 0 #a8403a;
 	background: -webkit-gradient(linear, left top, left bottom, from(#c74b46), to(#a8403a));
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c74b46', endColorstr='#a8403a');
@@ -204,6 +205,7 @@ ul#menu-header-menu > li > a {
 	margin:-1px;
 	border:1px solid #a8403a;
 	height:20px;
+	background: #c74b46 url('images/red-gradient.png') repeat-x;
 	background: -moz-linear-gradient(center top, #c74b46, #a8403a) repeat scroll 0 0 #a8403a;
 	background: -webkit-gradient(linear, left top, left bottom, from(#c74b46), to(#a8403a));
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c74b46', endColorstr='#a8403a');
@@ -223,6 +225,7 @@ ul#menu-header-menu > li:last-child, ul#menu-header-menu > li:last-child > a {
 }
 
 ul#menu-header-menu > li a:hover {
+	background: #e1423d url('images/red-gradient-hover.png') repeat-x;
 	background: -moz-linear-gradient(center top, #e1423d, #c74b46) repeat scroll 0 0 #c74b46;
 	background: -webkit-gradient(linear, left top, left bottom, from(#e1423d), to(#c74b46));
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e1423d', endColorstr='#c74b46');
