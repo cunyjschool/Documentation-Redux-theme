@@ -328,6 +328,7 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 	-moz-box-shadow:3px 3px 5px #777777;
 	-webkit-box-shadow:3px 3px 5px #777777;
 	box-shadow:3px 3px 5px #777777;
+	max-width:575px;
 }
 
 .content .entry img.alignleft{
@@ -338,6 +339,11 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 .content .entry img.alignright{
 	float:right;
 	margin:10px 0 20px 30px;
+}
+
+.content .entry img.alignnone{
+	display:block;
+	margin-bottom:20px;
 }
 
 .entry-footer {
