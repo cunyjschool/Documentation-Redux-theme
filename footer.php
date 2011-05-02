@@ -25,6 +25,8 @@
 			</ul>
 
 		</div>
+		
+		<?php /*
 	
 		<div class="w300 events right">
 			<h4>Upcoming Events</h4>
@@ -37,6 +39,8 @@
 				<li><a href="<?php bloginfo('url') ?>/staff/">More events &rarr;</a></li>
 			</ul>
 		</div>
+		
+		*/ ?>
 	</div><!-- END .container -->
 	<div class="clear"></div>
 </div><!-- END .footer -->
