@@ -8,35 +8,35 @@
 			
 			<div class="archive pads">			
 
-			  		<?php if ( have_posts()) : ?>
-			  		    
-			  		    <h2>Category: <?php single_cat_title(); ?></h2>
+		  		<?php if ( have_posts()) : ?>
+		  		    
+				<h2>Category: <?php single_cat_title(); ?></h2>
 
-				 	<?php while (have_posts()) : the_post(); ?>
+			 	<?php while (have_posts()) : the_post(); ?>
 
-						<div class="excerpt" id="post-<?php the_ID(); ?>">
+					<div class="excerpt" id="post-<?php the_ID(); ?>">
 
-							<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
+						<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
+						
+						<div class="entry">
 							<?php the_excerpt(); ?>
+						</div>
 
-							<div class="meta">
-								<?php 
-									global $current_user;	
-									get_currentuserinfo();
-									if ($current_user->user_level == 10 ) {
-										edit_post_link('Edit this post', '', ' — ');
-									}
-		 							the_time('l, F jS, Y');
-									echo get_the_term_list( $post->ID, 'docredux_courses', ' — ', ', ', '' );
-									echo get_the_term_list( $post->ID, 'docredux_topics', ', ', ', ', '' );
-									echo get_the_term_list( $post->ID, 'docredux_hardware', ', ', ', ', '' );
-									echo get_the_term_list( $post->ID, 'docredux_software', ', ', ', ', '' );
-									echo get_the_term_list( $post->ID, 'docredux_wpthemes', ', ', ', ', '' );
-									echo get_the_term_list( $post->ID, 'docredux_wpplugins', ', ', ', ', '' );
-								?>
-							</div><!-- END .meta -->
+						<div class="meta">
+							<?php 
+								edit_post_link('Edit this post', '', ' — ');
 
-						</div><!-- END - .post -->
+	 							the_time('l, F jS, Y');
+								echo get_the_term_list( $post->ID, 'docredux_courses', ' — ', ', ', '' );
+								echo get_the_term_list( $post->ID, 'docredux_topics', ', ', ', ', '' );
+								echo get_the_term_list( $post->ID, 'docredux_hardware', ', ', ', ', '' );
+								echo get_the_term_list( $post->ID, 'docredux_software', ', ', ', ', '' );
+								echo get_the_term_list( $post->ID, 'docredux_wpthemes', ', ', ', ', '' );
+								echo get_the_term_list( $post->ID, 'docredux_wpplugins', ', ', ', ', '' );
+							?>
+						</div><!-- END .meta -->
+
+					</div><!-- END - .post -->
 
 				<?php endwhile; ?>
 
