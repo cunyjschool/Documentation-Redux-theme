@@ -461,3 +461,7 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 	border:3px solid #ccc;
 	width:60px;
 }
+
+#wpstats {
+	display:none;
+}
