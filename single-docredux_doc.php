@@ -16,6 +16,8 @@
 						<?php the_content(); ?>
 					</div>
 					
+					<div class="clear"></div>
+					
 					<div class="meta">
 						<p>Maintained by <?php if ( function_exists( 'coauthors_posts_links' ) ) { coauthors_posts_links(); } else { the_author_posts_link(); } ?></p>
 						<p>Last updated at <?php the_modified_time( 'g:i a l, M. jS, Y' ); ?></p>
