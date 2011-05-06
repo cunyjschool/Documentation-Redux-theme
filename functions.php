@@ -156,6 +156,40 @@ class docredux {
 		);
 		register_taxonomy( 'docredux_courses', $post_types, $args );
 		
+		// Register the Contexts taxonomy
+		$args = array(
+			'label' => 'Contexts',
+			'labels' => array(
+				'name' => 'Contexts',
+				'singular_name' => 'Context',
+				'search_items' =>  'Search Contexts',
+				'popular_items' => 'Popular Contexts',
+				'all_items' => 'All Contexts',
+				'parent_item' => 'Parent Contexts',
+				'parent_item_colon' => 'Parent Contexts:',
+				'edit_item' => 'Edit Context', 
+				'update_item' => 'Update Context',
+				'add_new_item' => 'Add New Context',
+				'new_item_name' => 'New Context',
+				'separate_items_with_commas' => 'Separate contexts with commas',
+				'add_or_remove_items' => 'Add or remove contexts',
+				'choose_from_most_used' => 'Choose from the most common contexts',
+				'menu_name' => 'Contexts',
+			),
+			'hierarchical' => true,
+			'show_tagcloud' => false,
+			'rewrite' => array(
+				'slug' => 'Contexts',
+				'hierarchical' => true,
+			),
+		);
+		
+		$post_types = array(
+			'post',
+			'docredux_doc',
+		);
+		register_taxonomy( 'docredux_contexts', $post_types, $args );
+		
 		// Register the Topics taxonomy
 		$args = array(
 			'label' => 'Topics',
