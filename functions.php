@@ -142,6 +142,7 @@ class docredux {
 				'choose_from_most_used' => 'Choose from the most common courses',
 				'menu_name' => 'Courses',
 			),
+			'hierarchical' => true,
 			'show_tagcloud' => false,
 			'rewrite' => array(
 				'slug' => 'courses',
@@ -154,6 +155,40 @@ class docredux {
 			'docredux_doc',
 		);
 		register_taxonomy( 'docredux_courses', $post_types, $args );
+		
+		// Register the Contexts taxonomy
+		$args = array(
+			'label' => 'Contexts',
+			'labels' => array(
+				'name' => 'Contexts',
+				'singular_name' => 'Context',
+				'search_items' =>  'Search Contexts',
+				'popular_items' => 'Popular Contexts',
+				'all_items' => 'All Contexts',
+				'parent_item' => 'Parent Contexts',
+				'parent_item_colon' => 'Parent Contexts:',
+				'edit_item' => 'Edit Context', 
+				'update_item' => 'Update Context',
+				'add_new_item' => 'Add New Context',
+				'new_item_name' => 'New Context',
+				'separate_items_with_commas' => 'Separate contexts with commas',
+				'add_or_remove_items' => 'Add or remove contexts',
+				'choose_from_most_used' => 'Choose from the most common contexts',
+				'menu_name' => 'Contexts',
+			),
+			'hierarchical' => true,
+			'show_tagcloud' => false,
+			'rewrite' => array(
+				'slug' => 'Contexts',
+				'hierarchical' => true,
+			),
+		);
+		
+		$post_types = array(
+			'post',
+			'docredux_doc',
+		);
+		register_taxonomy( 'docredux_contexts', $post_types, $args );
 		
 		// Register the Topics taxonomy
 		$args = array(
@@ -332,11 +367,9 @@ class docredux {
 		
 		$post_formats = array(
 			'aside',
-			'gallery',
 			'status',
 			'quote',
 			'image',
-			'link',
 		);
 		add_theme_support( 'post-formats', $post_formats );
 		add_post_type_support( 'post', 'post-formats' );
@@ -350,5 +383,50 @@ class docredux {
 
 global $docredux;
 $docredux = new docredux();
+
+/**
+ * docredux_head_title()
+ */
+function docredux_head_title() {
+	
+	$title = get_bloginfo('name') . ' | ' . get_bloginfo('description');
+	
+	if ( is_single() ) {
+		global $post;
+		$title = get_the_title( $post->ID );
+	} else if ( is_tax() ) {
+		$title = single_term_title( false, false ) . ' | ' . get_bloginfo('name');
+	}
+	
+	echo '<title>' . $title . '</title>';
+	
+} // END docredux_head_title()
+
+
+/**
+ * docredux_timestamp()
+ * Relative timestamps for use within the loop or elsewhere
+ */
+function docredux_timestamp( $post_id = null ) {
+	
+	if ( !isset( $post_id ) ) {
+		global $post;
+		$post_id = $post->ID;
+	}
+	
+	$post_timestamp = get_the_time( 'U', $post_id );
+	$current_timestamp = time();
+
+	// Only do the relative timestamps for 7 days or less, then just the month and day
+	if ( $post_timestamp > ( $current_timestamp - 604800 ) ) {
+		echo human_time_diff( $post_timestamp ) . ' ago';
+	} else if ( $post_timestamp > ( $current_timestamp - 220752000 ) ) {
+		the_time( 'F jS' );
+	} else {
+		the_time( 'F j, Y' );
+	}
+
+	
+} // END docredux_timestamp()
 
 ?>

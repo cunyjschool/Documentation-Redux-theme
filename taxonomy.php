@@ -3,8 +3,8 @@
 <div class="main">
 	
 	<div class="container">
-		
-		<?php get_template_part( 'loop', 'single_doc' ); ?>
+	
+		<?php get_template_part( 'loop', 'tax' ); ?>
 	
 		<?php get_sidebar(); ?>
 	
