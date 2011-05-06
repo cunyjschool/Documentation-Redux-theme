@@ -142,6 +142,7 @@ class docredux {
 				'choose_from_most_used' => 'Choose from the most common courses',
 				'menu_name' => 'Courses',
 			),
+			'hierarchical' => true,
 			'show_tagcloud' => false,
 			'rewrite' => array(
 				'slug' => 'courses',
