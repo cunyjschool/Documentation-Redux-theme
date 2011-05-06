@@ -1,5 +1,5 @@
 <div class="sidebar right w300">
-	<?php if ( !is_home() && !is_404() ) { ?>
+	<?php if ( !is_home() && !is_404() && !is_search() ) { ?>
 		<div class="widget">
 			<h4>Search </h4>
 			<div class="search no-bottom-corners paper"><?php include (TEMPLATEPATH . '/searchform.php'); ?></div>

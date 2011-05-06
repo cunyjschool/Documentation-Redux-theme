@@ -53,6 +53,9 @@
 				    
                     <br />
 					<h4 class="">Sorry, but we don't have anything that matches your query. Please try a different search!</h4>
+					<div class="search paper no-corners">
+        				<?php include (TEMPLATEPATH . '/searchform.php'); ?>				
+        			</div>
 
 				<?php endif; ?>
 			
