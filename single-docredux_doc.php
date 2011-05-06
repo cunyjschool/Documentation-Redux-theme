@@ -83,7 +83,7 @@
 
 		</div><!-- END .content -->
 	
-		<?php get_sidebar(); ?>
+		<?php get_sidebar('documentation'); ?>
 	
 		<div class="clear"></div>
 

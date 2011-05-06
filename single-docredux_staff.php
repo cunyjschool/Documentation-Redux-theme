@@ -22,7 +22,7 @@
 
 		</div><!-- END .content -->
 	
-		<?php get_sidebar(); ?>
+		<?php get_sidebar('staff'); ?>
 	
 		<div class="clear"></div>
 
