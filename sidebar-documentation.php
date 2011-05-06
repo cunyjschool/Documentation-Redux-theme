@@ -14,14 +14,21 @@
 		<h4>Related Tech Staff</h4>
 		<div class="paper no-bottom-corners">
 			<?php
-				$args = array(
-					'post_type' => 'docredux_staff',
-					'showposts' => 4,
-					'order'    => 'ASC'
-				);
-				$staff = new WP_Query( $args ); ?>
-	  		<?php if ( $staff->have_posts() ) : ?>
-			<?php while ( $staff->have_posts() ) : $staff->the_post(); ?>
+		        $tags = wp_get_post_tags($post->ID);
+            	$tag_ids = array();
+        	
+            	foreach($tags as $individual_tag) $tag_ids[] = $individual_tag->term_id;
+                	$args = array(
+                	    'post_type' => 'docredux_staff',
+                		'tag__in' => $tag_ids,
+                		'showposts' => 4,
+                	);
+        				
+    			$staff = new WP_Query( $args ); 
+
+                if ( $staff->have_posts() ) :
+			    while ( $staff->have_posts() ) : $staff->the_post(); 
+			?>
 				<div class="on-duty">
 					<?php if ( has_post_thumbnail()) { 	   
 					   the_post_thumbnail(  array(60,60), array('class' => 'avatar')); 
