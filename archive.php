@@ -14,7 +14,7 @@
 
 			 	<?php while (have_posts()) : the_post(); ?>
 
-					<div class="post-index" id="post-<?php the_ID(); ?>">
+					<div class="post-index post" id="post-<?php the_ID(); ?>">
 
 						<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
 
@@ -22,6 +22,24 @@
 						<?php if ( has_post_thumbnail()) { 	   
        					   the_post_thumbnail( 'thumbnail', array('class' => 'avatar') ); 
        					}?>
+
+						<div class="meta">
+							Published <?php docredux_timestamp(); ?>
+							<?php 
+								$all_terms = ''; 
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_courses', '', ', ', ', ' );
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_contexts', '', ', ', ', ' );								
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_topics', '', ', ', ', ' );
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_hardware', '', ', ', ', ' );
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_software', '', ', ', ', ' );
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_wpthemes', '', ', ', ', ' );
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_wpplugins', '', ', ', ', ' );
+								if ( $all_terms ) {
+									echo ' and relates to ' . rtrim( $all_terms, ', ' );
+								}
+							?>
+							<?php edit_post_link( 'Edit', ' - ', '' ); ?>
+						</div><!-- END .meta -->
 
 					</div><!-- END - .post-index -->
 

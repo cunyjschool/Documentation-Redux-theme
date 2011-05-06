@@ -23,6 +23,24 @@
        					   the_post_thumbnail( 'thumbnail', array('class' => 'avatar') ); 
        					}?>
 
+						<div class="meta">
+							Published <?php docredux_timestamp(); ?>
+							<?php 
+								$all_terms = ''; 
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_courses', '', ', ', ', ' );
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_contexts', '', ', ', ', ' );								
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_topics', '', ', ', ', ' );
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_hardware', '', ', ', ', ' );
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_software', '', ', ', ', ' );
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_wpthemes', '', ', ', ', ' );
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_wpplugins', '', ', ', ', ' );
+								if ( $all_terms ) {
+									echo ' and relates to ' . rtrim( $all_terms, ', ' );
+								}
+							?>
+							<?php edit_post_link( 'Edit', ' - ', '' ); ?>
+						</div><!-- END .meta -->
+
 					</div><!-- END - .post-index -->
 
 				<?php endwhile; ?>
