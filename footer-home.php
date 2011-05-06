@@ -45,5 +45,7 @@
 	<div class="clear"></div>
 </div><!-- END .footer -->
 
+	<?php wp_footer(); ?>
+
 </body>
 </html>
