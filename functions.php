@@ -351,4 +351,30 @@ class docredux {
 global $docredux;
 $docredux = new docredux();
 
+/**
+ * docredux_timestamp()
+ * Relative timestamps for use within the loop or elsewhere
+ */
+function docredux_timestamp( $post_id = null ) {
+	
+	if ( !isset( $post_id ) ) {
+		global $post;
+		$post_id = $post->ID;
+	}
+	
+	$post_timestamp = get_the_time( 'U', $post_id );
+	$current_timestamp = time();
+
+	// Only do the relative timestamps for 7 days or less, then just the month and day
+	if ( $post_timestamp > ( $current_timestamp - 604800 ) ) {
+		echo human_time_diff( $post_timestamp ) . ' ago';
+	} else if ( $post_timestamp > ( $current_timestamp - 220752000 ) ) {
+		the_time( 'F jS' );
+	} else {
+		the_time( 'F j, Y' );
+	}
+
+	
+} // END docredux_timestamp()
+
 ?>
