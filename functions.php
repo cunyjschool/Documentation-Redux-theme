@@ -402,6 +402,43 @@ function docredux_head_title() {
 	
 } // END docredux_head_title()
 
+/**
+ * docredux_get_term_base()
+ */
+function docredux_get_term_base( $term_object ) {
+	
+	if ( !is_object( $term_object ) ) {
+		return false;
+	}
+	
+	switch( $term_object->taxonomy ) {
+		case 'docredux_courses':
+			return 'courses';
+			break;
+		case 'docredux_contexts':
+			return 'contexts';
+			break;
+		case 'docredux_topics':
+			return 'places';
+			break;
+		case 'docredux_software':
+			return 'software';
+			break;
+		case 'docredux_hardware':
+			return 'hardware';
+			break;
+		case 'docredux_wpthemes':
+			return 'themes';
+			break;
+		case 'docredux_plugins':
+			return 'plugins';
+			break;							
+		default:
+			return false;
+	}
+	
+} // END docredux_get_term_base()
+
 
 /**
  * docredux_timestamp()
