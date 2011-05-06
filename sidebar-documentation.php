@@ -11,11 +11,10 @@
 		</ul>
 	</div>
 	<div class="widget">
-		<h4>Web team on duty</h4>
+		<h4>Related Tech Staff</h4>
 		<div class="paper no-bottom-corners">
 			<?php
 				$args = array(
-					'post__not_in' => array($post->ID),
 					'post_type' => 'docredux_staff',
 					'showposts' => 4,
 					'order'    => 'ASC'
