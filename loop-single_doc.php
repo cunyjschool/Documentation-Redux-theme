@@ -15,6 +15,9 @@
 			<div class="meta">
 				<p>Maintained by <?php if ( function_exists( 'coauthors_posts_links' ) ) { coauthors_posts_links(); } else { the_author_posts_link(); } ?></p>
 				<p>Last updated at <?php the_modified_time( 'g:i a l, M. jS, Y' ); ?></p>
+				<?php if ( $contexts = get_the_term_list( $post->ID, 'docredux_contexts', '', ', ', '' ) ) : ?>
+					<p>Contexts: <?php echo $contexts; ?></p>
+				<?php endif; ?>
 				<?php if ( $courses = get_the_term_list( $post->ID, 'docredux_courses', '', ', ', '' ) ) : ?>
 					<p>Courses: <?php echo $courses; ?></p>
 				<?php endif; ?>

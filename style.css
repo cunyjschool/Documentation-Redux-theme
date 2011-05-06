@@ -99,6 +99,17 @@ h5 {
 	margin-bottom:30px;
 }
 
+.message {
+	padding-top: 7px;
+	padding-bottom: 7px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color: #F1F2F2;
+	border: 2px solid #CCCCCC;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
 .container {
 	width:960px;
 	margin:0 auto;

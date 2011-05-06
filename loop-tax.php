@@ -19,8 +19,11 @@
 
 			<div class="post" id="post-<?php the_ID(); ?>">
 
-				<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
-				<?php the_excerpt(); ?>
+				<h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
+				
+				<div class="entry">
+					<?php the_excerpt(); ?>
+				</div>
 
 				<div class="meta">
 					<?php 
@@ -47,9 +50,7 @@
 
 		<?php else : ?>
 
-			<h2 class="center">Beep beep boop beep! Does not compute!</h2>
-			
-			<p class="center">Sorry, but you are looking for something that isn't here. Try a search!</p>
+			<div class="message error">Sorry, there aren't any posts or documentation here yet.</div>
 
 		<?php endif; ?>
 	
