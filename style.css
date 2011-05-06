@@ -125,16 +125,15 @@ h5 {
 	margin:0 15px;
 }
 
+.w250 {
+	width:250px;
+	margin: 0 15px;
+}
+
 .avatar{
 	margin:0 20px 10px 0;
 	float:left;
 	border:3px solid #fff;
-}
-
-.meta {
-	color:#999999;
-	padding: 5px 10px;
-	border: 1px solid #CCCCCC;
 }
 
 .fail-whale img{
@@ -288,12 +287,15 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 	margin: 10px 15px 10px 0;
 }
 
-/* Homepage */
-.home-page .content {
+/**
+ * Page: .home-page
+ */
+body.home-page .content {
 	margin:15px;
 }
 
-.home-page .content li, .single .content li {
+.home-page .content li,
+.single .content li {
 	margin:10px 10px 10px 35px;
 }
 
@@ -316,8 +318,30 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 	margin:10px 10px 10px 35px;
 }
 
+/**
+ * Page: .archive
+ */
+body.archive .post {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+/**
+ * Section: .post
+ */
+
+.post .meta {
+	color:#999999;
+}
+
+body.single .post .meta {
+	padding: 5px 10px;
+	border: 1px solid #CCCCCC;
+}
+
 /* Documentation single */
-.single .content .meta {
+
+body.single .content .meta {
 	margin: 20px 10px 20px -5px;
 }
 
@@ -403,10 +427,6 @@ margin-bottom:20px;
 .page table {
 	margin:10px 0 0 -10px;
 	width:610px;
-}
-
-.page .content .meta, .archive .content .meta, .search .content .meta {
-	margin: 15px 10px 30px -5px;
 }
 
 /* Archive */

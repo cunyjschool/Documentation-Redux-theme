@@ -14,6 +14,8 @@
 		<?php endif; ?>
 		
 		<div class="w250 right">
+			
+			<h3>Blog Posts</h3>
 		
 		<?php
 			$args = array(
@@ -39,9 +41,7 @@
 
 				<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
 				
-				<div class="entry">
-					<?php the_excerpt(); ?>
-				</div>
+				<div class="meta"><?php docredux_timestamp(); ?></div>
 
 			</div><!-- END - .post -->
 
@@ -55,7 +55,9 @@
 		
 		</div><!-- END .w250.right -->
 		
-		<div class="w300 left">
+		<div class="w250 left">
+			
+			<h3>Documentation</h3>
 		
 		<?php
 			$args = array(
