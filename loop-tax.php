@@ -41,7 +41,7 @@
 
 				<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
 				
-				<div class="meta"><?php docredux_timestamp(); ?></div>
+				<div class="meta">Published <?php docredux_timestamp(); ?></div>
 
 			</div><!-- END - .post -->
 
@@ -88,6 +88,8 @@
 				<div class="entry">
 					<?php the_excerpt(); ?>
 				</div>
+				
+				<div class="meta">Updated <?php docredux_timestamp( false, 'modified' ); ?></div>
 
 			</div><!-- END - .post -->
 
