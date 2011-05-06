@@ -12,46 +12,94 @@
 		<?php if ( !empty( $term->description ) ): ?>
 			<div class="term-description"><?php echo $term->description; ?></div>
 		<?php endif; ?>
+		
+		<div class="w250 right">
+			
+			<h3>Blog Posts</h3>
+		
+		<?php
+			$args = array(
+				'nopaging' => true,
+				'posts_per_page' => '-1',
+				'post_type' => 'post',
+				'tax_query' => array(
+					array(
+						'taxonomy' => $term->taxonomy,
+						'field' => 'slug',
+						'terms' => $term->slug,
+					),
+				),
+			);
+			$posts = new WP_Query( $args );
+		?>
 
-	  	<?php if ( have_posts() ) : ?>
+	  	<?php if ( $posts->have_posts() ) : ?>
 
-		<?php while ( have_posts() ) : the_post(); ?>
+		<?php while ( $posts->have_posts() ) : $posts->the_post(); ?>
 
 			<div class="post" id="post-<?php the_ID(); ?>">
 
 				<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
-				<?php the_excerpt(); ?>
-
-				<div class="meta">
-					<?php 
-						edit_post_link('Edit this post', '', ' — ');
-						
-						the_time('l, F jS, Y');
-						echo get_the_term_list( $post->ID, 'docredux_courses', ' — ', ', ', '' );
-						echo get_the_term_list( $post->ID, 'docredux_topics', ', ', ', ', '' );
-						echo get_the_term_list( $post->ID, 'docredux_hardware', ', ', ', ', '' );
-						echo get_the_term_list( $post->ID, 'docredux_software', ', ', ', ', '' );
-						echo get_the_term_list( $post->ID, 'docredux_wpthemes', ', ', ', ', '' );
-						echo get_the_term_list( $post->ID, 'docredux_wpplugins', ', ', ', ', '' );
-					?>
-				</div><!-- END .meta -->
+				
+				<div class="meta"><?php docredux_timestamp(); ?></div>
 
 			</div><!-- END - .post -->
 
 		<?php endwhile; ?>
 
-			<div class="navigation">
-				<div class="alignleft"><?php next_posts_link('&laquo; Older Entries') ?></div>
-				<div class="alignright"><?php previous_posts_link('Newer Entries &raquo;') ?></div>
-			</div>
+		<?php else : ?>
+
+			<div class="message error">Sorry, there's no blog posts yet.</div>
+
+		<?php endif; ?>
+		
+		</div><!-- END .w250.right -->
+		
+		<div class="w250 left">
+			
+			<h3>Documentation</h3>
+		
+		<?php
+			$args = array(
+				'order' => 'ASC',
+				'orderby' => 'title',
+				'nopaging' => true,
+				'posts_per_page' => '-1',
+				'post_type' => 'docredux_doc',
+				'tax_query' => array(
+					array(
+						'taxonomy' => $term->taxonomy,
+						'field' => 'slug',
+						'terms' => $term->slug,
+					),
+				),
+			);
+			$documentation = new WP_Query( $args );
+		?>
+
+	  	<?php if ( $documentation->have_posts() ) : ?>
+
+		<?php while ( $documentation->have_posts() ) : $documentation->the_post(); ?>
+
+			<div class="post documentation" id="post-<?php the_ID(); ?>">
+
+				<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
+				
+				<div class="entry">
+					<?php the_excerpt(); ?>
+				</div>
+
+			</div><!-- END - .post -->
+
+		<?php endwhile; ?>
 
 		<?php else : ?>
 
-			<h2 class="center">Beep beep boop beep! Does not compute!</h2>
-			
-			<p class="center">Sorry, but you are looking for something that isn't here. Try a search!</p>
+			<div class="message error">Sorry, there's no documentation yet.</div>
 
 		<?php endif; ?>
+		
+		</div><!-- END .w300.left -->
 	
 	</div><!-- END .archive -->
 
