@@ -20,11 +20,10 @@
 							
 							<div class="entry">
 								<?php the_excerpt(); ?>
+								<?php if ( has_post_thumbnail() ) { 	   
+            					   the_post_thumbnail( array(60,60), array('class' => 'avatar') ); 
+            					} ?>
 							</div>
-
-							<?php if ( has_post_thumbnail() ) { 	   
-        					   the_post_thumbnail( array(60,60), array('class' => 'avatar') ); 
-        					} ?>
 
 						</div><!-- END - .staff-index -->
 

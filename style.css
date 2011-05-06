@@ -36,12 +36,12 @@ h2 {
 	font-size:24px;
 	font-weight:300;
 	letter-spacing: 0.3px;
-	padding-top: 10px;
 	padding-bottom: 15px;
+	line-height:30px;
 }
 
 h3 {
-	font-size:18px; font-weight:bold;
+	font-size:18px;
 }
 
 h4 {
@@ -127,15 +127,12 @@ h5 {
 	border: 1px solid #CCCCCC;
 }
 
+.fail-whale img{
+	margin:40px 65px 0;
+	width:450px;
+}
+
 /* Search */
-.search-button {
-	
-}
-
-.search-box {
-	
-}
-
 .search input[type="text"] {
 	font-size:12px;
 	padding:3px;
@@ -169,6 +166,7 @@ h5 {
 
 .menu-header-menu-container {
 	border:1px solid #a8403a;
+	background: #c74b46 url('images/red-gradient.png') repeat-x;
 	background: -moz-linear-gradient(center top, #c74b46, #a8403a) repeat scroll 0 0 #a8403a;
 	background: -webkit-gradient(linear, left top, left bottom, from(#c74b46), to(#a8403a));
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c74b46', endColorstr='#a8403a');
@@ -199,6 +197,7 @@ ul#menu-header-menu > li > a {
 	margin:-1px;
 	border:1px solid #a8403a;
 	height:20px;
+	background: #c74b46 url('images/red-gradient.png') repeat-x;
 	background: -moz-linear-gradient(center top, #c74b46, #a8403a) repeat scroll 0 0 #a8403a;
 	background: -webkit-gradient(linear, left top, left bottom, from(#c74b46), to(#a8403a));
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c74b46', endColorstr='#a8403a');
@@ -218,6 +217,7 @@ ul#menu-header-menu > li:last-child, ul#menu-header-menu > li:last-child > a {
 }
 
 ul#menu-header-menu > li a:hover {
+	background: #e1423d url('images/red-gradient-hover.png') repeat-x;
 	background: -moz-linear-gradient(center top, #e1423d, #c74b46) repeat scroll 0 0 #c74b46;
 	background: -webkit-gradient(linear, left top, left bottom, from(#e1423d), to(#c74b46));
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e1423d', endColorstr='#c74b46');
@@ -273,35 +273,35 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 }
 
 /* Homepage */
-.home .search {
+.home-page .search {
 	padding:10px;
 	margin:20px 0;
 }
 
-.home .content {
+.home-page .content {
 	margin:15px;
 }
 
-.home .content li, .single .content li {
+.home-page .content li, .single .content li {
 	margin:10px 10px 10px 35px;
 }
 
-.home .main .featured-topics-items {
+.home-page .main .featured-topics-items {
 	border:1px solid #e3e6db;
 }
 
-.home .main .featured-topics-items .widget-column {
+.home-page .main .featured-topics-items .widget-column {
 	width:300px;
 	margin-left:-1px;
 }
 
-.home .main .featured-topics-items .widget {
+.home-page .main .featured-topics-items .widget {
 	padding:20px;
 	border:1px solid #e3e6db;
 	margin-bottom:-1px;
 }
 
-.home .main .featured-topics-items .widget li {
+.home-page .main .featured-topics-items .widget li {
 	margin:10px 10px 10px 35px;
 }
 
@@ -320,6 +320,7 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 	-moz-box-shadow:3px 3px 5px #777777;
 	-webkit-box-shadow:3px 3px 5px #777777;
 	box-shadow:3px 3px 5px #777777;
+	max-width:575px;
 }
 
 .content .entry img.alignleft{
@@ -332,12 +333,29 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 	margin:10px 0 20px 30px;
 }
 
+.content .entry img.alignnone{
+	display:block;
+	margin-bottom:20px;
+}
+
 .entry-footer {
 	-moz-box-shadow:3px 3px 5px #777777;
 	-webkit-box-shadow:3px 3px 5px #777777;
 	box-shadow:3px 3px 5px #777777;
 	padding:20px;
 	margin-left:-15px;
+}
+
+.entry table {
+	width:100%;
+	border-collapse:collapse;
+	margin:10px 0 20px 0;
+}
+
+.entry table td {
+	padding:10px 15px;
+	border:1px solid #e3e6db;
+	background: url('images/bg-400-paper-light.jpg') repeat;
 }
 
 /* Page Templates */
@@ -421,6 +439,7 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 	-moz-box-shadow:0 0 10px #444444;
 	-webkit-box-shadow:0 0 10px #444444;
 	box-shadow:0 0 10px #444444;
+	background: #2a2a2a url('images/black-gradient.png') repeat-x;
 	background: -moz-linear-gradient(center top, #2a2a2a, #222222) repeat scroll 0 0;
 	background: -webkit-gradient(linear, left top, left bottom, from(#444444), to(#222222));
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#444444', endColorstr='#222222');
@@ -453,4 +472,8 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 	margin:0 20px 10px 0;
 	border:3px solid #ccc;
 	width:60px;
+}
+
+#wpstats {
+	display:none;
 }

@@ -18,8 +18,7 @@ Template Name: Page - Blog
 
 			  		<?php 
                         $args=array(
-                          'post_type' => 'post',
-                          'posts_per_page' => -1,
+                          'post_type' => 'post'
                         );
                         $temp = $wp_query;
                         $blog_posts = new WP_Query($args); 

@@ -13,6 +13,8 @@
 					<h2><?php the_title() ?></h2>
 					
 					<?php the_content() ?>
+					
+					<div class="clear"></div>
 			
 				<?php endwhile ; endif; ?>
 			

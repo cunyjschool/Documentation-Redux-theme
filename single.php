@@ -14,6 +14,8 @@
 							
 					<?php the_content() ?>
 					
+					<div class="clear"></div>
+					
 					<div class="meta">
 						<?php 
 							edit_post_link('Edit this post', '', ' — ');
