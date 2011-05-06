@@ -149,7 +149,7 @@ class docredux {
 			'hierarchical' => true,
 			'show_tagcloud' => false,
 			'rewrite' => array(
-				'slug' => 'Contexts',
+				'slug' => 'contexts',
 				'hierarchical' => true,
 			),
 		);
