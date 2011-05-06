@@ -15,7 +15,7 @@
 		
 		<div class="w250 right">
 			
-			<h3>Blog Posts</h3>
+			<h3>Updates from the Blog</h3>
 		
 		<?php
 			$args = array(

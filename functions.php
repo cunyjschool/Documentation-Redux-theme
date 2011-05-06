@@ -9,6 +9,8 @@ if ( !class_exists( 'docredux' ) ) {
 
 class docredux {
 	
+	var $theme_taxonomies = array();
+	
 	/**
 	 * __construct()
 	 */
@@ -100,6 +102,7 @@ class docredux {
 			'docredux_doc',
 		);
 		register_taxonomy( 'docredux_courses', $post_types, $args );
+		$this->theme_taxonomies[] = 'docredux_courses';		
 		
 		// Register the Contexts taxonomy
 		$args = array(
@@ -134,6 +137,7 @@ class docredux {
 			'docredux_doc',
 		);
 		register_taxonomy( 'docredux_contexts', $post_types, $args );
+		$this->theme_taxonomies[] = 'docredux_contexts';		
 		
 		// Register the Topics taxonomy
 		$args = array(
@@ -168,6 +172,7 @@ class docredux {
 			'docredux_staff',
 		);
 		register_taxonomy( 'docredux_topics', $post_types, $args );
+		$this->theme_taxonomies[] = 'docredux_topics';			
 		
 		// Register the Software taxonomy
 		$args = array(
@@ -202,6 +207,7 @@ class docredux {
 			'docredux_staff',
 		);
 		register_taxonomy( 'docredux_software', $post_types, $args );
+		$this->theme_taxonomies[] = 'docredux_software';			
 		
 		// Register the Hardware taxonomy
 		$args = array(
@@ -236,6 +242,7 @@ class docredux {
 			'docredux_staff',
 		);
 		register_taxonomy( 'docredux_hardware', $post_types, $args );
+		$this->theme_taxonomies[] = 'docredux_hardware';			
 		
 		// Register the WordPress themes taxonomy
 		$args = array(
@@ -269,6 +276,7 @@ class docredux {
 			'docredux_doc',
 		);
 		register_taxonomy( 'docredux_wpthemes', $post_types, $args );
+		$this->theme_taxonomies[] = 'docredux_wpthemes';			
 		
 		// Register the WordPress plugins taxonomy
 		$args = array(
@@ -302,6 +310,7 @@ class docredux {
 			'docredux_doc',
 		);
 		register_taxonomy( 'docredux_wpplugins', $post_types, $args );
+		$this->theme_taxonomies[] = 'docredux_wpplugins';			
 		
 	} // END create_taxonomies()
 
