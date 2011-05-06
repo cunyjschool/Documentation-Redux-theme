@@ -55,6 +55,39 @@ class docredux {
     		'after_title'   => '</h4>'
         );
         register_sidebar( $args );
+        
+        $args = array(
+    		'name' => 'Documentation Sidebar',
+    		'id'   => 'documentation-sidebar',
+    		'description'   => 'Here be widgets for the sidebar to be displayed on documentation single pages.',
+    		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+    		'after_widget'  => '</div>',
+    		'before_title'  => '<h4>',
+    		'after_title'   => '</h4>'
+        );
+        register_sidebar( $args );
+        
+        $args = array(
+    		'name' => 'Blog Post Sidebar',
+    		'id'   => 'blog-post-sidebar',
+    		'description'   => 'This is a widgetized area.',
+    		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+    		'after_widget'  => '</div>',
+    		'before_title'  => '<h4>',
+    		'after_title'   => '</h4>'
+        );
+        register_sidebar( $args );
+        
+        $args = array(
+    		'name' => 'Tech Staff Sidebar',
+    		'id'   => 'tech-staff-sidebar',
+    		'description'   => 'This is a widgetized area.',
+    		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+    		'after_widget'  => '</div>',
+    		'before_title'  => '<h4>',
+    		'after_title'   => '</h4>'
+        );
+        register_sidebar( $args );
 		
 	} // END init()
 	

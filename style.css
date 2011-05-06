@@ -358,6 +358,27 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 	background: url('images/bg-400-paper-light.jpg') repeat;
 }
 
+.entry h3 {
+margin-top:30px;
+font-weight:normal;
+}
+
+.entry code, .entry p.code {
+background:#fff;
+border:1px solid #ddd;
+line-height:22px;
+font-family:"Courier Neue", courier;
+padding:10px 20px;
+}
+
+.entry img {
+max-width:579px;
+}
+
+.entry .alignnone {
+margin-bottom:20px;
+}
+
 /* Page Templates */
 .page td li{
 	margin:5px 0 5px 15px;
