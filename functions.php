@@ -32,29 +32,7 @@ class docredux {
 	 */
 	function init() {
 	    
-        add_theme_support( 'post-thumbnails' );
-        
-        $args = array(
-    		'name' => 'Home Left Column',
-    		'id'   => 'home-left-column',
-    		'description'   => 'This is a widgetized area.',
-    		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-    		'after_widget'  => '</div>',
-    		'before_title'  => '<h4>',
-    		'after_title'   => '</h4>'
-        );
-        register_sidebar( $args );
-        
-        $args = array(
-    		'name' => 'Home Right Column',
-    		'id'   => 'home-right-column',
-    		'description'   => 'This is a widgetized area.',
-    		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-    		'after_widget'  => '</div>',
-    		'before_title'  => '<h4>',
-    		'after_title'   => '</h4>'
-        );
-        register_sidebar( $args );
+		add_theme_support( 'post-thumbnails' );
 		
 	} // END init()
 	
@@ -63,11 +41,11 @@ class docredux {
 	 * Register menus
 	 */
 	function register_menus() {
-	  register_nav_menus(
-	    array( 
-			'header-menu' => __( 'Header Menu' ) 
-		)
-	  );
+		register_nav_menus(
+	    	array( 
+				'header-menu' => __( 'Header Menu' ) 
+			)
+		);
 	} // END register_menus()
 	
 	
