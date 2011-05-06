@@ -1,11 +1,11 @@
 <div class="sidebar right w300">
 	
-	<div class="widget">
+	<div class="widget search">
 		<h4>Search </h4>
 		<div class="search no-bottom-corners paper"><?php include (TEMPLATEPATH . '/searchform.php'); ?></div>
 	</div><!-- END .widget -->
 	
-	<div class="widget">
+	<div class="widget cant-find">
 		<h4>Can't find what you're looking for?</h4>
 		<ul class="paper no-bottom-corners">
 			<li><a href="<?php bloginfo('url') ?>/documentation/">Browse all documentation</a></li>
@@ -14,49 +14,28 @@
 	</div><!-- END .widget -->
 	
 	<div class="widget">
-		<h4>Related Blog Posts</h4>
+		<h4>Recent Blog Updates</h4>
 		<div class="paper no-bottom-corners">
-			<?php
-				global $docredux;
-				
-				$tax_queries = array();
-				foreach ( $docredux->theme_taxonomies as $taxonomy ) {
-					$terms = wp_get_post_terms( $post->ID , $taxonomy );
-					$term_ids = array();
-					if ( !empty( $terms ) ) {
-						foreach ( $terms as $term ) {
-							$term_ids[] = $term->term_id;
-						}
-						$tax_queries[] = array(
-							'taxonomy' => $taxonomy,
-							'field' => 'id',
-							'terms' => $term_ids,
-							'operator' => 'IN',
-						);
-					}
-				}
+		<?php
+		
+			$args = array(
+				'posts_per_page' => '2',
+				'post_type' => 'post',
+			);
 			
-				$args = array(
-					'posts_per_page' => '3',
-					'post_type' => 'post',
-					'tax_query' => array(
-						$tax_queries,
-					),
-				);
-				
-				$posts = new WP_Query( $args );
-				
-				if ( $posts->have_posts() ) : ?>
-				<ul class="all-posts">
-				<?php while ( $posts->have_posts() ) : $posts->the_post(); ?>
-				<li class="post">
-					<h5><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h5>
-					<?php docredux_timestamp(); ?>
-				</li>
-	    		<?php endwhile; else: ?>
-				<p>There are currently no related posts.</p>
-				<?php endif; ?>
-				<p class="see-all"><a href="<?php bloginfo('url') ?>/tech-blog/">See all &rarr;</a></p>
+			$posts = new WP_Query( $args );
+			
+			if ( $posts->have_posts() ) : ?>
+			<ul class="all-posts">
+			<?php while ( $posts->have_posts() ) : $posts->the_post(); ?>
+			<li class="post">
+				<h5><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h5>
+				<?php docredux_timestamp(); ?>
+			</li>
+    		<?php endwhile; else: ?>
+			<p>There are currently no related posts.</p>
+			<?php endif; ?>
+			<p class="see-all"><a href="<?php bloginfo('url') ?>/tech-blog/">See all &rarr;</a></p>
 		</div>
 	</div><!-- END .widget -->
 	
