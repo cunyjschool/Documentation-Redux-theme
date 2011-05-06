@@ -3,6 +3,8 @@
 	<div class="pads">
 	
 		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+			
+		<div class="post">
 		
 			<h2><?php the_title(); ?></h2>
 	
@@ -73,6 +75,8 @@
 				wp_reset_query();
 				?>
 			</div>
+			
+		</div><!-- END .post -->
 	
 		<?php endwhile ; endif; ?>
 	

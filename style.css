@@ -334,7 +334,7 @@ body.archive .post {
 	color:#999999;
 }
 
-body.single .post .meta {
+body.single .content .post .meta {
 	padding: 5px 10px;
 	border: 1px solid #CCCCCC;
 }
@@ -470,7 +470,12 @@ margin-bottom:20px;
 	margin:10px 0 0 0;
 }
 
-.sidebar .widget ul li a {
+.sidebar .widget.blog-posts ul li,
+.sidebar .widget.updated-documentation ul li {
+	padding: 5px 0;
+}
+
+.sidebar .widget.cant-find ul li a {
 	padding:10px 20px;
 	display:block;
 }
