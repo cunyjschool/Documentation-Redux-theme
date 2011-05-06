@@ -352,6 +352,25 @@ global $docredux;
 $docredux = new docredux();
 
 /**
+ * docredux_head_title()
+ */
+function docredux_head_title() {
+	
+	$title = get_bloginfo('name') . ' | ' . get_bloginfo('description');
+	
+	if ( is_single() ) {
+		global $post;
+		$title = get_the_title( $post->ID );
+	} else if ( is_tax() ) {
+		$title = single_term_title( false, false ) . ' | ' . get_bloginfo('name');
+	}
+	
+	echo '<title>' . $title . '</title>';
+	
+} // END docredux_head_title()
+
+
+/**
  * docredux_timestamp()
  * Relative timestamps for use within the loop or elsewhere
  */
