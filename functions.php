@@ -373,7 +373,7 @@ function docredux_get_term_base( $term_object ) {
 			return 'contexts';
 			break;
 		case 'docredux_topics':
-			return 'places';
+			return 'topics';
 			break;
 		case 'docredux_software':
 			return 'software';
