@@ -332,11 +332,9 @@ class docredux {
 		
 		$post_formats = array(
 			'aside',
-			'gallery',
 			'status',
 			'quote',
 			'image',
-			'link',
 		);
 		add_theme_support( 'post-formats', $post_formats );
 		add_post_type_support( 'post', 'post-formats' );
