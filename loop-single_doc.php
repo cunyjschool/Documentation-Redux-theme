@@ -38,43 +38,7 @@
 				<?php if ( $wpplugins = get_the_term_list( $post->ID, 'docredux_wpplugins', '', ', ', '' ) ) : ?>
 					<p>WordPress plugins: <?php echo $wpplugins; ?></p>
 				<?php endif; ?>
-				<?php edit_post_link( 'Edit this documentation', '<p>', '</p>' ); ?>
 			</div><!-- END .meta -->
-			
-			
-			<div class="entry-footer paper no-corners pads">
-				<h4>Related documentation</h4>
-				<?php
-				$backup = $post;
-				$found_none = '<p>No related documentation found.</p>';
-				$taxonomy = 'docredux_hardware';
-				$tax_args = array('orderby' => 'none');
-				$tags = wp_get_post_terms( $post->ID , $taxonomy, $tax_args);
-				if ($tags) {
-					foreach ($tags as $tag) {
-						$args = array(
-							'post__not_in' => array($post->ID),
-							'post_type' => array('docredux_doc','post'),
-							'showposts'=> -1,
-						);
-						$my_query = null;
-						$my_query = new WP_Query($args);
-						if( $my_query->have_posts() ) { ?>
-							<ul><?php 
-							while ($my_query->have_posts()) : $my_query->the_post(); ?>
-								<li><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a></li>
-							<?php $found_none = '';
-						endwhile;
-						}
-					}
-				}
-				if ($found_none) {
-				echo $found_none;
-				}
-				$post = $backup;
-				wp_reset_query();
-				?>
-			</div>
 			
 		</div><!-- END .post -->
 	

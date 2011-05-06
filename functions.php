@@ -398,14 +398,20 @@ function docredux_get_term_base( $term_object ) {
  * docredux_timestamp()
  * Relative timestamps for use within the loop or elsewhere
  */
-function docredux_timestamp( $post_id = null ) {
+function docredux_timestamp( $post_id = null, $type = 'published' ) {
 	
 	if ( !isset( $post_id ) ) {
 		global $post;
 		$post_id = $post->ID;
 	}
 	
-	$post_timestamp = get_the_time( 'U', $post_id );
+	if ( $type == 'published' ) {
+		$post_timestamp = get_the_time( 'U', $post_id );
+	} else if ( $type == 'modified' ) {
+		$post_timestamp = get_the_modified_time( 'U', $post_id );
+	} else {
+		return false;
+	}
 	$current_timestamp = time();
 
 	// Only do the relative timestamps for 7 days or less, then just the month and day

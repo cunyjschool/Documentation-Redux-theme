@@ -6,7 +6,7 @@
 		
 		<?php get_template_part( 'loop', 'single_doc' ); ?>
 	
-		<?php get_sidebar( 'single_doc' ); ?>
+		<?php get_sidebar(); ?>
 	
 		<div class="clear"></div>
 
