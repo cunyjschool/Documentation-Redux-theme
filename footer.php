@@ -1,7 +1,7 @@
 <div class="footer">
 	<div class="container">
 		<div class="w600 posts left">
-			<h4 class="">Recent blog posts</h4>
+			<h3>Recent blog posts</h3>
 			<?php
 				$args = array(
                     'post_type' => 'post',

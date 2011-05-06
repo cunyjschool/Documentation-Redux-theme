@@ -46,7 +46,6 @@ h3 {
 
 h4 {
 	font-size:14px;
-	font-weight:bold;
 }
 
 h5 {
@@ -157,6 +156,7 @@ h5 {
 .header h4 {
 	margin:10px 20px 25px;
 	font-style:italic;
+	font-weight:bold;
 }
 
 .header .logo {
@@ -273,7 +273,7 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 }
 
 /* Homepage */
-.home-page .search {
+.home-page .search, .error404 .search {
 	padding:10px;
 	margin:20px 0;
 }
@@ -407,6 +407,7 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 .sidebar .widget > h4 {
 	padding:5px 8px;
 	border-bottom:2px solid #c74b46;
+	font-weight:bold;
 }
 
 .sidebar .widget .on-duty {
