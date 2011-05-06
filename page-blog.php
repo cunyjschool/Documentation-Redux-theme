@@ -14,43 +14,51 @@ Template Name: Page - Blog
 			
 			<div class="archive pads">
 			
-					<h2>Tech Blog</h2>			
+				<h2>Tech Blog</h2>			
 
-			  		<?php 
-                        $args=array(
-                          'post_type' => 'post'
-                        );
-                        $temp = $wp_query;
-                        $blog_posts = new WP_Query($args); 
+		  		<?php 
+                       $args=array(
+                         'post_type' => 'post'
+                       );
+                       $temp = $wp_query;
+                       $blog_posts = new WP_Query($args); 
 
-                        if ( $blog_posts->have_posts() ) :
+                       if ( $blog_posts->have_posts() ) :
 
-                        while ( $blog_posts->have_posts() ) : $blog_posts->the_post(); ?>
+                       while ( $blog_posts->have_posts() ) : $blog_posts->the_post(); ?>
 
-						<div class="doc-index" id="post-<?php the_ID(); ?>">
+					<div class="doc-index post" id="post-<?php the_ID(); ?>">
 
-							<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
-							<?php the_excerpt(); ?>
-        					<?php if ( has_post_thumbnail()) { 	   
-        					   the_post_thumbnail(  'thumbnail', array('class' => 'avatar') ); 
-        					}?>
-                            
-                            <div class="clear"></div>
+						<h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
+						
+						<div class="entry">
+       					<?php if ( has_post_thumbnail()) { 	   
+       					   the_post_thumbnail(  'thumbnail', array('class' => 'avatar') ); 
+       					}?>							
+						<?php the_excerpt(); ?>
+						</div>
+                           
+						<div class="clear"></div>
 
-							<div class="meta">
-								<?php 
-									edit_post_link('Edit this post', '', ' — ');
-									
-									echo get_the_term_list( $post->ID, 'docredux_courses', '', ', ', '' );
-									echo get_the_term_list( $post->ID, 'docredux_topics', ', ', ', ', '' );
-									echo get_the_term_list( $post->ID, 'docredux_hardware', ', ', ', ', '' );
-									echo get_the_term_list( $post->ID, 'docredux_software', ', ', ', ', '' );
-									echo get_the_term_list( $post->ID, 'docredux_wpthemes', ', ', ', ', '' );
-									echo get_the_term_list( $post->ID, 'docredux_wpplugins', ', ', ', ', '' );
-								?>
-							</div><!-- END .meta -->
+						<div class="meta">
+							Published <?php docredux_timestamp(); ?>
+							<?php 
+								$all_terms = ''; 
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_courses', '', ', ', ', ' );
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_contexts', '', ', ', ', ' );								
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_topics', '', ', ', ', ' );
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_hardware', '', ', ', ', ' );
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_software', '', ', ', ', ' );
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_wpthemes', '', ', ', ', ' );
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_wpplugins', '', ', ', ', ' );
+								if ( $all_terms ) {
+									echo ' and relates to ' . rtrim( $all_terms, ', ' );
+								}
+							?>
+							<?php edit_post_link( 'Edit', ' - ', '' ); ?>
+						</div><!-- END .meta -->
 
-						</div><!-- END - .doc-index -->
+					</div><!-- END - .doc-index -->
 
 				<?php endwhile; ?>
 

@@ -14,30 +14,33 @@
 
 			 	<?php while (have_posts()) : the_post(); ?>
 
-					<div class="staff-index" id="post-<?php the_ID(); ?>">
+					<div class="staff-index post" id="post-<?php the_ID(); ?>">
 
 						<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
 						
 						<div class="entry">
+							<?php if ( has_post_thumbnail()) { 	   
+	       					   the_post_thumbnail(  array(60,60), array('class' => 'avatar')); 
+	       					}?>
 							<?php the_excerpt() ?>
 						</div>
-
-						<?php if ( has_post_thumbnail()) { 	   
-       					   the_post_thumbnail(  array(60,60), array('class' => 'avatar')); 
-       					}?>
        					
        					<div class="meta">
+							Published <?php docredux_timestamp(); ?>
 							<?php 
-								edit_post_link('Edit this post', '', ' — ');
-
-	 							the_time('l, F jS, Y');
-								echo get_the_term_list( $post->ID, 'docredux_courses', ' — ', ', ', '' );
-								echo get_the_term_list( $post->ID, 'docredux_topics', ', ', ', ', '' );
-								echo get_the_term_list( $post->ID, 'docredux_hardware', ', ', ', ', '' );
-								echo get_the_term_list( $post->ID, 'docredux_software', ', ', ', ', '' );
-								echo get_the_term_list( $post->ID, 'docredux_wpthemes', ', ', ', ', '' );
-								echo get_the_term_list( $post->ID, 'docredux_wpplugins', ', ', ', ', '' );
+								$all_terms = ''; 
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_courses', '', ', ', ', ' );
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_contexts', '', ', ', ', ' );								
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_topics', '', ', ', ', ' );
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_hardware', '', ', ', ', ' );
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_software', '', ', ', ', ' );
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_wpthemes', '', ', ', ', ' );
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_wpplugins', '', ', ', ', ' );
+								if ( $all_terms ) {
+									echo ' and relates to ' . rtrim( $all_terms, ', ' );
+								}
 							?>
+							<?php edit_post_link( 'Edit', ' - ', '' ); ?>
 						</div><!-- END .meta -->
 
 					</div><!-- END - .staff-index -->
