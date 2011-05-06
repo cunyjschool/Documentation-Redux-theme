@@ -6,23 +6,77 @@
 		
 		<div class="content left w600">
 			
-			<div class="entry pads">
+			<div class="post pads">
 			
-				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+				<?php if ( have_posts()) : while ( have_posts()) : the_post(); ?>
 				
 					<h2><?php the_title() ?></h2>
 					
-					<?php the_content() ?>
+					<div class="entry">
+						<?php the_content(); ?>
+					</div>
 					
-					<div class="clear"></div>
+					<div class="meta">
+						<?php if ( $contexts = get_the_term_list( $post->ID, 'docredux_contexts', '', ', ', '' ) ) : ?>
+							<p>Contexts: <?php echo $contexts; ?></p>
+						<?php endif; ?>
+						<?php if ( $courses = get_the_term_list( $post->ID, 'docredux_courses', '', ', ', '' ) ) : ?>
+							<p>Courses: <?php echo $courses; ?></p>
+						<?php endif; ?>
+						<?php if ( $topics = get_the_term_list( $post->ID, 'docredux_topics', '', ', ', '' ) ) : ?>
+							<p>Topics: <?php echo $topics; ?></p>
+						<?php endif; ?>
+						<?php if ( $hardware = get_the_term_list( $post->ID, 'docredux_hardware', '', ', ', '' ) ) : ?>
+							<p>Hardware: <?php echo $hardware; ?></p>
+						<?php endif; ?>
+						<?php if ( $software = get_the_term_list( $post->ID, 'docredux_software', '', ', ', '' ) ) : ?>
+							<p>Software: <?php echo $software; ?></p>
+						<?php endif; ?>
+						<?php if ( $wpthemes = get_the_term_list( $post->ID, 'docredux_wpthemes', '', ', ', '' ) ) : ?>
+							<p>WordPress themes: <?php echo $wpthemes; ?></p>
+						<?php endif; ?>
+						<?php if ( $wpplugins = get_the_term_list( $post->ID, 'docredux_wpplugins', '', ', ', '' ) ) : ?>
+							<p>WordPress plugins: <?php echo $wpplugins; ?></p>
+						<?php endif; ?>
+						<p>Last updated at <?php the_modified_time( 'g:i a l, M. jS, Y' ); ?></p>						
+					</div><!-- END .meta -->
 			
 				<?php endwhile ; endif; ?>
+				
+				<div class="recently-published entry-footer paper pads">
+					
+					<h4>Recently Published</h4>
+					<?php
+
+						$args = array(
+							'posts_per_page' => '8',
+							'post_type' => array(
+								'post',
+								'docredux_doc',
+							),
+						);
+						$content = new WP_Query( $args );
+
+					?>
+					<ul class="all-content">			
+					<?php if ( $content->have_posts() ): ?>
+					<?php while ( $content->have_posts() ): $content->the_post(); ?>
+						<li>
+							<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+						</li>
+					<?php endwhile; ?>		
+					<?php else: ?>
+						<li><div class="message info">No content yet.</div></li>
+					<?php endif; ?>
+					</ul><!-- END .all-content -->
+					<p class="see-all"><a href="<?php echo get_author_posts_url( $post->post_author ); ?>">See all &rarr;</a></p>
+				</div><!-- END .widget -->
 			
 			</div><!-- END .entry -->
 
 		</div><!-- END .content -->
 	
-		<?php get_sidebar(); ?>
+		<?php get_sidebar( 'single_staff' ); ?>
 	
 		<div class="clear"></div>
 

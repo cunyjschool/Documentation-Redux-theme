@@ -9,6 +9,8 @@ if ( !class_exists( 'docredux' ) ) {
 
 class docredux {
 	
+	var $theme_taxonomies = array();
+	
 	/**
 	 * __construct()
 	 */
@@ -32,62 +34,7 @@ class docredux {
 	 */
 	function init() {
 	    
-        add_theme_support( 'post-thumbnails' );
-        
-        $args = array(
-    		'name' => 'Home Left Column',
-    		'id'   => 'home-left-column',
-    		'description'   => 'This is a widgetized area.',
-    		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-    		'after_widget'  => '</div>',
-    		'before_title'  => '<h4>',
-    		'after_title'   => '</h4>'
-        );
-        register_sidebar( $args );
-        
-        $args = array(
-    		'name' => 'Home Right Column',
-    		'id'   => 'home-right-column',
-    		'description'   => 'This is a widgetized area.',
-    		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-    		'after_widget'  => '</div>',
-    		'before_title'  => '<h4>',
-    		'after_title'   => '</h4>'
-        );
-        register_sidebar( $args );
-        
-        $args = array(
-    		'name' => 'Documentation Sidebar',
-    		'id'   => 'documentation-sidebar',
-    		'description'   => 'Here be widgets for the sidebar to be displayed on documentation single pages.',
-    		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-    		'after_widget'  => '</div>',
-    		'before_title'  => '<h4>',
-    		'after_title'   => '</h4>'
-        );
-        register_sidebar( $args );
-        
-        $args = array(
-    		'name' => 'Blog Post Sidebar',
-    		'id'   => 'blog-post-sidebar',
-    		'description'   => 'This is a widgetized area.',
-    		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-    		'after_widget'  => '</div>',
-    		'before_title'  => '<h4>',
-    		'after_title'   => '</h4>'
-        );
-        register_sidebar( $args );
-        
-        $args = array(
-    		'name' => 'Tech Staff Sidebar',
-    		'id'   => 'tech-staff-sidebar',
-    		'description'   => 'This is a widgetized area.',
-    		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-    		'after_widget'  => '</div>',
-    		'before_title'  => '<h4>',
-    		'after_title'   => '</h4>'
-        );
-        register_sidebar( $args );
+		add_theme_support( 'post-thumbnails' );
 		
 	} // END init()
 	
@@ -96,11 +43,11 @@ class docredux {
 	 * Register menus
 	 */
 	function register_menus() {
-	  register_nav_menus(
-	    array( 
-			'header-menu' => __( 'Header Menu' ) 
-		)
-	  );
+		register_nav_menus(
+	    	array( 
+				'header-menu' => __( 'Header Menu' ) 
+			)
+		);
 	} // END register_menus()
 	
 	
@@ -155,6 +102,7 @@ class docredux {
 			'docredux_doc',
 		);
 		register_taxonomy( 'docredux_courses', $post_types, $args );
+		$this->theme_taxonomies[] = 'docredux_courses';		
 		
 		// Register the Contexts taxonomy
 		$args = array(
@@ -189,6 +137,7 @@ class docredux {
 			'docredux_doc',
 		);
 		register_taxonomy( 'docredux_contexts', $post_types, $args );
+		$this->theme_taxonomies[] = 'docredux_contexts';		
 		
 		// Register the Topics taxonomy
 		$args = array(
@@ -223,6 +172,7 @@ class docredux {
 			'docredux_staff',
 		);
 		register_taxonomy( 'docredux_topics', $post_types, $args );
+		$this->theme_taxonomies[] = 'docredux_topics';			
 		
 		// Register the Software taxonomy
 		$args = array(
@@ -257,6 +207,7 @@ class docredux {
 			'docredux_staff',
 		);
 		register_taxonomy( 'docredux_software', $post_types, $args );
+		$this->theme_taxonomies[] = 'docredux_software';			
 		
 		// Register the Hardware taxonomy
 		$args = array(
@@ -291,6 +242,7 @@ class docredux {
 			'docredux_staff',
 		);
 		register_taxonomy( 'docredux_hardware', $post_types, $args );
+		$this->theme_taxonomies[] = 'docredux_hardware';			
 		
 		// Register the WordPress themes taxonomy
 		$args = array(
@@ -324,6 +276,7 @@ class docredux {
 			'docredux_doc',
 		);
 		register_taxonomy( 'docredux_wpthemes', $post_types, $args );
+		$this->theme_taxonomies[] = 'docredux_wpthemes';			
 		
 		// Register the WordPress plugins taxonomy
 		$args = array(
@@ -357,6 +310,7 @@ class docredux {
 			'docredux_doc',
 		);
 		register_taxonomy( 'docredux_wpplugins', $post_types, $args );
+		$this->theme_taxonomies[] = 'docredux_wpplugins';			
 		
 	} // END create_taxonomies()
 
@@ -402,19 +356,62 @@ function docredux_head_title() {
 	
 } // END docredux_head_title()
 
+/**
+ * docredux_get_term_base()
+ */
+function docredux_get_term_base( $term_object ) {
+	
+	if ( !is_object( $term_object ) ) {
+		return false;
+	}
+	
+	switch( $term_object->taxonomy ) {
+		case 'docredux_courses':
+			return 'courses';
+			break;
+		case 'docredux_contexts':
+			return 'contexts';
+			break;
+		case 'docredux_topics':
+			return 'topics';
+			break;
+		case 'docredux_software':
+			return 'software';
+			break;
+		case 'docredux_hardware':
+			return 'hardware';
+			break;
+		case 'docredux_wpthemes':
+			return 'themes';
+			break;
+		case 'docredux_plugins':
+			return 'plugins';
+			break;							
+		default:
+			return false;
+	}
+	
+} // END docredux_get_term_base()
+
 
 /**
  * docredux_timestamp()
  * Relative timestamps for use within the loop or elsewhere
  */
-function docredux_timestamp( $post_id = null ) {
+function docredux_timestamp( $post_id = null, $type = 'published' ) {
 	
 	if ( !isset( $post_id ) ) {
 		global $post;
 		$post_id = $post->ID;
 	}
 	
-	$post_timestamp = get_the_time( 'U', $post_id );
+	if ( $type == 'published' ) {
+		$post_timestamp = get_the_time( 'U', $post_id );
+	} else if ( $type == 'modified' ) {
+		$post_timestamp = get_the_modified_time( 'U', $post_id );
+	} else {
+		return false;
+	}
 	$current_timestamp = time();
 
 	// Only do the relative timestamps for 7 days or less, then just the month and day
