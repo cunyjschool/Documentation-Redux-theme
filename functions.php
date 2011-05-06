@@ -33,6 +33,28 @@ class docredux {
 	 * init()
 	 */
 	function init() {
+		
+		$args = array(
+    		'name' => 'Home Left Column',
+    		'id'   => 'home-left-column',
+    		'description'   => 'This is a widgetized area.',
+    		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+    		'after_widget'  => '</div>',
+    		'before_title'  => '<h4>',
+    		'after_title'   => '</h4>'
+        );
+        register_sidebar( $args );
+
+        $args = array(
+    		'name' => 'Home Right Column',
+    		'id'   => 'home-right-column',
+    		'description'   => 'This is a widgetized area.',
+    		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+    		'after_widget'  => '</div>',
+    		'before_title'  => '<h4>',
+    		'after_title'   => '</h4>'
+        );
+        register_sidebar( $args );
 	    
 		add_theme_support( 'post-thumbnails' );
 		
