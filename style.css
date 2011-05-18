@@ -511,6 +511,14 @@ margin-bottom:20px;
 	color:#ccc;
 }
 
+.footer a:hover {
+	text-decoration:underline;
+}
+
+.footer span a {
+	text-decoration:none;
+}
+
 .footer .container {
 	width:984px;
 }
