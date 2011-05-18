@@ -1,0 +1,8 @@
+.clear-both {
+	clear: both;
+}
+
+#docredux_staff.postbox .inner label {
+	width: 200px;
+	float: left;
+}

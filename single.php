@@ -25,18 +25,22 @@
 												
 					<?php } else { ?>
 					
-						<div class="entry">
-							<h2><?php the_title() ?></h2>
-							<?php the_content() ?>
-						</div>
+					<h2><?php the_title() ?></h2>
 					
+					<div class="meta no-border">
+						<p>By <?php if ( function_exists( 'coauthors_posts_links' ) ) { coauthors_posts_links(); } else { the_author_posts_link(); } ?>&nbsp;&nbsp;&nbsp;Published <?php docredux_timestamp(); ?></p>
+					</div><!-- END .meta -->					
+					
+					<div class="entry">
+						<?php the_content() ?>
+					</div>
+
 					<?php } ?>
 									
 					<div class="clear"></div>
 					
 					<div class="meta">
-						<p>By <?php if ( function_exists( 'coauthors_posts_links' ) ) { coauthors_posts_links(); } else { the_author_posts_link(); } ?> <?php edit_post_link( 'Edit', " - " ); ?></p>
-						<p>Published at <?php the_time( 'g:i a l, M. jS, Y' ); ?></p>
+
 						<?php if ( $contexts = get_the_term_list( $post->ID, 'docredux_contexts', '', ', ', '' ) ) : ?>
 							<p>Contexts: <?php echo $contexts; ?></p>
 						<?php endif; ?>

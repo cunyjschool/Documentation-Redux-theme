@@ -20,7 +20,7 @@
 
 						<?php the_excerpt(); ?>
 						<?php if ( has_post_thumbnail()) { 	   
-       					   the_post_thumbnail( 'thumbnail', array('class' => 'avatar') ); 
+       					   the_post_thumbnail( 'thumbnail', array('class' => 'thumb float-left') ); 
        					}?>
 
 						<div class="meta">

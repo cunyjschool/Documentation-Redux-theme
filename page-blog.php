@@ -38,15 +38,16 @@ Template Name: Page - Blog
 						
 						<?php if ( $post_format == 'aside' || $post_format == 'status' ) { ?>
 						
+						<div class="entry">						
 							<?php the_content() ?>
+						</div>
 							
 						<?php } else { ?>
-						
 							<h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
 							<div class="entry">
-							<?php if ( has_post_thumbnail()) {	   
-							   the_post_thumbnail(	'thumbnail', array('class' => 'avatar') ); 
-							}?>							
+		       					<?php if ( has_post_thumbnail()) { 	   
+		       					   the_post_thumbnail(  'thumbnail', array('class' => 'thumb float-left') ); 
+		       					}?>						
 							<?php the_excerpt(); ?>
 							</div>
 							

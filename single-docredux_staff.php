@@ -6,17 +6,21 @@
 		
 		<div class="content left w600">
 			
-			<div class="post">
+			<div class="post pads post-type-staff">
 			
 				<?php if ( have_posts()) : while ( have_posts()) : the_post(); ?>
+					
+					<?php if ( has_post_thumbnail() ) { 	   
+						the_post_thumbnail( array(60,60), array('class' => 'avatar float-right') ); 
+					} ?>					
 				
-					<h2><?php the_title() ?></h2>
+					<h2><?php the_title(); ?><?php if ( $title = get_post_meta( get_the_id(), '_docredux_staff_title', true ) ) { echo '<span class="staff-title">' . $title . '</span>'; } ?></h2>
 					
 					<div class="entry">
 						<?php the_content(); ?>
 					</div>
 					
-					<div class="meta">
+					<div class="meta no-border">
 						<?php if ( $contexts = get_the_term_list( $post->ID, 'docredux_contexts', '', ', ', '' ) ) : ?>
 							<p>Contexts: <?php echo $contexts; ?></p>
 						<?php endif; ?>
@@ -38,14 +42,19 @@
 						<?php if ( $wpplugins = get_the_term_list( $post->ID, 'docredux_wpplugins', '', ', ', '' ) ) : ?>
 							<p>WordPress plugins: <?php echo $wpplugins; ?></p>
 						<?php endif; ?>
-						<p>Last updated at <?php the_modified_time( 'g:i a l, M. jS, Y' ); ?></p>						
+					</div>
+					
+					<div class="meta">
+						<p>Updated <?php docredux_timestamp( false, 'modified' ); ?></p>						
 					</div><!-- END .meta -->
 			
 				<?php endwhile ; endif; ?>
 				
+				<?php if ( $wordpress_user = get_post_meta( $post->ID, '_docredux_staff_wordpress_user', true ) ) : ?>
+				
 				<div class="recently-published entry-footer paper pads">
 					
-					<h4>Recently Published</h4>
+					<h4>Recently published by <?php the_title(); ?></h4>
 					<?php
 
 						$args = array(
@@ -54,6 +63,7 @@
 								'post',
 								'docredux_doc',
 							),
+							'author' => $wordpress_user,
 						);
 						$content = new WP_Query( $args );
 
@@ -70,7 +80,10 @@
 					<?php endif; ?>
 					</ul><!-- END .all-content -->
 					<p class="see-all"><a href="<?php echo get_author_posts_url( $post->post_author ); ?>">See all &rarr;</a></p>
-				</div><!-- END .widget -->
+					
+				</div><!-- END .recently-published -->
+				
+				<?php endif; ?>
 			
 			</div><!-- END .entry -->
 

@@ -27,29 +27,36 @@ body {
 }
 
 h1 {
-	font-size:3em;
+	font-size:30px;
 	margin-bottom:10px;
-	padding-left:5px;
+	padding-left:5px; 
 }
 
 h2 {
 	font-size:24px;
 	font-weight:300;
 	letter-spacing: 0.3px;
-	padding-bottom: 5px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 	line-height:30px;
 }
 
 h3 {
 	font-size:18px;
+	line-height: 26px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 h4 {
-	font-size:14px;
+	font-size:15px;
+	line-height: 23px;
+	padding-top: 3px;
+	padding-bottom: 3px;
 }
 
 h5 {
-	font-size:1em;
+	font-size: 12px;
 }
 
 table {
@@ -86,11 +93,11 @@ table td {
 	background: url('images/bg-400-paper-light.jpg') repeat;
 }
 
-.left {
+.left, .float-left {
 	float:left;
 }
 
-.right {
+.right, .float-right {
 	float:right;
 }
 
@@ -104,6 +111,10 @@ table td {
 
 .full-width {
 	width:100%;
+}
+
+.no-border {
+	border: none !important;
 }
 
 .pads {
@@ -142,10 +153,19 @@ table td {
 	margin: 0;
 }
 
-.avatar{
-	margin:0 20px 10px 0;
-	float:left;
+.avatar,
+.thumb {
 	border:3px solid #fff;
+}
+
+.avatar.float-left,
+.thumb.float-left {
+	margin:0 20px 10px 0;
+}
+
+.avatar.float-right,
+.thumb.float-right {
+	margin:0 0 10px 20px;
 }
 
 .fail-whale img{
@@ -295,15 +315,6 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 	text-decoration:underline;
 }
 
-.main .content p {
-	margin: 10px 15px 10px 0;
-}
-
-.main .content {
-	margin-top:30px;
-	margin-bottom:30px;
-}
-
 /**
  * Page: .home-page
  */
@@ -351,8 +362,19 @@ body.archive .post {
  * Section: .post
  */
 
+.post .entry {
+	font-size: 14px;
+	letter-spacing: 0.1px;
+	line-height: 22px;
+	font-weight: 400;
+}
+
 .post .meta {
 	color:#999999;
+}
+
+.post.post-type-staff .meta span {
+	margin-right: 10px;
 }
 
 body.single .content .post .meta {
@@ -366,10 +388,19 @@ body.single .content .post .meta {
 	line-height:25px;
 }
 
+/**
+ * Context: Staff
+ */
+.post-type-staff span.staff-title {
+	font-style: italic;
+	color: #888888;
+	padding-left: 10px;
+}
+
 /* Documentation single */
 
-body.single .content .meta {
-	margin: 20px 10px 20px -5px;
+body.single .content .entry {
+	padding-bottom: 15px;
 }
 
 .content .meta p {
@@ -408,17 +439,30 @@ body.single .content .meta {
 	margin-left:-15px;
 }
 
-.entry h3 {
-margin-top:30px;
-font-weight:normal;
+.content .entry p {
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
-.entry code, .entry p.code {
-background:#fff;
-border:1px solid #ddd;
-line-height:22px;
-font-family:"Courier Neue", courier;
-padding:10px 20px;
+.content .entry table {
+	width:100%;
+	border-collapse:collapse;
+	margin:10px 0 20px 0;
+}
+
+.content .entry table td {
+	padding:10px 15px;
+	border:1px solid #e3e6db;
+	background: url('images/bg-400-paper-light.jpg') repeat;
+}
+
+.entry code,
+.entry p.code {
+	background:#fff;
+	border:1px solid #ddd;
+	line-height:22px;
+	font-family:"Courier Neue", courier;
+	padding:10px 20px;
 }
 
 .entry img {
@@ -435,17 +479,6 @@ margin-bottom:20px;
 }
 
 /* Archive */
-.archive .excerpt, 
-.archive .doc-index, 
-.archive .staff-index {
-	margin:20px 0;
-	clear:both;
-}
-
-.archive .excerpt p, 
-.archive .staff-index p {
-	margin-top:10px;
-}
 
 .staff-index .avatar {
 	margin-top:10px;

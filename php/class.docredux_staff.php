@@ -74,7 +74,7 @@ class docredux_staff
 	 */
 	function add_post_meta_box() {
 		
-		add_meta_box( 'docredux_staff', __( 'Metadata', 'docredux_staff' ), array( &$this, 'post_meta_box' ), 'docredux_staff', 'side', 'high' );
+		add_meta_box( 'docredux_staff', __( 'Staff Member Information', 'docredux_staff' ), array( &$this, 'post_meta_box' ), 'docredux_staff', 'normal', 'high' );
 		
 	} // END add_post_meta_box()
 	
@@ -83,6 +83,46 @@ class docredux_staff
 	 */
 	function post_meta_box() {
 		global $post, $docredux;
+
+		$wordpress_user = get_post_meta( $post->ID, '_docredux_staff_wordpress_user', true );		
+		$room_number = get_post_meta( $post->ID, '_docredux_staff_room_number', true );
+		$title = get_post_meta( $post->ID, '_docredux_staff_title', true );		
+
+		?>
+
+		<div class="inner">
+			
+			<p><label for="docredux_staff-wordpress_user">WordPress User:</label>
+				<select id="docredux_staff-wordpress_user" name="docredux_staff-wordpress_user">
+					<option value="0">-- Please select a user --</option>
+				<?php
+				$all_users = get_users();
+				foreach ( $all_users as $single_user ) {
+					echo '<option value="' . $single_user->ID . '"';
+					if ( $single_user->ID == $wordpress_user ) {
+						echo ' selected="selected"';
+					}
+					echo '>' . $single_user->display_name . '</option>';
+				}
+				?>
+				</select>
+			</p>			
+
+			<p><label for="docredux_staff-room_number">Room:</label>
+				<input type="text" id="docredux_staff-room_number" name="docredux_staff-room_number" value="<?php echo $room_number; ?>" size="40" />
+			</p>
+			
+			<div class="clear-both"></div>
+			
+			<p><label for="docredux_staff-title">Title:</label>
+				<input type="text" id="docredux_staff-title" name="docredux_staff-title" value="<?php echo $title; ?>" size="40" />
+			</p>			
+
+			<input type="hidden" name="docredux_staff-nonce" id="docredux_staff-nonce" value="<?php echo wp_create_nonce('docredux_staff-nonce'); ?>" />
+
+		</div>
+
+		<?php		
 		
 	} // END post_meta_box()
 	
@@ -98,8 +138,15 @@ class docredux_staff
 		
 		if ( !wp_is_post_revision( $post_id ) && !wp_is_post_autosave( $post_id ) ) {
 			
-			// @todo Save whatever you need to save
-		
+			$wordpress_user = (int)$_POST['docredux_staff-wordpress_user'];
+			update_post_meta( $post_id, '_docredux_staff_wordpress_user', $wordpress_user );
+			
+			$room_number = wp_kses( $_POST['docredux_staff-room_number'], false );
+			update_post_meta( $post_id, '_docredux_staff_room_number', $room_number );
+			
+			$title = wp_kses( $_POST['docredux_staff-title'], false );
+			update_post_meta( $post_id, '_docredux_staff_title', $title );			
+			
 		}		
 	} // END save_post_meta_box()
 	
