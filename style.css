@@ -303,10 +303,6 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 	text-decoration:underline;
 }
 
-.main .content p {
-	margin: 10px 15px 10px 0;
-}
-
 /**
  * Page: .home-page
  */
@@ -373,8 +369,8 @@ body.single .content .post .meta {
 
 /* Documentation single */
 
-body.single .content .meta {
-	margin: 10px 10px 10px -5px;
+body.single .content .entry {
+	padding-bottom: 15px;
 }
 
 .content .meta p {
@@ -413,7 +409,7 @@ body.single .content .meta {
 	margin-left:-15px;
 }
 
-.conten .entry p {
+.content .entry p {
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
