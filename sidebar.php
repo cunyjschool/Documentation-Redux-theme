@@ -29,9 +29,18 @@
 			
 			if ( $posts->have_posts() ) : ?>
 			<ul class="all-posts">
-			<?php while ( $posts->have_posts() ) : $posts->the_post(); ?>
-			<li class="post">
-				<h5><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h5>
+			<?php while ( $posts->have_posts() ) : $posts->the_post(); 
+				$post_format = get_post_format();
+				if ( false === $post_format ) {
+					$post_format = 'standard';
+				}
+			?>
+			<li class="post sidebar-post-format-<?php echo $post_format ?>">
+				<?php if ( $post_format == 'aside' || $post_format == 'status' ) { ?>
+					<?php the_content() ?>
+				<?php } else { ?>
+					<h5><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h5>	
+				 <?php } ?>	
 				<div class="meta">Published <?php docredux_timestamp(); ?></div>
 			</li>
     		<?php endwhile; else: ?>

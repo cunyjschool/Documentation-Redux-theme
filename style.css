@@ -59,6 +59,18 @@ h5 {
 	font-size: 12px;
 }
 
+table {
+	width:100%;
+	border-collapse:collapse;
+	margin:10px 0 20px 0;
+}
+
+table td {
+	padding:10px 15px;
+	border:1px solid #e3e6db;
+	background: url('images/bg-400-paper-light.jpg') repeat;
+}
+
 .no-corners {
 	-webkit-border-radius:5px;
 	-moz-border-radius:5px;
@@ -136,9 +148,9 @@ h5 {
 	margin:0 15px;
 }
 
-.w250 {
-	width:250px;
-	margin: 0 15px;
+.w290 {
+	width:290px;
+	margin: 0;
 }
 
 .avatar,
@@ -285,7 +297,7 @@ ul#menu-header-menu ul.sub-menu > li > a {
 
 ul#menu-header-menu > li:last-child > ul.sub-menu {
 	margin-top:40px;
-	margin-left:-112px;
+	margin-left:-100px;
 }
 
 ul#menu-header-menu ul.sub-menu > li > a:hover {
@@ -294,6 +306,7 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 }
 
 /* Content */
+
 .main a {
 	text-decoration:none;
 	color:#a8403a;
@@ -301,6 +314,16 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 
 .main a:hover {
 	text-decoration:underline;
+}
+
+.main .container {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.post {
+	padding-top:10px;
+	padding-bottom:10px;
 }
 
 /**
@@ -335,6 +358,18 @@ body.home-page .content {
 }
 
 /**
+ * Page: .archive
+ */
+body.archive .post {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.term-name {
+	margin-bottom:10px;
+}
+
+/**
  * Section: .post
  */
 
@@ -356,6 +391,12 @@ body.home-page .content {
 body.single .content .post .meta {
 	padding: 5px 10px;
 	border: 1px solid #CCCCCC;
+}
+
+.single .post-format-aside .entry, 
+.single .post-format-status .entry {
+	font-size:16px;
+	line-height:25px;
 }
 
 /**
@@ -448,16 +489,6 @@ margin-bottom:20px;
 	margin:5px 0 5px 15px;
 }
 
-.page .main td {
-	padding:10px 20px;
-	border:1px solid #e3e6db;
-}
-
-.page table {
-	margin:10px 0 0 -10px;
-	width:610px;
-}
-
 /* Archive */
 
 .staff-index .avatar {
@@ -470,7 +501,8 @@ margin-bottom:20px;
 
 /* Sidebar */
 .sidebar .widget {
-	margin:20px 0;
+	margin-top: 10px;
+	margin-bottom: 20px;
 }
 
 .sidebar div.no-bottom-corners {
@@ -505,7 +537,9 @@ margin-bottom:20px;
 	background:#f9f9f9;
 }
 
-.sidebar .widget li, .posts ul, .events ul {
+.sidebar .widget li, 
+.posts ul, 
+.events ul {
 	list-style:none;
 	margin:0;
 }
@@ -526,6 +560,14 @@ margin-bottom:20px;
 
 .footer a {
 	color:#ccc;
+}
+
+.footer a:hover {
+	text-decoration:underline;
+}
+
+.footer span a {
+	text-decoration:none;
 }
 
 .footer .container {

@@ -1,6 +1,6 @@
 <div class="content left w600">
 	
-	<div class="archive pads">
+	<div class="archive">
 		
 		<?php
 			$term = get_queried_object();
@@ -13,7 +13,7 @@
 			<div class="term-description"><?php echo $term->description; ?></div>
 		<?php endif; ?>
 		
-		<div class="w250 right">
+		<div class="w290 right">
 			
 			<h3>Updates from the Blog</h3>
 		
@@ -55,7 +55,7 @@
 		
 		</div><!-- END .w250.right -->
 		
-		<div class="w250 left">
+		<div class="w290 left">
 			
 			<h3>Documentation</h3>
 		

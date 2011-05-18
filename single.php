@@ -6,23 +6,41 @@
 		
 		<div class="content left w600">
 			
-			<div class="post pads">
-			
-				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 				
+				<?php
+					$post_format = get_post_format();
+					if ( false === $post_format ) {
+						$post_format = 'standard';
+					}
+				?>
+			
+				<div class="post post-format-<?php echo $post_format; ?>">
+							
+					<?php if ( $post_format == 'aside' || $post_format == 'status' ) { ?>
+					
+						<div class="entry">
+							<?php the_content() ?>
+						</div>	
+												
+					<?php } else { ?>
+					
 					<h2><?php the_title() ?></h2>
 					
 					<div class="meta no-border">
 						<p>By <?php if ( function_exists( 'coauthors_posts_links' ) ) { coauthors_posts_links(); } else { the_author_posts_link(); } ?>&nbsp;&nbsp;&nbsp;Published <?php docredux_timestamp(); ?></p>
-					</div><!-- END .meta -->
+					</div><!-- END .meta -->					
 					
 					<div class="entry">
 						<?php the_content() ?>
 					</div>
-					
+
+					<?php } ?>
+									
 					<div class="clear"></div>
 					
 					<div class="meta">
+
 						<?php if ( $contexts = get_the_term_list( $post->ID, 'docredux_contexts', '', ', ', '' ) ) : ?>
 							<p>Contexts: <?php echo $contexts; ?></p>
 						<?php endif; ?>

@@ -10,13 +10,28 @@
 				$news_posts = new WP_Query( $args ); ?>
 			<ul>
 	  		<?php if ( $news_posts->have_posts() ) : ?>
-			<?php while ( $news_posts->have_posts() ) : $news_posts->the_post(); ?>
-				<li>
-					<?php if ( has_post_thumbnail()) { 	   
-					   the_post_thumbnail(  array(60,60), array('class' => 'thumb float-left')); 
-					}?>
-					<a href="<?php the_permalink() ?>"><h4 class="left"><?php the_title(); ?></h4></a><span>&nbsp;&mdash; <?php the_time( 'l, M. jS, Y' ); ?></span><br />
-					<?php the_excerpt() ?>
+			<?php while ( $news_posts->have_posts() ) : $news_posts->the_post();
+				
+				$post_format = get_post_format();
+				if ( false === $post_format ) {
+					$post_format = 'standard';
+				}				
+			?>
+				<li class="footer-post-format-<?php echo $post_format ?>">
+					
+					<?php if ( $post_format == 'aside' || $post_format == 'status' ) { ?>						
+						
+						<?php the_content() ?><span><a href="<?php the_permalink() ?>"><?php docredux_timestamp(); ?></a></span><br />
+						
+					<?php } else { ?>
+						
+						<?php if ( has_post_thumbnail()) { 	   
+						   the_post_thumbnail(  array(60,60), array('class' => 'thumb float-left')); 
+						} ?>
+						<a href="<?php the_permalink() ?>"><h4 class="left"><?php the_title(); ?></h4></a><span>&nbsp;&mdash; <?php docredux_timestamp(); ?></span><br />
+						<?php the_excerpt() ?>
+											
+					<?php } ?>
 				</li>
 	    	<?php endwhile; else: ?>
 				<li>There are currently no blog posts.</li>

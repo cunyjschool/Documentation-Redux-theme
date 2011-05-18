@@ -12,32 +12,47 @@ Template Name: Page - Blog
 		
 		<div class="content left w600">
 			
-			<div class="archive pads">
+			<div class="archive">
 			
 				<h2>Tech Blog</h2>			
 
-		  		<?php 
-                       $args=array(
-                         'post_type' => 'post'
-                       );
-                       $temp = $wp_query;
-                       $blog_posts = new WP_Query($args); 
+				<?php 
+					   $args=array(
+						 'post_type' => 'post'
+					   );
+					   $temp = $wp_query;
+					   $blog_posts = new WP_Query($args); 
 
-                       if ( $blog_posts->have_posts() ) :
+					   if ( $blog_posts->have_posts() ) :
 
-                       while ( $blog_posts->have_posts() ) : $blog_posts->the_post(); ?>
+					   while ( $blog_posts->have_posts() ) : $blog_posts->the_post(); ?>
 
-					<div class="doc-index post" id="post-<?php the_ID(); ?>">
-
-						<h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
+						<?php
+							$post_format = get_post_format();
+							if ( false === $post_format ) {
+								$post_format = 'standard';
+							}
+						?>
 						
-						<div class="entry">
-       					<?php if ( has_post_thumbnail()) { 	   
-       					   the_post_thumbnail(  'thumbnail', array('class' => 'thumb float-left') ); 
-       					}?>							
-						<?php the_excerpt(); ?>
+					<div class="doc-index post post-format-<?php echo $post_format; ?>" id="post-<?php the_ID(); ?>">
+						
+						<?php if ( $post_format == 'aside' || $post_format == 'status' ) { ?>
+						
+						<div class="entry">						
+							<?php the_content() ?>
 						</div>
-                           
+							
+						<?php } else { ?>
+							<h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
+							<div class="entry">
+		       					<?php if ( has_post_thumbnail()) { 	   
+		       					   the_post_thumbnail(  'thumbnail', array('class' => 'thumb float-left') ); 
+		       					}?>						
+							<?php the_excerpt(); ?>
+							</div>
+							
+						<?php } ?>
+						   
 						<div class="clear"></div>
 
 						<div class="meta">
