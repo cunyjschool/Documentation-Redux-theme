@@ -21,18 +21,12 @@
 					
 						<h2><?php the_title() ?></h2>
 						
-						<div class="entry">
-							<?php the_content() ?>
-						</div>
-					
-					<?php } else { ?>
-					
-						<h3>
-							<?php the_excerpt() ?>
-						</h3>
-						
 					<?php } ?>
 					
+					<div class="entry">
+						<?php the_content() ?>
+					</div>
+									
 					<div class="clear"></div>
 					
 					<div class="meta">
