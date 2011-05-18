@@ -10,22 +10,27 @@
 				
 				<?php
 					$post_format = get_post_format();
-					if ( false == $post_format ) {
-						$post_format == 'standard';
+					if ( false === $post_format ) {
+						$post_format = 'standard';
 					}
 				?>
 			
-				<div class="post post-format-<?php echo $post_format; ?> pads">
+				<div class="post post-format-<?php echo $post_format; ?>">
 							
-					<?php if ( $post_format == 'standard' ){ ?>
+					<?php if ( $post_format == 'aside' || $post_format == 'status' ) { ?>
 					
-						<h2><?php the_title() ?></h2>
-						
+						<div class="entry">
+							<?php the_content() ?>
+						</div>	
+												
+					<?php } else { ?>
+					
+						<div class="entry">
+							<h2><?php the_title() ?></h2>
+							<?php the_content() ?>
+						</div>
+					
 					<?php } ?>
-					
-					<div class="entry">
-						<?php the_content() ?>
-					</div>
 									
 					<div class="clear"></div>
 					

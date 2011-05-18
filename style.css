@@ -36,7 +36,7 @@ h2 {
 	font-size:24px;
 	font-weight:300;
 	letter-spacing: 0.3px;
-	padding-bottom: 15px;
+	padding-bottom: 5px;
 	line-height:30px;
 }
 
@@ -300,8 +300,8 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 }
 
 .main .content {
-	margin-top:25px;
-	margin-bottom:25px;
+	margin-top:30px;
+	margin-bottom:30px;
 }
 
 /**
@@ -343,6 +343,10 @@ body.archive .post {
 	padding-bottom: 5px;
 }
 
+.term-name {
+	margin-bottom:10px;
+}
+
 /**
  * Section: .post
  */
@@ -356,7 +360,8 @@ body.single .content .post .meta {
 	border: 1px solid #CCCCCC;
 }
 
-.single .post-format-aside .entry, .single .post-format-status .entry {
+.single .post-format-aside .entry, 
+.single .post-format-status .entry {
 	font-size:16px;
 	line-height:25px;
 }
@@ -430,12 +435,15 @@ margin-bottom:20px;
 }
 
 /* Archive */
-.archive .excerpt, .archive .doc-index, .archive .staff-index {
+.archive .excerpt, 
+.archive .doc-index, 
+.archive .staff-index {
 	margin:20px 0;
 	clear:both;
 }
 
-.archive .excerpt p, .archive .staff-index p {
+.archive .excerpt p, 
+.archive .staff-index p {
 	margin-top:10px;
 }
 
@@ -484,7 +492,9 @@ margin-bottom:20px;
 	background:#f9f9f9;
 }
 
-.sidebar .widget li, .posts ul, .events ul {
+.sidebar .widget li, 
+.posts ul, 
+.events ul {
 	list-style:none;
 	margin:0;
 }
