@@ -513,6 +513,20 @@ function docredux_get_term_base( $term_object ) {
 	
 } // END docredux_get_term_base()
 
+/**
+ * docredux_home_description()
+ * Print the home description
+ */
+function docredux_home_description() {
+	global $docredux;
+	
+	if ( !empty( $docredux->options['home_description'] ) ) {
+		echo $docredux->options['home_description'];		
+	} else {
+		echo "Please add a home description in theme options.";
+	}
+	
+} // END docredux_home_description()
 
 /**
  * docredux_timestamp()
