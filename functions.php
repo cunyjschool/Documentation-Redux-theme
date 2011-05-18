@@ -10,6 +10,9 @@ if ( !class_exists( 'docredux' ) ) {
 class docredux {
 	
 	var $theme_taxonomies = array();
+	var $options_group = 'docredux_';
+	var $options_group_name = 'docredux_options';
+	var $settings_page = 'docredux_settings';	
 	
 	/**
 	 * __construct()
@@ -26,6 +29,11 @@ class docredux {
 		add_action( 'init', array( &$this, 'create_taxonomies' ) );
 		add_action( 'init', array( &$this, 'enqueue_resources' ) );
 		add_action( 'init', array( &$this, 'register_menus' ) );
+		
+		add_action( 'admin_init', array( &$this, 'admin_init' ) );
+		
+		// Add the current options to our object
+		$this->options = get_option( $this->options_group_name );
 		
 	} // END __construct()
 	
@@ -58,6 +66,10 @@ class docredux {
 	    
 		add_theme_support( 'post-thumbnails' );
 		
+		if ( is_admin() ) {
+			add_action( 'admin_menu', array(&$this, 'add_admin_menu_items') );
+		}
+		
 	} // END init()
 	
 	/**
@@ -72,6 +84,24 @@ class docredux {
 		);
 	} // END register_menus()
 	
+	/**
+	 * admin_init()
+	 */
+	function admin_init() {
+
+		$this->register_settings();
+
+	} // END admin_init()
+	
+	/**
+	 * add_admin_menu_items()
+	 * Any admin menu items we need
+	 */
+	function add_admin_menu_items() {
+
+		add_submenu_page( 'themes.php', 'Documentation Redux Theme Options', 'Theme Options', 'manage_options', 'docredux_options', array( &$this, 'options_page' ) );			
+
+	} // END add_admin_menu_items()	
 	
 	/**
 	 * enqueue_resources()
@@ -354,6 +384,72 @@ class docredux {
 		
 	} // END add_post_formats()
 	
+	/**
+	 * register_settings()
+	 */
+	function register_settings() {
+
+		register_setting( $this->options_group, $this->options_group_name, array( &$this, 'settings_validate' ) );
+
+		// Global options
+		add_settings_section( 'docredux_home', 'Home', array(&$this, 'settings_home_section'), $this->settings_page );
+		add_settings_field( 'home_description', 'Description above the search box', array(&$this, 'settings_home_description_option'), $this->settings_page, 'docredux_home' );
+
+	} // END register_settings()
+	
+	/**
+	 * settings_home_description_option()
+	 * Option to configure the text that appears on the homepage
+	 */
+	function settings_home_description_option() {
+		
+		$options = $this->options;
+		$allowed_tags = htmlentities( '<b><strong><em><i><span><a><br>' );
+
+		echo '<textarea id="home_description" name="' . $this->options_group_name . '[home_description]" cols="80" rows="6">';
+		if ( isset( $options['home_description'] ) && $options['home_description'] ) {
+			echo $options['home_description'];
+		}
+		echo '</textarea>';
+		echo '<p class="description">The following tags are permitted: ' . $allowed_tags . '</p>';
+		
+	} // END settings_home_description_option()	
+	
+	/**
+	 * settings_validate()
+	 * Validation and sanitization on the settings field
+	 */
+	function settings_validate( $input ) {
+		
+		$allowed_tags = htmlentities( '<b><strong><em><i><span><a><br>' );
+
+		$input['home_description'] = strip_tags( $input['home_description'], $allowed_tags );
+		return $input;
+
+	} // END settings_validate()
+	
+	/**
+	 * Options page for the theme
+	 */
+	function options_page() {
+		?>                                   
+		<div class="wrap">
+			<div class="icon32" id="icon-options-general"><br/></div>
+
+			<h2><?php _e('Documentation Redux Options', 'docredux-theme') ?></h2>
+
+			<form action="options.php" method="post">
+
+				<?php settings_fields( $this->options_group ); ?>
+				<?php do_settings_sections( $this->settings_page ); ?>
+
+				<p class="submit"><input name="submit" type="submit" class="button-primary" value="<?php esc_attr_e('Save Changes'); ?>" /></p>
+
+			</form>
+		</div>
+		<?php
+	} // END options_page()
+	
 	
 } // END class docredux
 	
@@ -417,6 +513,20 @@ function docredux_get_term_base( $term_object ) {
 	
 } // END docredux_get_term_base()
 
+/**
+ * docredux_home_description()
+ * Print the home description
+ */
+function docredux_home_description() {
+	global $docredux;
+	
+	if ( !empty( $docredux->options['home_description'] ) ) {
+		echo $docredux->options['home_description'];		
+	} else {
+		echo "Please add a home description in theme options.";
+	}
+	
+} // END docredux_home_description()
 
 /**
  * docredux_timestamp()

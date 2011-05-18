@@ -117,11 +117,6 @@ table td {
 	border: none !important;
 }
 
-.pads {
-	margin-top:30px;
-	margin-bottom:30px;
-}
-
 .message {
 	padding-top: 7px;
 	padding-bottom: 7px;
@@ -176,7 +171,8 @@ table td {
 /* Search */
 .content .search {
 	padding:10px;
-	margin:20px 0;
+	margin-top: 10px;
+	margin-bottom: 20px;
 }
 
 .search input[type="text"] {
@@ -329,8 +325,19 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 /**
  * Page: .home-page
  */
-body.home-page .content {
-	margin:15px;
+
+body.home-page .featured {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 14px;
+	line-height: 22px;
+	font-weight: 300;
+	letter-spacing: 0.1px;
+}
+
+body.home-page .featured p {
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .home-page .content li,
