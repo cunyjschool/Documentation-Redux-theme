@@ -400,10 +400,12 @@ body.single .content .post .meta {
 	border: 1px solid #CCCCCC;
 }
 
-.single .post-format-aside .entry, 
-.single .post-format-status .entry {
-	font-size:16px;
-	line-height:25px;
+.content .post-format-aside .entry, 
+.content .post-format-status .entry {
+	font-size:18px;
+	line-height:26px;
+	letter-spacing: 0.2px;
+	font-weight: 400;
 }
 
 /**

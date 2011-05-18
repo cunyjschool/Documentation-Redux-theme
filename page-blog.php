@@ -36,13 +36,14 @@ Template Name: Page - Blog
 						
 					<div class="doc-index post post-format-<?php echo $post_format; ?>" id="post-<?php the_ID(); ?>">
 						
-						<?php if ( $post_format == 'aside' || $post_format == 'status' ) { ?>
+						<?php if ( $post_format == 'aside' || $post_format == 'status' ): ?>
 						
 						<div class="entry">						
 							<?php the_content() ?>
 						</div>
 							
-						<?php } else { ?>
+						<?php else: ?>
+							
 							<h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
 							<div class="entry">
 		       					<?php if ( has_post_thumbnail()) { 	   
@@ -51,12 +52,12 @@ Template Name: Page - Blog
 							<?php the_excerpt(); ?>
 							</div>
 							
-						<?php } ?>
-						   
-						<div class="clear"></div>
-
-						<div class="meta">
-							Published <?php docredux_timestamp(); ?>
+							<div class="clear"></div>
+							
+						<?php endif; ?>
+						
+						<div class="meta no-border">
+							Published <a href="<?php the_permalink(); ?>"><?php docredux_timestamp(); ?></a>
 							<?php 
 								$all_terms = ''; 
 								$all_terms .= get_the_term_list( $post->ID, 'docredux_courses', '', ', ', ', ' );
@@ -67,7 +68,7 @@ Template Name: Page - Blog
 								$all_terms .= get_the_term_list( $post->ID, 'docredux_wpthemes', '', ', ', ', ' );
 								$all_terms .= get_the_term_list( $post->ID, 'docredux_wpplugins', '', ', ', ', ' );
 								if ( $all_terms ) {
-									echo ' and relates to ' . rtrim( $all_terms, ', ' );
+									echo ' - ' . rtrim( $all_terms, ', ' );
 								}
 							?>
 							<?php edit_post_link( 'Edit', ' - ', '' ); ?>

@@ -17,13 +17,31 @@
 			
 				<div class="post post-format-<?php echo $post_format; ?>">
 							
-					<?php if ( $post_format == 'aside' || $post_format == 'status' ) { ?>
+					<?php if ( $post_format == 'aside' || $post_format == 'status' ): ?>
 					
 						<div class="entry">
 							<?php the_content() ?>
-						</div>	
+						</div>
+						
+						<div class="meta no-border">
+							Published <a href="<?php the_permalink(); ?>"><?php docredux_timestamp(); ?></a>
+							<?php 
+								$all_terms = ''; 
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_courses', '', ', ', ', ' );
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_contexts', '', ', ', ', ' );								
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_topics', '', ', ', ', ' );
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_hardware', '', ', ', ', ' );
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_software', '', ', ', ', ' );
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_wpthemes', '', ', ', ', ' );
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_wpplugins', '', ', ', ', ' );
+								if ( $all_terms ) {
+									echo ' - ' . rtrim( $all_terms, ', ' );
+								}
+							?>
+							<?php edit_post_link( 'Edit', ' - ', '' ); ?>
+						</div><!-- END .meta -->							
 												
-					<?php } else { ?>
+					<?php else: ?>
 					
 					<h2><?php the_title() ?></h2>
 					
@@ -34,9 +52,7 @@
 					<div class="entry">
 						<?php the_content() ?>
 					</div>
-
-					<?php } ?>
-									
+					
 					<div class="clear"></div>
 					
 					<div class="meta">
@@ -63,6 +79,9 @@
 							<p>WordPress plugins: <?php echo $wpplugins; ?></p>
 						<?php endif; ?>
 					</div><!-- END .meta -->
+
+					<?php endif; ?>
+									
 			
 				<?php endwhile ; endif; ?>
 			

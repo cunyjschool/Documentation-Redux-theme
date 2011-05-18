@@ -38,10 +38,11 @@
 			<li class="post sidebar-post-format-<?php echo $post_format ?>">
 				<?php if ( $post_format == 'aside' || $post_format == 'status' ) { ?>
 					<?php the_content() ?>
+					<div class="meta">Published <a href="<?php the_permalink(); ?>"><?php docredux_timestamp(); ?></a></div>					
 				<?php } else { ?>
-					<h5><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h5>	
+					<h5><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h5>
+					<div class="meta">Published <?php docredux_timestamp(); ?></div>					
 				 <?php } ?>	
-				<div class="meta">Published <?php docredux_timestamp(); ?></div>
 			</li>
     		<?php endwhile; else: ?>
 			<li>There are currently no blog posts.</li>
