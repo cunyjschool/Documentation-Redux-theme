@@ -9,6 +9,10 @@
 			<div class="post pads">
 			
 				<?php if ( have_posts()) : while ( have_posts()) : the_post(); ?>
+					
+					<?php if ( has_post_thumbnail() ) { 	   
+						the_post_thumbnail( array(60,60), array('class' => 'avatar float-right') ); 
+					} ?>					
 				
 					<h2><?php the_title() ?></h2>
 					

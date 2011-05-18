@@ -74,11 +74,11 @@ h5 {
 	background: url('images/bg-400-paper-light.jpg') repeat;
 }
 
-.left {
+.left, .float-left {
 	float:left;
 }
 
-.right {
+.right, .float-right {
 	float:right;
 }
 
@@ -130,9 +130,8 @@ h5 {
 	margin: 0 15px;
 }
 
-.avatar{
+.avatar, .thumb {
 	margin:0 20px 10px 0;
-	float:left;
 	border:3px solid #fff;
 }
 

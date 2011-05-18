@@ -84,6 +84,29 @@ class docredux_staff
 	function post_meta_box() {
 		global $post, $docredux;
 		
+		$database_link = get_post_meta( $post->ID, '_cunyj_databases_database_link', true );
+		$tutorial_link = get_post_meta( $post->ID, '_cunyj_databases_tutorial_link', true );
+
+		?>
+
+		<div class="inner" id="cunyj_database">
+
+			<p><label for="cunyj_database-database_link">Database URL:</label>
+				<input type="text" id="cunyj_events-database_link" name="cunyj_events-database_link" value="<?php echo $database_link; ?>" size="40" />
+				<br /><span class="description">Link this entry to a third-party database</span>
+			</p>
+
+			<p><label for="cunyj_database-tutorial_link">Tutorial URL:</label>
+				<input type="text" id="cunyj_events-tutorial_link" name="cunyj_events-tutorial_link" value="<?php echo $tutorial_link; ?>" size="40" />
+				<br /><span class="description">(Optional) Link this database with a tutorial</span>
+			</p>
+
+			<input type="hidden" name="cunyj_databases-nonce" id="cunyj_databases-nonce" value="<?php echo wp_create_nonce('cunyj_databases-nonce'); ?>" />
+
+		</div>
+
+		<?php		
+		
 	} // END post_meta_box()
 	
 	/**
