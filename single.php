@@ -6,11 +6,49 @@
 		
 		<div class="content left w600">
 			
-			<div class="post pads">
-			
-				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 				
+				<?php
+					$post_format = get_post_format();
+					if ( false === $post_format ) {
+						$post_format = 'standard';
+					}
+				?>
+			
+				<div class="post post-format-<?php echo $post_format; ?>">
+							
+					<?php if ( $post_format == 'aside' || $post_format == 'status' ): ?>
+					
+						<div class="entry">
+							<?php the_content() ?>
+						</div>
+						
+						<div class="meta no-border">
+							By <?php if ( function_exists( 'coauthors_posts_links' ) ) { coauthors_posts_links(); } else { the_author_posts_link(); } ?> - 
+							Published <a href="<?php the_permalink(); ?>"><?php docredux_timestamp(); ?></a>
+							<?php 
+								$all_terms = ''; 
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_courses', '', ', ', ', ' );
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_contexts', '', ', ', ', ' );								
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_topics', '', ', ', ', ' );
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_hardware', '', ', ', ', ' );
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_software', '', ', ', ', ' );
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_wpthemes', '', ', ', ', ' );
+								$all_terms .= get_the_term_list( $post->ID, 'docredux_wpplugins', '', ', ', ', ' );
+								if ( $all_terms ) {
+									echo ' - ' . rtrim( $all_terms, ', ' );
+								}
+							?>
+							<?php edit_post_link( 'Edit', ' - ', '' ); ?>
+						</div><!-- END .meta -->							
+												
+					<?php else: ?>
+					
 					<h2><?php the_title() ?></h2>
+					
+					<div class="meta no-border">
+						<p>By <?php if ( function_exists( 'coauthors_posts_links' ) ) { coauthors_posts_links(); } else { the_author_posts_link(); } ?>&nbsp;&nbsp;&nbsp;Published <?php docredux_timestamp(); ?></p>
+					</div><!-- END .meta -->					
 					
 					<div class="entry">
 						<?php the_content() ?>
@@ -19,8 +57,7 @@
 					<div class="clear"></div>
 					
 					<div class="meta">
-						<p>By <?php if ( function_exists( 'coauthors_posts_links' ) ) { coauthors_posts_links(); } else { the_author_posts_link(); } ?></p>
-						<p>Published at <?php the_time( 'g:i a l, M. jS, Y' ); ?></p>
+
 						<?php if ( $contexts = get_the_term_list( $post->ID, 'docredux_contexts', '', ', ', '' ) ) : ?>
 							<p>Contexts: <?php echo $contexts; ?></p>
 						<?php endif; ?>
@@ -43,6 +80,9 @@
 							<p>WordPress plugins: <?php echo $wpplugins; ?></p>
 						<?php endif; ?>
 					</div><!-- END .meta -->
+
+					<?php endif; ?>
+									
 			
 				<?php endwhile ; endif; ?>
 			

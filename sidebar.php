@@ -29,10 +29,20 @@
 			
 			if ( $posts->have_posts() ) : ?>
 			<ul class="all-posts">
-			<?php while ( $posts->have_posts() ) : $posts->the_post(); ?>
-			<li class="post">
-				<h5><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h5>
-				<div class="meta">Published <?php docredux_timestamp(); ?></div>
+			<?php while ( $posts->have_posts() ) : $posts->the_post(); 
+				$post_format = get_post_format();
+				if ( false === $post_format ) {
+					$post_format = 'standard';
+				}
+			?>
+			<li class="post sidebar-post-format-<?php echo $post_format ?>">
+				<?php if ( $post_format == 'aside' || $post_format == 'status' ) { ?>
+					<?php the_content() ?>
+					<div class="meta">Published <a href="<?php the_permalink(); ?>"><?php docredux_timestamp(); ?></a></div>					
+				<?php } else { ?>
+					<h5><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h5>
+					<div class="meta">Published <?php docredux_timestamp(); ?></div>					
+				 <?php } ?>	
 			</li>
     		<?php endwhile; else: ?>
 			<li>There are currently no blog posts.</li>

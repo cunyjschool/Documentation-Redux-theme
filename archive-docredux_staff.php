@@ -6,7 +6,7 @@
 		
 		<div class="content left w600">
 			
-			<div class="archive pads">
+			<div class="archive">
 			
 					<h2>Tech Staff</h2>			
 
@@ -14,17 +14,35 @@
 
 				 	<?php while (have_posts()) : the_post(); ?>
 
-						<div class="staff-index" id="post-<?php the_ID(); ?>">
+						<div class="staff-index post post-type-staff" id="post-<?php the_ID(); ?>">
 
-							<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
+							<?php if ( has_post_thumbnail() ) { 	   
+        					   the_post_thumbnail( array(60,60), array('class' => 'avatar float-right') ); 
+        					} ?>
+							<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a><?php if ( $title = get_post_meta( get_the_id(), '_docredux_staff_title', true ) ) { echo '<span class="staff-title">' . $title . '</span>'; } ?></h4>
 							
 							<div class="entry">
 								<?php the_excerpt(); ?>
-								<?php if ( has_post_thumbnail() ) { 	   
-            					   the_post_thumbnail( array(60,60), array('class' => 'avatar') ); 
-            					} ?>
 							</div>
-
+							
+							<div class="meta">
+								<?php
+									if ( $room_number = get_post_meta( get_the_id(), '_docredux_staff_room_number', true ) ) {
+										echo '<span class="room-number">Located in Room ' . $room_number . '</span>';
+									}
+									$all_terms = ''; 
+									$all_terms .= get_the_term_list( $post->ID, 'docredux_courses', '', ', ', ', ' );
+									$all_terms .= get_the_term_list( $post->ID, 'docredux_contexts', '', ', ', ', ' );								
+									$all_terms .= get_the_term_list( $post->ID, 'docredux_topics', '', ', ', ', ' );
+									$all_terms .= get_the_term_list( $post->ID, 'docredux_hardware', '', ', ', ', ' );
+									$all_terms .= get_the_term_list( $post->ID, 'docredux_software', '', ', ', ', ' );
+									$all_terms .= get_the_term_list( $post->ID, 'docredux_wpthemes', '', ', ', ', ' );
+									$all_terms .= get_the_term_list( $post->ID, 'docredux_wpplugins', '', ', ', ', ' );
+									if ( $all_terms ) {
+										echo '<span class="knows-about">Knows about ' . rtrim( $all_terms, ', ' ) . '</span>';
+									}
+								?>
+							</div>
 						</div><!-- END - .staff-index -->
 
 				<?php endwhile; ?>

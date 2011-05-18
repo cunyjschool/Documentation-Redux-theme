@@ -4,7 +4,7 @@ Theme URI: http://tech.journalism.cuny.edu/
 Description: Dedicated theme for CUNY J-School tech documentation
 Author: Joe Filippazzo, Daniel Bachhuber
 Author URI: http://tech.journalism.cuny.edu/staff/
-Version: 0.2
+Version: 0.3a
 License: GNU General Public License
 License URI: license.txt
 */
@@ -27,29 +27,48 @@ body {
 }
 
 h1 {
-	font-size:3em;
+	font-size:30px;
 	margin-bottom:10px;
-	padding-left:5px;
+	padding-left:5px; 
 }
 
 h2 {
 	font-size:24px;
 	font-weight:300;
 	letter-spacing: 0.3px;
-	padding-bottom: 15px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 	line-height:30px;
 }
 
 h3 {
 	font-size:18px;
+	line-height: 26px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 h4 {
-	font-size:14px;
+	font-size:15px;
+	line-height: 23px;
+	padding-top: 3px;
+	padding-bottom: 3px;
 }
 
 h5 {
-	font-size:1em;
+	font-size: 12px;
+}
+
+table {
+	width:100%;
+	border-collapse:collapse;
+	margin:10px 0 20px 0;
+}
+
+table td {
+	padding:10px 15px;
+	border:1px solid #e3e6db;
+	background: url('images/bg-400-paper-light.jpg') repeat;
 }
 
 .no-corners {
@@ -74,11 +93,11 @@ h5 {
 	background: url('images/bg-400-paper-light.jpg') repeat;
 }
 
-.left {
+.left, .float-left {
 	float:left;
 }
 
-.right {
+.right, .float-right {
 	float:right;
 }
 
@@ -94,9 +113,8 @@ h5 {
 	width:100%;
 }
 
-.pads {
-	margin-top:30px;
-	margin-bottom:30px;
+.no-border {
+	border: none !important;
 }
 
 .message {
@@ -125,15 +143,24 @@ h5 {
 	margin:0 15px;
 }
 
-.w250 {
-	width:250px;
-	margin: 0 15px;
+.w290 {
+	width:290px;
+	margin: 0;
 }
 
-.avatar{
-	margin:0 20px 10px 0;
-	float:left;
+.avatar,
+.thumb {
 	border:3px solid #fff;
+}
+
+.avatar.float-left,
+.thumb.float-left {
+	margin:0 20px 10px 0;
+}
+
+.avatar.float-right,
+.thumb.float-right {
+	margin:0 0 10px 20px;
 }
 
 .fail-whale img{
@@ -144,7 +171,8 @@ h5 {
 /* Search */
 .content .search {
 	padding:10px;
-	margin:20px 0;
+	margin-top: 10px;
+	margin-bottom: 20px;
 }
 
 .search input[type="text"] {
@@ -265,7 +293,7 @@ ul#menu-header-menu ul.sub-menu > li > a {
 
 ul#menu-header-menu > li:last-child > ul.sub-menu {
 	margin-top:40px;
-	margin-left:-112px;
+	margin-left:-100px;
 }
 
 ul#menu-header-menu ul.sub-menu > li > a:hover {
@@ -274,6 +302,7 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 }
 
 /* Content */
+
 .main a {
 	text-decoration:none;
 	color:#a8403a;
@@ -283,15 +312,32 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 	text-decoration:underline;
 }
 
-.main .content p {
-	margin: 10px 15px 10px 0;
+.main .container {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.post {
+	padding-top:10px;
+	padding-bottom:10px;
 }
 
 /**
  * Page: .home-page
  */
-body.home-page .content {
-	margin:15px;
+
+body.home-page .featured {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 14px;
+	line-height: 22px;
+	font-weight: 300;
+	letter-spacing: 0.1px;
+}
+
+body.home-page .featured p {
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .home-page .content li,
@@ -326,12 +372,27 @@ body.archive .post {
 	padding-bottom: 5px;
 }
 
+.term-name {
+	margin-bottom:10px;
+}
+
 /**
  * Section: .post
  */
 
+.post .entry {
+	font-size: 14px;
+	letter-spacing: 0.1px;
+	line-height: 22px;
+	font-weight: 400;
+}
+
 .post .meta {
 	color:#999999;
+}
+
+.post.post-type-staff .meta span {
+	margin-right: 10px;
 }
 
 body.single .content .post .meta {
@@ -339,10 +400,27 @@ body.single .content .post .meta {
 	border: 1px solid #CCCCCC;
 }
 
+.content .post-format-aside .entry, 
+.content .post-format-status .entry {
+	font-size:18px;
+	line-height:26px;
+	letter-spacing: 0.2px;
+	font-weight: 400;
+}
+
+/**
+ * Context: Staff
+ */
+.post-type-staff span.staff-title {
+	font-style: italic;
+	color: #888888;
+	padding-left: 10px;
+}
+
 /* Documentation single */
 
-body.single .content .meta {
-	margin: 20px 10px 20px -5px;
+body.single .content .entry {
+	padding-bottom: 15px;
 }
 
 .content .meta p {
@@ -381,29 +459,30 @@ body.single .content .meta {
 	margin-left:-15px;
 }
 
-.entry table {
+.content .entry p {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.content .entry table {
 	width:100%;
 	border-collapse:collapse;
 	margin:10px 0 20px 0;
 }
 
-.entry table td {
+.content .entry table td {
 	padding:10px 15px;
 	border:1px solid #e3e6db;
 	background: url('images/bg-400-paper-light.jpg') repeat;
 }
 
-.entry h3 {
-margin-top:30px;
-font-weight:normal;
-}
-
-.entry code, .entry p.code {
-background:#fff;
-border:1px solid #ddd;
-line-height:22px;
-font-family:"Courier Neue", courier;
-padding:10px 20px;
+.entry code,
+.entry p.code {
+	background:#fff;
+	border:1px solid #ddd;
+	line-height:22px;
+	font-family:"Courier Neue", courier;
+	padding:10px 20px;
 }
 
 .entry img {
@@ -419,25 +498,7 @@ margin-bottom:20px;
 	margin:5px 0 5px 15px;
 }
 
-.page .main td {
-	padding:10px 20px;
-	border:1px solid #e3e6db;
-}
-
-.page table {
-	margin:10px 0 0 -10px;
-	width:610px;
-}
-
 /* Archive */
-.archive .excerpt, .archive .doc-index, .archive .staff-index {
-	margin:20px 0;
-	clear:both;
-}
-
-.archive .excerpt p, .archive .staff-index p {
-	margin-top:10px;
-}
 
 .staff-index .avatar {
 	margin-top:10px;
@@ -449,7 +510,8 @@ margin-bottom:20px;
 
 /* Sidebar */
 .sidebar .widget {
-	margin:20px 0;
+	margin-top: 10px;
+	margin-bottom: 20px;
 }
 
 .sidebar div.no-bottom-corners {
@@ -484,7 +546,9 @@ margin-bottom:20px;
 	background:#f9f9f9;
 }
 
-.sidebar .widget li, .posts ul, .events ul {
+.sidebar .widget li, 
+.posts ul, 
+.events ul {
 	list-style:none;
 	margin:0;
 }
@@ -507,6 +571,14 @@ margin-bottom:20px;
 	color:#ccc;
 }
 
+.footer a:hover {
+	text-decoration:underline;
+}
+
+.footer span a {
+	text-decoration:none;
+}
+
 .footer .container {
 	width:984px;
 }
@@ -521,9 +593,34 @@ margin-bottom:20px;
 	border-left:1px dashed #444444;
 }
 
-.footer .posts ul li, .footer .events ul li {
-	clear:both;
-	margin:20px 0;
+.footer .posts ul li,
+.footer .events ul li {
+	clear: left;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.footer .posts ul li.post h4 {
+	padding: 0;
+}
+
+.footer .posts ul li.post h4 span {
+	padding-left: 5px;
+}
+
+.footer .posts ul li.post .entry {
+	font-size: 12px;
+	line-height: 20px;
+	padding-top: 3px;
+	padding-bottom: 3px;	
+}
+
+.footer .posts ul li.post-format-aside .entry,
+.footer .posts ul li.post-format-status .entry {
+	font-size: 15px;
+	line-height: 22px;
+	letter-spacing: 0.1px;
+	font-weight: 300;
 }
 
 .footer .posts ul li img {

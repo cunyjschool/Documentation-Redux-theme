@@ -6,7 +6,7 @@
 		
 		<div class="content left w600">
 			
-			<div class="archive pads">
+			<div class="archive">
 			
 					<h2>Documentation Archive</h2>			
 
@@ -19,16 +19,21 @@
 							<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
 
 							<div class="meta">
+								Published <?php docredux_timestamp(); ?>
 								<?php 
-									edit_post_link('Edit this post', '', ' — ');
-									
-									echo get_the_term_list( $post->ID, 'docredux_courses', '', ', ', '' );
-									echo get_the_term_list( $post->ID, 'docredux_topics', ', ', ', ', '' );
-									echo get_the_term_list( $post->ID, 'docredux_hardware', ', ', ', ', '' );
-									echo get_the_term_list( $post->ID, 'docredux_software', ', ', ', ', '' );
-									echo get_the_term_list( $post->ID, 'docredux_wpthemes', ', ', ', ', '' );
-									echo get_the_term_list( $post->ID, 'docredux_wpplugins', ', ', ', ', '' );
+									$all_terms = ''; 
+									$all_terms .= get_the_term_list( $post->ID, 'docredux_courses', '', ', ', ', ' );
+									$all_terms .= get_the_term_list( $post->ID, 'docredux_contexts', '', ', ', ', ' );								
+									$all_terms .= get_the_term_list( $post->ID, 'docredux_topics', '', ', ', ', ' );
+									$all_terms .= get_the_term_list( $post->ID, 'docredux_hardware', '', ', ', ', ' );
+									$all_terms .= get_the_term_list( $post->ID, 'docredux_software', '', ', ', ', ' );
+									$all_terms .= get_the_term_list( $post->ID, 'docredux_wpthemes', '', ', ', ', ' );
+									$all_terms .= get_the_term_list( $post->ID, 'docredux_wpplugins', '', ', ', ', ' );
+									if ( $all_terms ) {
+										echo ' and relates to ' . rtrim( $all_terms, ', ' );
+									}
 								?>
+								<?php edit_post_link( 'Edit', ' - ', '' ); ?>
 							</div><!-- END .meta -->
 
 							<!-- <?php the_excerpt(); ?> -->
