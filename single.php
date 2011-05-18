@@ -6,20 +6,37 @@
 		
 		<div class="content left w600">
 			
-			<div class="post pads">
-			
-				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 				
-					<h2><?php the_title() ?></h2>
+				<?php
+					$post_format = get_post_format();
+					if ( false == $post_format ) {
+						$post_format == 'standard';
+					}
+				?>
+			
+				<div class="post post-format-<?php echo $post_format; ?> pads">
+							
+					<?php if ( $post_format == 'standard' ){ ?>
 					
-					<div class="entry">
-						<?php the_content() ?>
-					</div>
+						<h2><?php the_title() ?></h2>
+						
+						<div class="entry">
+							<?php the_content() ?>
+						</div>
+					
+					<?php } else { ?>
+					
+						<h3>
+							<?php the_excerpt() ?>
+						</h3>
+						
+					<?php } ?>
 					
 					<div class="clear"></div>
 					
 					<div class="meta">
-						<p>By <?php if ( function_exists( 'coauthors_posts_links' ) ) { coauthors_posts_links(); } else { the_author_posts_link(); } ?></p>
+						<p>By <?php if ( function_exists( 'coauthors_posts_links' ) ) { coauthors_posts_links(); } else { the_author_posts_link(); } ?> <?php edit_post_link( 'Edit', " - " ); ?></p>
 						<p>Published at <?php the_time( 'g:i a l, M. jS, Y' ); ?></p>
 						<?php if ( $contexts = get_the_term_list( $post->ID, 'docredux_contexts', '', ', ', '' ) ) : ?>
 							<p>Contexts: <?php echo $contexts; ?></p>
