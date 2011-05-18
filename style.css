@@ -306,6 +306,7 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 }
 
 /* Content */
+
 .main a {
 	text-decoration:none;
 	color:#a8403a;
@@ -313,6 +314,16 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 
 .main a:hover {
 	text-decoration:underline;
+}
+
+.main .container {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.post {
+	padding-top:10px;
+	padding-bottom:10px;
 }
 
 /**
@@ -490,7 +501,8 @@ margin-bottom:20px;
 
 /* Sidebar */
 .sidebar .widget {
-	margin:20px 0;
+	margin-top: 10px;
+	margin-bottom: 20px;
 }
 
 .sidebar div.no-bottom-corners {
