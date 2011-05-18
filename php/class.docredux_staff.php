@@ -74,7 +74,7 @@ class docredux_staff
 	 */
 	function add_post_meta_box() {
 		
-		add_meta_box( 'docredux_staff', __( 'Metadata', 'docredux_staff' ), array( &$this, 'post_meta_box' ), 'docredux_staff', 'side', 'high' );
+		add_meta_box( 'docredux_staff', __( 'Metadata', 'docredux_staff' ), array( &$this, 'post_meta_box' ), 'docredux_staff', 'normal', 'high' );
 		
 	} // END add_post_meta_box()
 	
@@ -84,24 +84,19 @@ class docredux_staff
 	function post_meta_box() {
 		global $post, $docredux;
 		
-		$database_link = get_post_meta( $post->ID, '_cunyj_databases_database_link', true );
-		$tutorial_link = get_post_meta( $post->ID, '_cunyj_databases_tutorial_link', true );
+		$room_number = get_post_meta( $post->ID, '_docredux_staff_room_number', true );
 
 		?>
 
-		<div class="inner" id="cunyj_database">
+		<div class="inner">
 
-			<p><label for="cunyj_database-database_link">Database URL:</label>
-				<input type="text" id="cunyj_events-database_link" name="cunyj_events-database_link" value="<?php echo $database_link; ?>" size="40" />
-				<br /><span class="description">Link this entry to a third-party database</span>
+			<p><label for="docredux_staff-room_number">Room:</label>
+				<input type="text" id="docredux_staff-room_number" name="docredux_staff-room_number" value="<?php echo $room_number; ?>" size="40" />
 			</p>
+			
+			<div class="clear-both"></div>
 
-			<p><label for="cunyj_database-tutorial_link">Tutorial URL:</label>
-				<input type="text" id="cunyj_events-tutorial_link" name="cunyj_events-tutorial_link" value="<?php echo $tutorial_link; ?>" size="40" />
-				<br /><span class="description">(Optional) Link this database with a tutorial</span>
-			</p>
-
-			<input type="hidden" name="cunyj_databases-nonce" id="cunyj_databases-nonce" value="<?php echo wp_create_nonce('cunyj_databases-nonce'); ?>" />
+			<input type="hidden" name="docredux_staff-nonce" id="docredux_staff-nonce" value="<?php echo wp_create_nonce('docredux_staff-nonce'); ?>" />
 
 		</div>
 
@@ -122,7 +117,9 @@ class docredux_staff
 		if ( !wp_is_post_revision( $post_id ) && !wp_is_post_autosave( $post_id ) ) {
 			
 			// @todo Save whatever you need to save
-		
+			$room_number = wp_kses( $_POST['docredux_staff-room_number'], false );
+			update_post_meta( $post_id, '_docredux_staff_room_number', $room_number );
+			
 		}		
 	} // END save_post_meta_box()
 	

@@ -94,6 +94,10 @@ h5 {
 	width:100%;
 }
 
+.no-border {
+	border: none !important;
+}
+
 .pads {
 	margin-top:30px;
 	margin-bottom:30px;
@@ -343,6 +347,10 @@ body.archive .post {
 	color:#999999;
 }
 
+.post.post-type-staff .meta span {
+	margin-right: 10px;
+}
+
 body.single .content .post .meta {
 	padding: 5px 10px;
 	border: 1px solid #CCCCCC;
@@ -351,7 +359,7 @@ body.single .content .post .meta {
 /* Documentation single */
 
 body.single .content .meta {
-	margin: 20px 10px 20px -5px;
+	margin: 10px 10px 10px -5px;
 }
 
 .content .meta p {

@@ -14,13 +14,13 @@
 						the_post_thumbnail( array(60,60), array('class' => 'avatar float-right') ); 
 					} ?>					
 				
-					<h2><?php the_title() ?></h2>
+					<h2><?php the_title(); ?></h2>
 					
 					<div class="entry">
 						<?php the_content(); ?>
 					</div>
 					
-					<div class="meta">
+					<div class="meta no-border">
 						<?php if ( $contexts = get_the_term_list( $post->ID, 'docredux_contexts', '', ', ', '' ) ) : ?>
 							<p>Contexts: <?php echo $contexts; ?></p>
 						<?php endif; ?>
@@ -42,7 +42,10 @@
 						<?php if ( $wpplugins = get_the_term_list( $post->ID, 'docredux_wpplugins', '', ', ', '' ) ) : ?>
 							<p>WordPress plugins: <?php echo $wpplugins; ?></p>
 						<?php endif; ?>
-						<p>Last updated at <?php the_modified_time( 'g:i a l, M. jS, Y' ); ?></p>						
+					</div>
+					
+					<div class="meta">
+						<p>Updated <?php docredux_timestamp( false, 'modified' ); ?></p>						
 					</div><!-- END .meta -->
 			
 				<?php endwhile ; endif; ?>

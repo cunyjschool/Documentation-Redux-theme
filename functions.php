@@ -81,6 +81,8 @@ class docredux {
 		
 		if ( !is_admin() ) {
 			wp_enqueue_style( 'docredux_primary_css', get_bloginfo('template_directory') . '/style.css', false, DOCREDUX_VERSION );
+		} else {
+			wp_enqueue_style( 'docredux_staff_admin_css', get_bloginfo('template_directory') . '/css/staff_admin.css', false, DOCREDUX_VERSION );
 		}
 		
 	} // END enqueue_resources()
