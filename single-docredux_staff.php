@@ -49,7 +49,7 @@
 				
 				<div class="recently-published entry-footer paper pads">
 					
-					<h4>Recently Published</h4>
+					<h4>Recently Published by <?php the_author(); ?></h4>
 					<?php
 
 						$args = array(

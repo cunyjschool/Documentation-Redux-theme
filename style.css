@@ -130,9 +130,19 @@ h5 {
 	margin: 0 15px;
 }
 
-.avatar, .thumb {
-	margin:0 20px 10px 0;
+.avatar,
+.thumb {
 	border:3px solid #fff;
+}
+
+.avatar.float-left,
+.thumb.float-left {
+	margin:0 20px 10px 0;
+}
+
+.avatar.float-right,
+.thumb.float-right {
+	margin:0 0 10px 20px;
 }
 
 .fail-whale img{
