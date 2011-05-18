@@ -17,7 +17,7 @@
 						<div class="staff-index post post-type-staff" id="post-<?php the_ID(); ?>">
 
 							<?php if ( has_post_thumbnail() ) { 	   
-        					   the_post_thumbnail( array(60,60), array('class' => 'avatar float-left') ); 
+        					   the_post_thumbnail( array(60,60), array('class' => 'avatar float-right') ); 
         					} ?>
 							<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a><?php if ( $title = get_post_meta( get_the_id(), '_docredux_staff_title', true ) ) { echo '<span class="staff-title">' . $title . '</span>'; } ?></h4>
 							
