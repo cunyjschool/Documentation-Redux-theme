@@ -339,7 +339,7 @@ body.single .content .post .meta {
 	border: 1px solid #CCCCCC;
 }
 
-.post-format-aside .entry, .post-format-status .entry {
+.single .post-format-aside .entry, .single .post-format-status .entry {
 	font-size:16px;
 	line-height:25px;
 }
@@ -422,16 +422,6 @@ margin-bottom:20px;
 /* Page Templates */
 .page td li{
 	margin:5px 0 5px 15px;
-}
-
-.page .main td {
-	padding:10px 20px;
-	border:1px solid #e3e6db;
-}
-
-.page table {
-	margin:10px 0 0 -10px;
-	width:610px;
 }
 
 /* Archive */
