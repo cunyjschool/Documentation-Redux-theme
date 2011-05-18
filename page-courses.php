@@ -12,7 +12,7 @@ Template Name: Page - Courses
 		
 		<div class="content left w600">
 			
-			<div class="archive pads">
+			<div class="archive">
 			
 					<h2>Courses</h2>
 					

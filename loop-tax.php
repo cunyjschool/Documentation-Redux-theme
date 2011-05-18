@@ -1,6 +1,6 @@
 <div class="content left w600">
 	
-	<div class="archive pads">
+	<div class="archive">
 		
 		<?php
 			$term = get_queried_object();

@@ -12,7 +12,7 @@ Template Name: Page - Blog
 		
 		<div class="content left w600">
 			
-			<div class="archive pads">
+			<div class="archive">
 			
 				<h2>Tech Blog</h2>			
 

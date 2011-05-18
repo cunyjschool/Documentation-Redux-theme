@@ -6,7 +6,7 @@
 		
 		<div class="content left w600">
 			
-			<div class="pads">			
+			<div>			
 
                 <h2>Oops... 404!</h2>
                 <p>Sorry, but we can't seem to find what you're looking for. Are you searching for documentation we haven’t written yet? <a href="http://help.journalism.cuny.edu/">Let us know!</a></p>

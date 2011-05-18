@@ -6,7 +6,7 @@
 		
 		<div class="content left w600">
 			
-			<div class="post pads">
+			<div class="post">
 			
 				<?php if ( have_posts()) : while ( have_posts()) : the_post(); ?>
 				
