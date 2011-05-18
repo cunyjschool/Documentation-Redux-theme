@@ -83,13 +83,30 @@ class docredux_staff
 	 */
 	function post_meta_box() {
 		global $post, $docredux;
-		
+
+		$wordpress_user = get_post_meta( $post->ID, '_docredux_staff_wordpress_user', true );		
 		$room_number = get_post_meta( $post->ID, '_docredux_staff_room_number', true );
 		$title = get_post_meta( $post->ID, '_docredux_staff_title', true );		
 
 		?>
 
 		<div class="inner">
+			
+			<p><label for="docredux_staff-wordpress_user">WordPress User:</label>
+				<select id="docredux_staff-wordpress_user" name="docredux_staff-wordpress_user">
+					<option value="0">-- Please select a user --</option>
+				<?php
+				$all_users = get_users();
+				foreach ( $all_users as $single_user ) {
+					echo '<option value="' . $single_user->ID . '"';
+					if ( $single_user->ID == $wordpress_user ) {
+						echo ' selected="selected"';
+					}
+					echo '>' . $single_user->display_name . '</option>';
+				}
+				?>
+				</select>
+			</p>			
 
 			<p><label for="docredux_staff-room_number">Room:</label>
 				<input type="text" id="docredux_staff-room_number" name="docredux_staff-room_number" value="<?php echo $room_number; ?>" size="40" />
@@ -120,6 +137,9 @@ class docredux_staff
 		}
 		
 		if ( !wp_is_post_revision( $post_id ) && !wp_is_post_autosave( $post_id ) ) {
+			
+			$wordpress_user = (int)$_POST['docredux_staff-wordpress_user'];
+			update_post_meta( $post_id, '_docredux_staff_wordpress_user', $wordpress_user );
 			
 			$room_number = wp_kses( $_POST['docredux_staff-room_number'], false );
 			update_post_meta( $post_id, '_docredux_staff_room_number', $room_number );

@@ -50,9 +50,11 @@
 			
 				<?php endwhile ; endif; ?>
 				
+				<?php if ( $wordpress_user = get_post_meta( $post->ID, '_docredux_staff_wordpress_user', true ) ) : ?>
+				
 				<div class="recently-published entry-footer paper pads">
 					
-					<h4>Recently Published by <?php the_author(); ?></h4>
+					<h4>Recently published by <?php the_title(); ?></h4>
 					<?php
 
 						$args = array(
@@ -61,6 +63,7 @@
 								'post',
 								'docredux_doc',
 							),
+							'author' => $wordpress_user,
 						);
 						$content = new WP_Query( $args );
 
@@ -77,7 +80,10 @@
 					<?php endif; ?>
 					</ul><!-- END .all-content -->
 					<p class="see-all"><a href="<?php echo get_author_posts_url( $post->post_author ); ?>">See all &rarr;</a></p>
-				</div><!-- END .widget -->
+					
+				</div><!-- END .recently-published -->
+				
+				<?php endif; ?>
 			
 			</div><!-- END .entry -->
 
