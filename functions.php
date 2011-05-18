@@ -1,6 +1,6 @@
 <?php
 
-define( 'DOCREDUX_VERSION', '0.2' );
+define( 'DOCREDUX_VERSION', '0.3a' );
 
 include_once( 'php/class.docredux_doc.php' );
 include_once( 'php/class.docredux_staff.php' );
