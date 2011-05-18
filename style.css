@@ -356,6 +356,15 @@ body.single .content .post .meta {
 	border: 1px solid #CCCCCC;
 }
 
+/**
+ * Context: Staff
+ */
+.post-type-staff span.staff-title {
+	font-style: italic;
+	color: #888888;
+	padding-left: 10px;
+}
+
 /* Documentation single */
 
 body.single .content .meta {

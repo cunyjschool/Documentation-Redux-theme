@@ -6,7 +6,7 @@
 		
 		<div class="content left w600">
 			
-			<div class="post pads">
+			<div class="post pads post-type-staff">
 			
 				<?php if ( have_posts()) : while ( have_posts()) : the_post(); ?>
 					
@@ -14,7 +14,7 @@
 						the_post_thumbnail( array(60,60), array('class' => 'avatar float-right') ); 
 					} ?>					
 				
-					<h2><?php the_title(); ?></h2>
+					<h2><?php the_title(); ?><?php if ( $title = get_post_meta( get_the_id(), '_docredux_staff_title', true ) ) { echo '<span class="staff-title">' . $title . '</span>'; } ?></h2>
 					
 					<div class="entry">
 						<?php the_content(); ?>

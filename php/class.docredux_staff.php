@@ -74,7 +74,7 @@ class docredux_staff
 	 */
 	function add_post_meta_box() {
 		
-		add_meta_box( 'docredux_staff', __( 'Metadata', 'docredux_staff' ), array( &$this, 'post_meta_box' ), 'docredux_staff', 'normal', 'high' );
+		add_meta_box( 'docredux_staff', __( 'Staff Member Information', 'docredux_staff' ), array( &$this, 'post_meta_box' ), 'docredux_staff', 'normal', 'high' );
 		
 	} // END add_post_meta_box()
 	
@@ -85,6 +85,7 @@ class docredux_staff
 		global $post, $docredux;
 		
 		$room_number = get_post_meta( $post->ID, '_docredux_staff_room_number', true );
+		$title = get_post_meta( $post->ID, '_docredux_staff_title', true );		
 
 		?>
 
@@ -95,6 +96,10 @@ class docredux_staff
 			</p>
 			
 			<div class="clear-both"></div>
+			
+			<p><label for="docredux_staff-title">Title:</label>
+				<input type="text" id="docredux_staff-title" name="docredux_staff-title" value="<?php echo $title; ?>" size="40" />
+			</p>			
 
 			<input type="hidden" name="docredux_staff-nonce" id="docredux_staff-nonce" value="<?php echo wp_create_nonce('docredux_staff-nonce'); ?>" />
 
@@ -116,9 +121,11 @@ class docredux_staff
 		
 		if ( !wp_is_post_revision( $post_id ) && !wp_is_post_autosave( $post_id ) ) {
 			
-			// @todo Save whatever you need to save
 			$room_number = wp_kses( $_POST['docredux_staff-room_number'], false );
 			update_post_meta( $post_id, '_docredux_staff_room_number', $room_number );
+			
+			$title = wp_kses( $_POST['docredux_staff-title'], false );
+			update_post_meta( $post_id, '_docredux_staff_title', $title );			
 			
 		}		
 	} // END save_post_meta_box()

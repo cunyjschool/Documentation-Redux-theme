@@ -19,7 +19,7 @@
 							<?php if ( has_post_thumbnail() ) { 	   
         					   the_post_thumbnail( array(60,60), array('class' => 'avatar float-left') ); 
         					} ?>
-							<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
+							<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a><?php if ( $title = get_post_meta( get_the_id(), '_docredux_staff_title', true ) ) { echo '<span class="staff-title">' . $title . '</span>'; } ?></h4>
 							
 							<div class="entry">
 								<?php the_excerpt(); ?>
