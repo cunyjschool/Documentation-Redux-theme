@@ -28,7 +28,8 @@
 						<?php if ( has_post_thumbnail()) { 	   
 						   the_post_thumbnail(  array(60,60), array('class' => 'thumb float-left')); 
 						} ?>
-						<a href="<?php the_permalink() ?>"><h4 class="left"><?php the_title(); ?></h4></a><span>&nbsp;&mdash; <?php docredux_timestamp(); ?></span><br />
+						<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a><span>&mdash;&nbsp;<?php docredux_timestamp(); ?></span></h4>
+						<div class="clear"></div>
 						<?php the_excerpt() ?>
 											
 					<?php } ?>
