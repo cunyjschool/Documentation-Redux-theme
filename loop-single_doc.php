@@ -14,9 +14,11 @@
 			
 			<div class="clear"></div>
 			
+			<div class="meta no-border">
+				<p>Maintained by <?php if ( function_exists( 'coauthors_posts_links' ) ) { coauthors_posts_links(); } else { the_author_posts_link(); } ?>&nbsp;&nbsp;&nbsp;Updated <?php docredux_timestamp( false, 'modified' ); ?></p>
+			</div><!-- END .meta -->			
+			
 			<div class="meta">
-				<p>Maintained by <?php if ( function_exists( 'coauthors_posts_links' ) ) { coauthors_posts_links(); } else { the_author_posts_link(); } ?></p>
-				<p>Last updated at <?php the_modified_time( 'g:i a l, M. jS, Y' ); ?></p>
 				<?php if ( $contexts = get_the_term_list( $post->ID, 'docredux_contexts', '', ', ', '' ) ) : ?>
 					<p>Contexts: <?php echo $contexts; ?></p>
 				<?php endif; ?>
@@ -38,7 +40,7 @@
 				<?php if ( $wpplugins = get_the_term_list( $post->ID, 'docredux_wpplugins', '', ', ', '' ) ) : ?>
 					<p>WordPress plugins: <?php echo $wpplugins; ?></p>
 				<?php endif; ?>
-			</div><!-- END .meta -->
+			</div>
 			
 		</div><!-- END .post -->
 	
