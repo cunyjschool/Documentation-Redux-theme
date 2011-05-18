@@ -34,7 +34,7 @@ Template Name: Page - Blog
 							}
 						?>
 						
-					<div class="doc-index post post-format-<?php echo $post_format; ?>" id="post-<?php the_ID(); ?>">
+					<div class="post-index post post-format-<?php echo $post_format; ?>" id="post-<?php the_ID(); ?>">
 						
 						<?php if ( $post_format == 'aside' || $post_format == 'status' ): ?>
 						
@@ -57,6 +57,7 @@ Template Name: Page - Blog
 						<?php endif; ?>
 						
 						<div class="meta no-border">
+							By <?php if ( function_exists( 'coauthors_posts_links' ) ) { coauthors_posts_links(); } else { the_author_posts_link(); } ?> - 
 							Published <a href="<?php the_permalink(); ?>"><?php docredux_timestamp(); ?></a>
 							<?php 
 								$all_terms = ''; 

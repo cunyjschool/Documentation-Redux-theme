@@ -24,6 +24,7 @@
 						</div>
 						
 						<div class="meta no-border">
+							By <?php if ( function_exists( 'coauthors_posts_links' ) ) { coauthors_posts_links(); } else { the_author_posts_link(); } ?> - 
 							Published <a href="<?php the_permalink(); ?>"><?php docredux_timestamp(); ?></a>
 							<?php 
 								$all_terms = ''; 
