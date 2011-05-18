@@ -591,9 +591,34 @@ margin-bottom:20px;
 	border-left:1px dashed #444444;
 }
 
-.footer .posts ul li, .footer .events ul li {
-	clear:both;
-	margin:20px 0;
+.footer .posts ul li,
+.footer .events ul li {
+	clear: left;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.footer .posts ul li.post h4 {
+	padding: 0;
+}
+
+.footer .posts ul li.post h4 span {
+	padding-left: 5px;
+}
+
+.footer .posts ul li.post .entry {
+	font-size: 12px;
+	line-height: 20px;
+	padding-top: 3px;
+	padding-bottom: 3px;	
+}
+
+.footer .posts ul li.post-format-aside .entry,
+.footer .posts ul li.post-format-status .entry {
+	font-size: 15px;
+	line-height: 22px;
+	letter-spacing: 0.1px;
+	font-weight: 300;
 }
 
 .footer .posts ul li img {

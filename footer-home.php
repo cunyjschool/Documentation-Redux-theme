@@ -17,11 +17,14 @@
 					$post_format = 'standard';
 				}				
 			?>
-				<li class="footer-post-format-<?php echo $post_format ?>">
+				<li class="post post-format-<?php echo $post_format ?>">
 					
 					<?php if ( $post_format == 'aside' || $post_format == 'status' ) { ?>						
 						
-						<?php the_content() ?><span><a href="<?php the_permalink() ?>"><?php docredux_timestamp(); ?></a></span><br />
+						<div class="entry">
+							<?php the_content(); ?>
+						</div>
+						<div class="meta"><a href="<?php the_permalink() ?>"><?php docredux_timestamp(); ?></a></div>
 						
 					<?php } else { ?>
 						
@@ -29,8 +32,9 @@
 						   the_post_thumbnail(  array(60,60), array('class' => 'thumb float-left')); 
 						} ?>
 						<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a><span>&mdash;&nbsp;<?php docredux_timestamp(); ?></span></h4>
-						<div class="clear"></div>
-						<?php the_excerpt() ?>
+						<div class="entry">
+							<?php the_excerpt(); ?>
+						</div>
 											
 					<?php } ?>
 				</li>
