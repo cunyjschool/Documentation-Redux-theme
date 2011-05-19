@@ -11,7 +11,7 @@ class sphinxsearch {
 	var $search_options = array(
 		'server' => '127.0.0.1',
 		'port' => '9312',
-		'index' => "idx_tech_daniel_dev",
+		'index' => "*",
 		'timeout' => 15
 	);
 
@@ -21,18 +21,16 @@ class sphinxsearch {
 	 * @return array
 	 */
 	private function get_options() {
+		global $docredux;
+		
+		$search_options = $this->search_options;
+		
+		if ( !empty( $docredux->options['sphinx_index'] ) ) {
+			$search_options['index'] = $docredux->options['sphinx_index'];
+		}
 
-		return $this->search_options;
+		return $search_options;
 	} // END get_options()
-
-	/**
-	 * Updates the options with the given options array
-	 *
-	 * @param array $options
-	 */
-	private function update_options($options = array()) {
-		update_option('sphinx_options', $options);
-	}
 
 	/**
 	 * Initialization function, registers needed hooks.

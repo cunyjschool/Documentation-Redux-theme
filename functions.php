@@ -25,6 +25,8 @@ class docredux {
 		$this->staff = new docredux_staff();
 		$this->sphinxsearch = new sphinxsearch();
 		
+		$this->options = get_option( $this->options_group_name );		
+		
 		// Add support for post formats
 		add_action( 'after_setup_theme', array( &$this, 'add_post_formats' ) );
 		add_action( 'after_setup_theme', array( &$this, 'init' ) );
@@ -32,12 +34,14 @@ class docredux {
 		add_action( 'init', array( &$this, 'create_taxonomies' ) );
 		add_action( 'init', array( &$this, 'enqueue_resources' ) );
 		add_action( 'init', array( &$this, 'register_menus' ) );
-		add_action( 'init', array( &$this->sphinxsearch, 'initialize' ) );
+		
+		if ( isset( $this->options['sphinx_enabled'] ) && $this->options['sphinx_enabled'] == 'on' ) {
+			add_action( 'init', array( &$this->sphinxsearch, 'initialize' ) );
+		}
 		
 		add_action( 'admin_init', array( &$this, 'admin_init' ) );
 		
 		// Add the current options to our object
-		$this->options = get_option( $this->options_group_name );
 		
 	} // END __construct()
 	
@@ -398,6 +402,11 @@ class docredux {
 		// Global options
 		add_settings_section( 'docredux_home', 'Home', array(&$this, 'settings_home_section'), $this->settings_page );
 		add_settings_field( 'home_description', 'Description above the search box', array(&$this, 'settings_home_description_option'), $this->settings_page, 'docredux_home' );
+		
+		// Sphinx options
+		add_settings_section( 'docredux_sphinx', 'Sphinx', array(&$this, 'settings_sphinx_section'), $this->settings_page );
+		add_settings_field( 'sphinx_enabled', 'Enable Sphinx?', array(&$this, 'settings_sphinx_enabled_option'), $this->settings_page, 'docredux_sphinx' );	
+		add_settings_field( 'sphinx_index', 'Sphinx index to use', array(&$this, 'settings_sphinx_index_option'), $this->settings_page, 'docredux_sphinx' );			
 
 	} // END register_settings()
 	
@@ -420,6 +429,46 @@ class docredux {
 	} // END settings_home_description_option()	
 	
 	/**
+	 * settings_sphinx_enabled_option()
+	 * Whether or not Sphinx is used as the search engine
+	 */
+	function settings_sphinx_enabled_option() {
+
+		$options = $this->options;
+
+		echo '<select id="sphinx_enabled" name="' . $this->options_group_name . '[sphinx_enabled]">';
+		echo '<option value="off"';
+		if ( isset( $options['sphinx_enabled'] ) && $options['sphinx_enabled'] == 'off' ) {
+			echo ' selected="selected"';
+		}		
+		echo '>Disabled</option>';
+		echo '<option value="on"';
+		if ( isset( $options['sphinx_enabled'] ) && $options['sphinx_enabled'] == 'on' ) {
+			echo ' selected="selected"';
+		}		
+		echo '>Enabled</option>';
+		echo '</select>';
+
+	} // END settings_sphinx_enabled_option()
+	
+	/**
+	 * settings_sphinx_index_option()
+	 * Sphinx index to use
+	 */
+	function settings_sphinx_index_option() {
+		
+		$options = $this->options;
+
+		echo '<input id="sphinx_index" name="' . $this->options_group_name . '[sphinx_index]"';
+		if ( isset( $options['sphinx_index'] ) ) {
+			echo ' value="' . $options['sphinx_index'] . '"';
+		}		
+		echo ' size="80" />';
+		echo '<p class="description">(optional) Defaults to "*"</p>';
+		
+	} // END settings_sphinx_index_option()
+	
+	/**
 	 * settings_validate()
 	 * Validation and sanitization on the settings field
 	 */
@@ -428,6 +477,13 @@ class docredux {
 		$allowed_tags = htmlentities( '<b><strong><em><i><span><a><br>' );
 
 		$input['home_description'] = strip_tags( $input['home_description'], $allowed_tags );
+		
+		if ( $input['sphinx_enabled'] != 'on' ) {
+			$input['sphinx_enabled'] != 'off';
+		}		
+			
+		$input['sphinx_index'] = wp_kses( $input['sphinx_index'] );
+
 		return $input;
 
 	} // END settings_validate()
