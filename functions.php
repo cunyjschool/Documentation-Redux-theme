@@ -4,6 +4,8 @@ define( 'DOCREDUX_VERSION', '0.3a' );
 
 include_once( 'php/class.docredux_doc.php' );
 include_once( 'php/class.docredux_staff.php' );
+include_once( 'php/sphinxapi.php' );
+include_once( 'php/class.sphinxsearch.php' );
 
 if ( !class_exists( 'docredux' ) ) {
 
@@ -21,6 +23,7 @@ class docredux {
 		
 		$this->documentation = new docredux_doc();
 		$this->staff = new docredux_staff();
+		$this->sphinxsearch = new sphinxsearch();
 		
 		// Add support for post formats
 		add_action( 'after_setup_theme', array( &$this, 'add_post_formats' ) );
@@ -29,6 +32,7 @@ class docredux {
 		add_action( 'init', array( &$this, 'create_taxonomies' ) );
 		add_action( 'init', array( &$this, 'enqueue_resources' ) );
 		add_action( 'init', array( &$this, 'register_menus' ) );
+		add_action( 'init', array( &$this->sphinxsearch, 'initialize' ) );
 		
 		add_action( 'admin_init', array( &$this, 'admin_init' ) );
 		
