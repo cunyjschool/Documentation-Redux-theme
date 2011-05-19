@@ -8,9 +8,13 @@
 			
 			<div class="archive">
 			
-				<h2>Search Results</h2>			
+				<h2>Search Results</h2>
 
-		  		<?php if ( have_posts()) : ?>
+				<div class="search paper no-corners">
+					<?php include (TEMPLATEPATH . '/searchform.php'); ?>				
+				</div>					
+
+		  		<?php if ( have_posts()) : ?>			
 
 			 	<?php while (have_posts()) : the_post(); ?>
 
@@ -54,11 +58,7 @@
 
 				<?php else : ?>
 				    
-                    <br />
-					<h4 class="">Sorry, but we don't have anything that matches your query. Please try a different search!</h4>
-					<div class="search paper no-corners">
-        				<?php include (TEMPLATEPATH . '/searchform.php'); ?>				
-        			</div>
+					<div class="message info">Sorry, but we don't have anything that matches your query. Please try a different search!</div>
 
 				<?php endif; ?>
 			
