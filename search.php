@@ -14,9 +14,11 @@
 					<?php include (TEMPLATEPATH . '/searchform.php'); ?>				
 				</div>					
 
-		  		<?php if ( have_posts()) : ?>			
+		  		<?php if ( have_posts() ) : ?>
+			
+				<div class="search-results-total">Showing <?php echo $wp_query->post_count; ?> of <?php echo $wp_query->found_posts; ?> results</div>
 
-			 	<?php while (have_posts()) : the_post(); ?>
+			 	<?php while ( have_posts() ) : the_post(); ?>
 
 					<div class="staff-index post" id="post-<?php the_ID(); ?>">
 
