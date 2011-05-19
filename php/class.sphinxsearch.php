@@ -1,4 +1,7 @@
 <?php
+/**
+ * Courtesy of the WP Sphinx Search plugin: http://wordpress.org/extend/plugins/wp-sphinx-search/
+ */
 
 class sphinxsearch {
 
