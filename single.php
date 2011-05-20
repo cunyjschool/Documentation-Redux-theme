@@ -84,7 +84,13 @@
 					<?php endif; ?>
 									
 			
-				<?php endwhile ; endif; ?>
+				<?php endwhile; ?>
+				
+					<div class="comment-section">
+						<?php comments_template('', true); ?>
+					</div>
+				
+				<?php endif; ?>
 			
 			</div><!-- END .entry -->
 

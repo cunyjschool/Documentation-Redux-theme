@@ -4,6 +4,8 @@ define( 'DOCREDUX_VERSION', '0.3a' );
 
 include_once( 'php/class.docredux_doc.php' );
 include_once( 'php/class.docredux_staff.php' );
+include_once( 'php/sphinxapi.php' );
+include_once( 'php/class.sphinxsearch.php' );
 
 if ( !class_exists( 'docredux' ) ) {
 
@@ -21,6 +23,9 @@ class docredux {
 		
 		$this->documentation = new docredux_doc();
 		$this->staff = new docredux_staff();
+		$this->sphinxsearch = new sphinxsearch();
+		
+		$this->options = get_option( $this->options_group_name );		
 		
 		// Add support for post formats
 		add_action( 'after_setup_theme', array( &$this, 'add_post_formats' ) );
@@ -30,10 +35,13 @@ class docredux {
 		add_action( 'init', array( &$this, 'enqueue_resources' ) );
 		add_action( 'init', array( &$this, 'register_menus' ) );
 		
+		if ( isset( $this->options['sphinx_enabled'] ) && $this->options['sphinx_enabled'] == 'on' ) {
+			add_action( 'init', array( &$this->sphinxsearch, 'initialize' ) );
+		}
+		
 		add_action( 'admin_init', array( &$this, 'admin_init' ) );
 		
 		// Add the current options to our object
-		$this->options = get_option( $this->options_group_name );
 		
 	} // END __construct()
 	
@@ -394,6 +402,11 @@ class docredux {
 		// Global options
 		add_settings_section( 'docredux_home', 'Home', array(&$this, 'settings_home_section'), $this->settings_page );
 		add_settings_field( 'home_description', 'Description above the search box', array(&$this, 'settings_home_description_option'), $this->settings_page, 'docredux_home' );
+		
+		// Sphinx options
+		add_settings_section( 'docredux_sphinx', 'Sphinx', array(&$this, 'settings_sphinx_section'), $this->settings_page );
+		add_settings_field( 'sphinx_enabled', 'Enable Sphinx?', array(&$this, 'settings_sphinx_enabled_option'), $this->settings_page, 'docredux_sphinx' );	
+		add_settings_field( 'sphinx_index', 'Sphinx index to use', array(&$this, 'settings_sphinx_index_option'), $this->settings_page, 'docredux_sphinx' );			
 
 	} // END register_settings()
 	
@@ -416,6 +429,46 @@ class docredux {
 	} // END settings_home_description_option()	
 	
 	/**
+	 * settings_sphinx_enabled_option()
+	 * Whether or not Sphinx is used as the search engine
+	 */
+	function settings_sphinx_enabled_option() {
+
+		$options = $this->options;
+
+		echo '<select id="sphinx_enabled" name="' . $this->options_group_name . '[sphinx_enabled]">';
+		echo '<option value="off"';
+		if ( isset( $options['sphinx_enabled'] ) && $options['sphinx_enabled'] == 'off' ) {
+			echo ' selected="selected"';
+		}		
+		echo '>Disabled</option>';
+		echo '<option value="on"';
+		if ( isset( $options['sphinx_enabled'] ) && $options['sphinx_enabled'] == 'on' ) {
+			echo ' selected="selected"';
+		}		
+		echo '>Enabled</option>';
+		echo '</select>';
+
+	} // END settings_sphinx_enabled_option()
+	
+	/**
+	 * settings_sphinx_index_option()
+	 * Sphinx index to use
+	 */
+	function settings_sphinx_index_option() {
+		
+		$options = $this->options;
+
+		echo '<input id="sphinx_index" name="' . $this->options_group_name . '[sphinx_index]"';
+		if ( isset( $options['sphinx_index'] ) ) {
+			echo ' value="' . $options['sphinx_index'] . '"';
+		}		
+		echo ' size="80" />';
+		echo '<p class="description">(optional) Defaults to "*"</p>';
+		
+	} // END settings_sphinx_index_option()
+	
+	/**
 	 * settings_validate()
 	 * Validation and sanitization on the settings field
 	 */
@@ -424,6 +477,13 @@ class docredux {
 		$allowed_tags = htmlentities( '<b><strong><em><i><span><a><br>' );
 
 		$input['home_description'] = strip_tags( $input['home_description'], $allowed_tags );
+		
+		if ( $input['sphinx_enabled'] != 'on' ) {
+			$input['sphinx_enabled'] != 'off';
+		}		
+			
+		$input['sphinx_index'] = wp_kses( $input['sphinx_index'] );
+
 		return $input;
 
 	} // END settings_validate()
@@ -559,5 +619,45 @@ function docredux_timestamp( $post_id = null, $type = 'published' ) {
 
 	
 } // END docredux_timestamp()
+
+/**
+ * docredux_pagination()
+ * Standardized pagination we can use anywhere in the loop
+ */
+function docredux_pagination( $pages = '', $range = 2 ) {
+	global $wp_query, $paged;	
+	
+	$showitems = ( $range * 2 ) + 1;  
+
+	if ( empty( $paged ) ) $paged = 1;
+
+	if ( '' == $pages ) {
+		$pages = $wp_query->max_num_pages;
+		if ( !$pages ) {
+			$pages = 1;
+		}
+	}	 
+
+	if ( 1 != $pages ) {
+		echo "<div class='pagination paper'><span class='right'>Total results: " . $wp_query->found_posts;
+		echo "</span>Pages:";
+		if ( $paged > 2 && $paged > $range+1 && $showitems < $pages )
+			echo "<a href='" . get_pagenum_link(1) . "'>&laquo;</a>";
+		if ( $paged > 1 && $showitems < $pages )
+			echo "<a href='".get_pagenum_link($paged - 1)."'>&lsaquo;</a>";
+
+		for ( $i=1; $i <= $pages; $i++ ) {
+			if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems )) {
+				 echo ($paged == $i)? "<span class='current'>".$i."</span>":"<a href='".get_pagenum_link($i)."' class='inactive' >".$i."</a>";
+			}
+		}
+
+		if ( $paged < $pages && $showitems < $pages )
+			echo "<a href='".get_pagenum_link($paged + 1)."'>&rsaquo;</a>";  
+		if ( $paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages )
+			echo "<a href='".get_pagenum_link($pages)."'>&raquo;</a>";
+		echo "</div>\n";
+	 }
+} // END docredux_pagination()
 
 ?>

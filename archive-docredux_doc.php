@@ -14,9 +14,13 @@
 
 				 	<?php while (have_posts()) : the_post(); ?>
 
-						<div class="doc-index" id="post-<?php the_ID(); ?>">
+						<div class="doc-index post post-type-docredux_doc" id="post-<?php the_ID(); ?>">
 
 							<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
+							
+							<div class="entry">
+								<?php the_excerpt(); ?>
+							</div>
 
 							<div class="meta">
 								Published <?php docredux_timestamp(); ?>
@@ -36,16 +40,11 @@
 								<?php edit_post_link( 'Edit', ' - ', '' ); ?>
 							</div><!-- END .meta -->
 
-							<!-- <?php the_excerpt(); ?> -->
-
 						</div><!-- END - .doc-index -->
 
 				<?php endwhile; ?>
-
-					<div class="navigation">
-						<div class="alignleft"><?php next_posts_link('&laquo; Older Entries') ?></div>
-						<div class="alignright"><?php previous_posts_link('Newer Entries &raquo;') ?></div>
-					</div>
+				
+				<?php docredux_pagination(); ?>
 
 				<?php else : ?>
 

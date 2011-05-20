@@ -168,6 +168,11 @@ table td {
 	width:450px;
 }
 
+textarea {
+	width:600px;
+	display:block;
+}
+
 /* Search */
 .content .search {
 	padding:10px;
@@ -508,6 +513,22 @@ margin-bottom:20px;
 	text-transform:capitalize;
 }
 
+/* Pagination */
+
+.pagination {
+	padding:5px 10px;
+	border:1px solid #ccc;
+	margin-top: 20px;
+}
+
+.pagination .current {
+}
+
+.pagination .current, .pagination a.inactive {
+	font-weight:bold;
+	margin:0 5px;
+}
+
 /* Sidebar */
 .sidebar .widget {
 	margin-top: 10px;
@@ -632,3 +653,66 @@ margin-bottom:20px;
 #wpstats {
 	display:none;
 }
+
+/* Comments */
+
+.comment-section h3.comments-title {
+	margin:30px 0 5px;
+}
+
+.comment-section .commentlist li {
+	background:#f9f9f9;
+	border:1px solid #ccc;
+	padding:10px 15px;
+	list-style-position:inside;
+	margin:-1px 0!important;
+	font-size:30px;
+	color:#ccc;
+	font-family:Georgia, serif;
+}
+
+.comment-section .commentlist li.alt {
+	background:#ffffff;
+}
+
+.comment-section .comment-content,
+.comment-section .comment-info {
+	display:inline-block;
+	vertical-align:top;
+	font-size: 13px;	
+	font-weight: 400;
+	letter-spacing: 0.1px;
+	line-height: 20px;
+	color:#444444;
+	font-family: "Helvetica Neue", "Helvetica", Arial,Verdana,sans-serif;
+}
+
+.comment-section .comment-content {
+	width:365px;
+}
+
+.comment-section .comment-content p {
+	padding-bottom:10px;
+}
+
+.comment-section .comment-info {
+	width:150px;
+	margin-right:10px;
+}
+
+.comment-section .comment-info img {
+	margin-right:10px;
+	border:1px solid #444;
+	margin-top:3px;
+}
+
+.comment-form-comment label {
+	display:none;
+}
+
+
+
+
+
+
+

@@ -8,11 +8,17 @@
 			
 			<div class="archive">
 			
-				<h2>Search Results</h2>			
+				<h2>Search Results</h2>
 
-		  		<?php if ( have_posts()) : ?>
+				<div class="search paper no-corners">
+					<?php include (TEMPLATEPATH . '/searchform.php'); ?>				
+				</div>					
 
-			 	<?php while (have_posts()) : the_post(); ?>
+		  		<?php if ( have_posts() ) : ?>
+			
+				<div class="search-results-total">Showing <?php echo $wp_query->post_count; ?> of <?php echo $wp_query->found_posts; ?> results</div>
+
+			 	<?php while ( have_posts() ) : the_post(); ?>
 
 					<div class="staff-index post" id="post-<?php the_ID(); ?>">
 
@@ -47,18 +53,11 @@
 
 				<?php endwhile; ?>
 
-					<div class="navigation">
-						<div class="alignleft"><?php next_posts_link('&laquo; Older Entries') ?></div>
-						<div class="alignright"><?php previous_posts_link('Newer Entries &raquo;') ?></div>
-					</div>
+				<?php docredux_pagination(); ?>
 
 				<?php else : ?>
 				    
-                    <br />
-					<h4 class="">Sorry, but we don't have anything that matches your query. Please try a different search!</h4>
-					<div class="search paper no-corners">
-        				<?php include (TEMPLATEPATH . '/searchform.php'); ?>				
-        			</div>
+					<div class="message info">Sorry, but we don't have anything that matches your query. Please try a different search!</div>
 
 				<?php endif; ?>
 			
