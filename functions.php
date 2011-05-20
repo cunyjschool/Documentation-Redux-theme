@@ -672,16 +672,15 @@ function theme_queue_js(){
 }
 add_action('wp_print_scripts', 'theme_queue_js');
 
-function docredux_pagination($pages = '', $range = 2)
-{  
-     $showitems = ($range * 2)+1;  
+function docredux_pagination($pages = '', $range = 2) {
+	global $wp_query, $paged;	
+	
+	$showitems = ($range * 2)+1;  
 
-     global $paged;
-     if(empty($paged)) $paged = 1;
+	if(empty($paged)) $paged = 1;
 
-     if($pages == '')
+     if ($pages == '')
      {
-         global $wp_query;
          $pages = $wp_query->max_num_pages;
          if(!$pages)
          {
@@ -691,7 +690,7 @@ function docredux_pagination($pages = '', $range = 2)
 
      if(1 != $pages)
      {
-			echo "<div class='pagination paper'><span class='right'>Total results: " . $wp_query->post_count;
+			echo "<div class='pagination paper'><span class='right'>Total results: " . $wp_query->found_posts;
 			echo "</span>Pages:";
          if($paged > 2 && $paged > $range+1 && $showitems < $pages) echo "<a href='".get_pagenum_link(1)."'>&laquo;</a>";
          if($paged > 1 && $showitems < $pages) echo "<a href='".get_pagenum_link($paged - 1)."'>&lsaquo;</a>";
