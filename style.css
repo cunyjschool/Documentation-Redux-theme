@@ -513,6 +513,22 @@ margin-bottom:20px;
 	text-transform:capitalize;
 }
 
+/* Pagination */
+
+.pagination {
+	padding:5px 10px;
+	border:1px solid #ccc;
+	margin-top: 20px;
+}
+
+.pagination .current {
+}
+
+.pagination .current, .pagination a.inactive {
+	font-weight:bold;
+	margin:0 5px;
+}
+
 /* Sidebar */
 .sidebar .widget {
 	margin-top: 10px;
