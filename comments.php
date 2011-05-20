@@ -17,7 +17,7 @@
 
 <!-- You can start editing here. -->
 
-<?php if ($comments) : ?>
+<?php if ( $comments ) : ?>
 	<h3 class="comments-title"><?php comments_number('No Responses', 'One Response', '% Responses' ); ?> to &#8220;<?php the_title(); ?>&#8221;</h3>
 	
 	<ol class="commentlist">
@@ -46,7 +46,7 @@
 	    <div class="comment-content">
 	      <?php comment_text() ?>
 	      <div class="reply">
-	        <?php comment_reply_link() ?><?php edit_comment_link('Edit',' - ',''); ?>
+	        <?php comment_reply_link() ?><?php edit_comment_link('Edit','',''); ?>
 	      </div>
 	    </div>
 
