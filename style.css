@@ -168,6 +168,11 @@ table td {
 	width:450px;
 }
 
+textarea {
+	width:600px;
+	display:block;
+}
+
 /* Search */
 .content .search {
 	padding:10px;
@@ -658,7 +663,7 @@ margin-bottom:20px;
 .comment-section .comment-info {
 	display:inline-block;
 	vertical-align:top;
-	font-size: 13px;
+	font-size: 13px;	
 	font-weight: 400;
 	letter-spacing: 0.1px;
 	line-height: 20px;
@@ -685,11 +690,9 @@ margin-bottom:20px;
 	margin-top:3px;
 }
 
-.comment-section textarea {
-	width:600px;
-	margin:5px 0;
+.comment-form-comment label {
+	display:none;
 }
-
 
 
 

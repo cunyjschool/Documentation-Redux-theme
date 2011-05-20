@@ -664,4 +664,12 @@ function custom_pings($comment, $args, $depth) {
             </div>
 <?php } // end custom_pings
 
+function theme_queue_js(){
+	if (!is_admin()){
+		if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1))
+			wp_enqueue_script( 'comment-reply' );
+		}
+}
+add_action('wp_print_scripts', 'theme_queue_js');
+
 ?>

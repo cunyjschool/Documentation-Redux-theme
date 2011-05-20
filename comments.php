@@ -13,51 +13,46 @@
 		}
 	}
 
-	/* This variable is for alternating comment background */
-	$oddcomment = 'class="alt" ';
 ?>
 
 <!-- You can start editing here. -->
 
 <?php if ($comments) : ?>
-	<h3 class="comments-title"><?php comments_number('No Responses', 'One Response', '% Responses' );?> to &#8220;<?php the_title(); ?>&#8221;</h3>
-
+	<h3 class="comments-title"><?php comments_number('No Responses', 'One Response', '% Responses' ); ?> to &#8220;<?php the_title(); ?>&#8221;</h3>
+	
 	<ol class="commentlist">
 
 	<?php foreach ($comments as $comment) : ?>
 
-		<li <?php echo $oddcomment; ?>id="comment-<?php comment_ID() ?>">
-			
-			<div class="comment-info">
+	  <li <?php comment_class(); ?> id="comment-<?php comment_ID() ?>">
 
-				<div class="left"><?php echo get_avatar( $comment, 32 ); ?></div>
-				<cite><?php comment_author_link() ?></cite> says:
-			
-				<?php if ($comment->comment_approved == '0') : ?>
-					<em>Your comment is awaiting moderation.</em>
-				<?php endif; ?>
-			
-				<br />
+	    <div class="comment-info">
 
-				<small class="commentmetadata">
-					<a href="#comment-<?php comment_ID() ?>" title=""><?php docredux_timestamp(); ?></a> 
-					<br/><?php edit_comment_link('Edit','',''); ?>
-				</small>
-			
-			</div>
+	      <div class="left"><?php echo get_avatar( $comment, 32 ); ?></div>
+	      <cite><?php comment_author_link() ?></cite> says:
 
-			<div class="comment-content">
-				<?php comment_text() ?>
-			</div>
-			
-			<div class="clear"></div>
+	      <?php if ($comment->comment_approved == '0') : ?>
+	        <em>Your comment is awaiting moderation.</em>
+	      <?php endif; ?>
 
-		</li>
+	      <br />
 
-	<?php
-		/* Changes every other comment to a different class */
-		$oddcomment = ( empty( $oddcomment ) ) ? 'class="alt" ' : '';
-	?>
+	      <small class="commentmetadata">
+	        <a href="#comment-<?php comment_ID() ?>" title=""><?php docredux_timestamp(); ?></a> 
+	      </small>
+
+	    </div>
+
+	    <div class="comment-content">
+	      <?php comment_text() ?>
+	      <div class="reply">
+	        <?php comment_reply_link() ?><?php edit_comment_link('Edit',' - ',''); ?>
+	      </div>
+	    </div>
+
+	    <div class="clear"></div>
+
+	  </li>
 
 	<?php endforeach; /* end for each comment */ ?>
 
@@ -79,42 +74,53 @@
 
 <?php if ('open' == $post->comment_status) : ?>
 
-	<h3 id="respond">Leave a Reply</h3>
+	<div id="respond">
 
-	<?php if ( get_option('comment_registration') && !$user_ID ) : ?>
-		<p>You must be <a href="<?php echo get_option('siteurl'); ?>/wp-login.php?redirect_to=<?php echo urlencode(get_permalink()); ?>">logged in</a> to post a comment.</p>
-	<?php else : ?>
+		<h3><?php comment_form_title( 'Leave a Reply', 'Leave a Reply to %s' ); ?></h3>
 
-		<form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">
+		<div class="cancel-comment-reply">
+			<small><?php cancel_comment_reply_link(); ?></small>
+		</div>
+	
 
-			<?php if ( $user_ID ) : ?>
+		<?php if ( get_option('comment_registration') && !$user_ID ) : ?>
+			<p>You must be <a href="<?php echo get_option('siteurl'); ?>/wp-login.php?redirect_to=<?php echo urlencode(get_permalink()); ?>">logged in</a> to post a comment.</p>
+		<?php else : ?>
 
-				<p>Logged in as <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>. <a href="<?php echo get_option('siteurl'); ?>/wp-login.php?action=logout" title="Log out of this account">Log out &raquo;</a></p>
+			<form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">
+				
+				<?php comment_id_fields(); ?>
 
-			<?php else : ?>
+				<?php if ( $user_ID ) : ?>
 
-				<p><input type="text" name="author" id="author" value="<?php echo $comment_author; ?>" size="22" tabindex="1" <?php if ($req) echo "aria-required='true'"; ?> />
-					<label for="author"><small>Name <?php if ($req) echo "(required)"; ?></small></label></p>
+					<p>Logged in as <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>. <a href="<?php echo get_option('siteurl'); ?>/wp-login.php?action=logout" title="Log out of this account">Log out &raquo;</a></p>
 
-				<p><input type="text" name="email" id="email" value="<?php echo $comment_author_email; ?>" size="22" tabindex="2" <?php if ($req) echo "aria-required='true'"; ?> />
-					<label for="email"><small>Mail (will not be published) <?php if ($req) echo "(required)"; ?></small></label></p>
+				<?php else : ?>
 
-				<p><input type="text" name="url" id="url" value="<?php echo $comment_author_url; ?>" size="22" tabindex="3" />
-					<label for="url"><small>Website</small></label></p>
+					<p><input type="text" name="author" id="author" value="<?php echo $comment_author; ?>" size="22" tabindex="1" <?php if ($req) echo "aria-required='true'"; ?> />
+						<label for="author"><small>Name <?php if ($req) echo "(required)"; ?></small></label></p>
 
-			<?php endif; ?>
+					<p><input type="text" name="email" id="email" value="<?php echo $comment_author_email; ?>" size="22" tabindex="2" <?php if ($req) echo "aria-required='true'"; ?> />
+						<label for="email"><small>Mail (will not be published) <?php if ($req) echo "(required)"; ?></small></label></p>
 
-			<!--<p><small><strong>XHTML:</strong> You can use these tags: <code><?php echo allowed_tags(); ?></code></small></p>-->
+					<p><input type="text" name="url" id="url" value="<?php echo $comment_author_url; ?>" size="22" tabindex="3" />
+						<label for="url"><small>Website</small></label></p>
 
-			<p><textarea name="comment" id="comment" rows="8" tabindex="4"></textarea></p>
+				<?php endif; ?>
 
-			<p><input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment" />
-				<input type="hidden" name="comment_post_ID" value="<?php echo $id; ?>" />
-			</p>
-		<?php do_action('comment_form', $post->ID); ?>
+				<!--<p><small><strong>XHTML:</strong> You can use these tags: <code><?php echo allowed_tags(); ?></code></small></p>-->
 
-		</form>
+				<p><textarea name="comment" id="comment" rows="8" tabindex="4"></textarea></p>
 
-<?php endif; // If registration required and not logged in ?>
+				<p><input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment" />
+					<input type="hidden" name="comment_post_ID" value="<?php echo $id; ?>" />
+				</p>
+			<?php do_action('comment_form', $post->ID); ?>
+
+			</form>
+
+		</div><!-- END #respond -->
+		
+	<?php endif; // If registration required and not logged in ?>
 
 <?php endif; // if you delete this the sky will fall on your head ?>
