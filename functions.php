@@ -1,6 +1,6 @@
 <?php
 
-define( 'DOCREDUX_VERSION', '0.3a' );
+define( 'DOCREDUX_VERSION', '0.3' );
 
 include_once( 'php/class.docredux_doc.php' );
 include_once( 'php/class.docredux_staff.php' );
@@ -620,94 +620,45 @@ function docredux_timestamp( $post_id = null, $type = 'published' ) {
 	
 } // END docredux_timestamp()
 
-// Custom callback to list comments in the your-theme style
-function custom_comments($comment, $args, $depth) {
-  $GLOBALS['comment'] = $comment;
-    $GLOBALS['comment_depth'] = $depth;
-  ?>
-    <li id="comment-<?php comment_ID() ?>" <?php comment_class() ?>>
-        <div class="comment-author vcard"><?php commenter_link() ?></div>
-        <div class="comment-meta"><?php printf(__('Posted %1$s at %2$s <span class="meta-sep">|</span> <a href="%3$s" title="Permalink to this comment">Permalink</a>', 'your-theme'),
-                    get_comment_date(),
-                    get_comment_time(),
-                    '#comment-' . get_comment_ID() );
-                    edit_comment_link(__('Edit', 'your-theme'), ' <span class="meta-sep">|</span> <span class="edit-link">', '</span>'); ?></div>
-  <?php if ($comment->comment_approved == '0') _e("\t\t\t\t\t<span class='unapproved'>Your comment is awaiting moderation.</span>\n", 'your-theme') ?>
-          <div class="comment-content">
-            <?php comment_text() ?>
-        </div>
-        <?php // echo the comment reply link
-            if($args['type'] == 'all' || get_comment_type() == 'comment') :
-                comment_reply_link(array_merge($args, array(
-                    'reply_text' => __('Reply','your-theme'),
-                    'login_text' => __('Log in to reply.','your-theme'),
-                    'depth' => $depth,
-                    'before' => '<div class="comment-reply-link">',
-                    'after' => '</div>'
-                )));
-            endif;
-        ?>
-<?php } // end custom_comments
-
-function custom_pings($comment, $args, $depth) {
-       $GLOBALS['comment'] = $comment;
-        ?>
-            <li id="comment-<?php comment_ID() ?>" <?php comment_class() ?>>
-                <div class="comment-author"><?php printf(__('By %1$s on %2$s at %3$s', 'your-theme'),
-                        get_comment_author_link(),
-                        get_comment_date(),
-                        get_comment_time() );
-                        edit_comment_link(__('Edit', 'your-theme'), ' <span class="meta-sep">|</span> <span class="edit-link">', '</span>'); ?></div>
-    <?php if ($comment->comment_approved == '0') _e('\t\t\t\t\t<span class="unapproved">Your trackback is awaiting moderation.</span>\n', 'your-theme') ?>
-            <div class="comment-content">
-                <?php comment_text() ?>
-            </div>
-<?php } // end custom_pings
-
-function theme_queue_js(){
-	if (!is_admin()){
-		if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1))
-			wp_enqueue_script( 'comment-reply' );
-		}
-}
-add_action('wp_print_scripts', 'theme_queue_js');
-
-function docredux_pagination($pages = '', $range = 2) {
+/**
+ * docredux_pagination()
+ * Standardized pagination we can use anywhere in the loop
+ */
+function docredux_pagination( $pages = '', $range = 2 ) {
 	global $wp_query, $paged;	
 	
-	$showitems = ($range * 2)+1;  
+	$showitems = ( $range * 2 ) + 1;  
 
-	if(empty($paged)) $paged = 1;
+	if ( empty( $paged ) ) $paged = 1;
 
-     if ($pages == '')
-     {
-         $pages = $wp_query->max_num_pages;
-         if(!$pages)
-         {
-             $pages = 1;
-         }
-     }   
+	if ( '' == $pages ) {
+		$pages = $wp_query->max_num_pages;
+		if ( !$pages ) {
+			$pages = 1;
+		}
+	}	 
 
-     if(1 != $pages)
-     {
-			echo "<div class='pagination paper'><span class='right'>Total results: " . $wp_query->found_posts;
-			echo "</span>Pages:";
-         if($paged > 2 && $paged > $range+1 && $showitems < $pages) echo "<a href='".get_pagenum_link(1)."'>&laquo;</a>";
-         if($paged > 1 && $showitems < $pages) echo "<a href='".get_pagenum_link($paged - 1)."'>&lsaquo;</a>";
+	if ( 1 != $pages ) {
+		echo "<div class='pagination paper'><span class='right'>Total results: " . $wp_query->found_posts;
+		echo "</span>Pages:";
+		if ( $paged > 2 && $paged > $range+1 && $showitems < $pages )
+			echo "<a href='" . get_pagenum_link(1) . "'>&laquo;</a>";
+		if ( $paged > 1 && $showitems < $pages )
+			echo "<a href='".get_pagenum_link($paged - 1)."'>&lsaquo;</a>";
 
-         for ($i=1; $i <= $pages; $i++)
-         {
-             if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems ))
-             {
-                 echo ($paged == $i)? "<span class='current'>".$i."</span>":"<a href='".get_pagenum_link($i)."' class='inactive' >".$i."</a>";
-             }
-         }
+		for ( $i=1; $i <= $pages; $i++ ) {
+			if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems )) {
+				 echo ($paged == $i)? "<span class='current'>".$i."</span>":"<a href='".get_pagenum_link($i)."' class='inactive' >".$i."</a>";
+			}
+		}
 
-         if ($paged < $pages && $showitems < $pages) echo "<a href='".get_pagenum_link($paged + 1)."'>&rsaquo;</a>";  
-         if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) echo "<a href='".get_pagenum_link($pages)."'>&raquo;</a>";
-         echo "</div>\n";
-     }
-}
+		if ( $paged < $pages && $showitems < $pages )
+			echo "<a href='".get_pagenum_link($paged + 1)."'>&rsaquo;</a>";  
+		if ( $paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages )
+			echo "<a href='".get_pagenum_link($pages)."'>&raquo;</a>";
+		echo "</div>\n";
+	 }
+} // END docredux_pagination()
 
 // Add custom taxonomies and custom post types counts to dashboard
 add_action( 'right_now_content_table_end', 'my_add_counts_to_dashboard' );
