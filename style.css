@@ -173,6 +173,20 @@ textarea {
 	display:block;
 }
 
+code {
+background:none repeat scroll 0 0 #FFFFFF;
+border:1px solid #DDDDDD;
+font-family:"Courier Neue",courier;
+display:block;
+line-height:22px;
+margin:10px 0;
+padding:5px 10px;
+}
+
+p.code {
+margin:10px 0;
+}
+
 /* Search */
 .content .search {
 	padding:10px;
@@ -325,6 +339,20 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 .post {
 	padding-top:10px;
 	padding-bottom:10px;
+}
+
+.content .entry .table-row {
+min-height:76px;
+margin-bottom:10px;
+}
+
+.content .entry .table-row img.alignleft {
+margin:0 30px 0 0;
+}
+
+.post .avatar {
+float:left;
+margin-right:20px;
 }
 
 /**
@@ -494,13 +522,26 @@ body.single .content .entry {
 max-width:579px;
 }
 
-.entry .alignnone {
-margin-bottom:20px;
+.single-docreduxstaff .entry {
+clear:both;
+}
+
+.single-docreduxstaff .avatar {
+margin-left:0;
+}
+
+.content .entry img.aligncenter, .content .entry img.alignnone {
+margin:20px 0;
 }
 
 /* Page Templates */
 .page td li{
 	margin:5px 0 5px 15px;
+}
+
+.page .entry li {
+margin-left:20px;
+padding:5px;
 }
 
 /* Archive */
@@ -710,9 +751,6 @@ margin-bottom:20px;
 	display:none;
 }
 
-
-
-
-
-
-
+form#commentform p {
+margin:5px 0;
+}
