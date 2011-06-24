@@ -509,6 +509,10 @@ body.single .content .entry {
 	background: url('images/bg-400-paper-light.jpg') repeat;
 }
 
+.content .entry table ul li {
+	margin:0 0 10px 15px;
+}
+
 .entry code,
 .entry p.code {
 	background:#fff;
