@@ -535,6 +535,11 @@ margin:20px 0;
 }
 
 /* Page Templates */
+.page .full {
+	margin:0 15px;
+}
+
+
 .page td li{
 	margin:5px 0 5px 15px;
 }
