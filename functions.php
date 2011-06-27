@@ -76,6 +76,7 @@ class docredux {
 		
 		if ( is_admin() ) {
 			add_action( 'admin_menu', array(&$this, 'add_admin_menu_items') );
+			add_action( 'right_now_content_table_end', 'add_counts_to_dashboard' );
 		}
 		
 	} // END init()
@@ -510,7 +511,51 @@ class docredux {
 		<?php
 	} // END options_page()
 	
-	
+	function add_counts_to_dashboard() {
+    		// Custom post types counts
+    		$post_types = get_post_types( array( '_builtin' => false ), 'objects' );
+    		foreach ( $post_types as $post_type ) {
+        		$num_posts = wp_count_posts( $post_type->name );
+			$num = number_format_i18n( $num_posts->publish );
+			$text = _n( $post_type->labels->singular_name, $post_type->labels->name, $num_posts->publish );
+			if ( current_user_can( 'edit_posts' ) ) {
+				$num = '<a href="edit.php?post_type=' . $post_type->name . '">' . $num . '</a>';
+				$text = '<a href="edit.php?post_type=' . $post_type->name . '">' . $text . '</a>';
+			}
+			echo '<td class="first b b-' . $post_type->name . 's">' . $num . '</td>';
+			echo '<td class="t ' . $post_type->name . 's">' . $text . '</td>';
+			echo '</tr>';
+
+			if ( $num_posts->pending > 0 ) {
+				$num = number_format_i18n( $num_posts->pending );
+				$text = _n( $post_type->labels->singular_name . ' pending', $post_type->labels->name . ' pending', $num_posts->pending );
+				if ( current_user_can( 'edit_posts' ) ) {
+					$num = '<a href="edit.php?post_status=pending&post_type=' . $post_type->name . '">' . $num . '</a>';
+				$text = '<a href="edit.php?post_status=pending&post_type=' . $post_type->name . '">' . $text . '</a>';
+				}
+				echo '<td class="first b b-' . $post_type->name . 's">' . $num . '</td>';
+				echo '<td class="t ' . $post_type->name . 's">' . $text . '</td>';
+				echo '</tr>';
+			}
+		}
+    
+		// Custom taxonomies counts
+		$taxonomies = get_taxonomies( array( '_builtin' => false ), 'objects' );
+		foreach ( $taxonomies as $taxonomy ) {
+			$num_terms  = wp_count_terms( $taxonomy->name );
+			$num = number_format_i18n( $num_terms );
+			$text = _n( $taxonomy->labels->singular_name, $taxonomy->labels->name, $num_terms );
+			$associated_post_type = $taxonomy->object_type;
+			if ( current_user_can( 'manage_categories' ) ) {
+				$num = '<a href="edit-tags.php?taxonomy=' . $taxonomy->name . '&post_type=' . $associated_post_type[0] . '">' . $num . '</a>';
+				$text = '<a href="edit-tags.php?taxonomy=' . $taxonomy->name . '&post_type=' . $associated_post_type[0] . '">' . $text . '</a>';
+			}
+			echo '<td class="first b b-' . $taxonomy->name . 's">' . $num . '</td>';
+			echo '<td class="t ' . $taxonomy->name . 's">' . $text . '</td>';
+			echo '</tr><tr>';
+		}
+	}
+
 } // END class docredux
 	
 } // END if ( !class_exists( 'docredux' ) )
@@ -706,5 +751,3 @@ function my_add_counts_to_dashboard() {
         echo '</tr><tr>';
     }
 }
-
-?>
