@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Page - No Sidebar
+Template Name: Page - Full Width
 */
 ?>
 
