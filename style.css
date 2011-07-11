@@ -174,17 +174,17 @@ textarea {
 }
 
 code {
-background:none repeat scroll 0 0 #FFFFFF;
-border:1px solid #DDDDDD;
-font-family:"Courier Neue",courier;
-display:block;
-line-height:22px;
-margin:10px 0;
-padding:5px 10px;
+	background:none repeat scroll 0 0 #FFFFFF;
+	border:1px solid #DDDDDD;
+	font-family:"Courier Neue",courier;
+	display:block;
+	line-height:22px;
+	margin:10px 0;
+	padding:5px 10px;
 }
 
 p.code {
-margin:10px 0;
+	margin:10px 0;
 }
 
 /* Search */
@@ -271,13 +271,6 @@ ul#menu-header-menu > li:first-child, ul#menu-header-menu > li:first-child a {
 	border-radius:5px 0 0 5px;
 }
 
-ul#menu-header-menu > li:last-child, ul#menu-header-menu > li:last-child > a {
-	-webkit-border-radius:0 5px 5px 0;
-	-moz-border-radius:0 5px 5px 0;
-	border-radius:0 5px 5px 0;
-	float:right;
-}
-
 ul#menu-header-menu > li a:hover {
 	background: #e1423d url('images/red-gradient-hover.png') repeat-x;
 	background: -moz-linear-gradient(center top, #e1423d, #c74b46) repeat scroll 0 0 #c74b46;
@@ -308,11 +301,6 @@ ul#menu-header-menu ul.sub-menu > li > a {
 	background: url('images/bg-400-paper-light.jpg') repeat;
 	color:#444444;
 	text-decoration:none;
-}
-
-ul#menu-header-menu > li:last-child > ul.sub-menu {
-	margin-top:40px;
-	margin-left:-100px;
 }
 
 ul#menu-header-menu ul.sub-menu > li > a:hover {
