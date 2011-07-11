@@ -656,7 +656,7 @@ function docredux_timestamp( $post_id = null, $type = 'published' ) {
 	// Only do the relative timestamps for 7 days or less, then just the month and day
 	if ( $post_timestamp > ( $current_timestamp - 604800 ) ) {
 		echo human_time_diff( $post_timestamp ) . ' ago';
-	} else if ( $post_timestamp > ( $current_timestamp - 220752000 ) ) {
+	} else if ( $post_timestamp > ( $current_timestamp - 15552000 ) ) {
 		the_time( 'F jS' );
 	} else {
 		the_time( 'F j, Y' );
