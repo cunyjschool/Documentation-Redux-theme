@@ -74,6 +74,8 @@ class docredux {
 	    
 		add_theme_support( 'post-thumbnails' );
 		
+		add_post_type_support( 'page', 'excerpt' );
+		
 		if ( is_admin() ) {
 			add_action( 'admin_menu', array(&$this, 'add_admin_menu_items') );
 			add_action( 'right_now_content_table_end', 'add_counts_to_dashboard' );
