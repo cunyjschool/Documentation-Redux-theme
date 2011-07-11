@@ -402,11 +402,23 @@ body.archive .post {
  * Section: .post
  */
 
+.post {
+	color: #222222;
+}
+
 .post .entry {
 	font-size: 14px;
 	letter-spacing: 0.1px;
 	line-height: 22px;
 	font-weight: 400;
+}
+
+.post .entry a {
+	text-decoration: underline;
+}
+
+.post .entry a:hover {
+	background-color: #F9F9F9;
 }
 
 .post .meta {
