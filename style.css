@@ -189,9 +189,9 @@ p.code {
 
 /* Search */
 .content .search {
-	padding:10px;
-	margin-top: 10px;
-	margin-bottom: 20px;
+	padding: 10px;
+	margin-top: 5px;
+	margin-bottom: 10px;
 }
 
 .search input[type="text"] {
@@ -311,8 +311,8 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 /* Content */
 
 .main a {
-	text-decoration:none;
-	color:#a8403a;
+	text-decoration: none;
+	color: #a8403a;
 }
 
 .main a:hover {
@@ -330,17 +330,17 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 }
 
 .content .entry .table-row {
-min-height:76px;
-margin-bottom:10px;
+	min-height:76px;
+	margin-bottom:10px;
 }
 
 .content .entry .table-row img.alignleft {
-margin:0 30px 0 0;
+	margin:0 30px 0 0;
 }
 
 .post .avatar {
-float:left;
-margin-right:20px;
+	float:left;
+	margin-right:20px;
 }
 
 /**
@@ -423,6 +423,15 @@ body.archive .post {
 
 .post .meta {
 	color:#999999;
+}
+
+.post .meta a {
+	color: #999999;
+	text-decoration: underline;
+}
+
+.post .meta a:hover {
+	color: #a8403a;
 }
 
 .post.post-type-staff .meta span {
@@ -524,19 +533,19 @@ body.single .content .entry {
 }
 
 .entry img {
-max-width:579px;
+	max-width:579px;
 }
 
 .single-docreduxstaff .entry {
-clear:both;
+	clear:both;
 }
 
 .single-docreduxstaff .avatar {
-margin-left:0;
+	margin-left:0;
 }
 
 .content .entry img.aligncenter, .content .entry img.alignnone {
-margin:20px 0;
+	margin:20px 0;
 }
 
 /* Page Templates */
@@ -550,8 +559,8 @@ margin:20px 0;
 }
 
 .page .entry li {
-margin-left:20px;
-padding:5px;
+	margin-left:20px;
+	padding:5px;
 }
 
 /* Archive */
@@ -762,5 +771,5 @@ padding:5px;
 }
 
 form#commentform p {
-margin:5px 0;
+	margin:5px 0;
 }
