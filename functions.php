@@ -628,9 +628,7 @@ function docredux_home_description() {
 	global $docredux;
 	
 	if ( !empty( $docredux->options['home_description'] ) ) {
-		echo $docredux->options['home_description'];		
-	} else {
-		echo "Please add a home description in theme options.";
+		echo wpautop( $docredux->options['home_description'] );
 	}
 	
 } // END docredux_home_description()

@@ -348,12 +348,10 @@ margin-right:20px;
  */
 
 body.home-page .featured {
-	padding-top: 5px;
+	padding-top: 10px;
 	padding-bottom: 5px;
 	font-size: 14px;
 	line-height: 22px;
-	font-weight: 300;
-	letter-spacing: 0.1px;
 }
 
 body.home-page .featured p {
@@ -393,8 +391,11 @@ body.archive .post {
 	padding-bottom: 5px;
 }
 
-.term-name {
-	margin-bottom:10px;
+.term-description {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 14px;
+	line-height: 22px;
 }
 
 /**
