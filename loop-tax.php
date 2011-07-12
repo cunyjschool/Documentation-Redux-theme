@@ -10,7 +10,7 @@
 		<h2 class="term-name"><a href="<?php bloginfo('url'); ?>/<?php echo docredux_get_term_base( $term ) . '/'; ?>"><?php echo $taxonomy->labels->name; ?></a>: <?php echo $term->name; ?></h2>
 		
 		<?php if ( !empty( $term->description ) ): ?>
-			<div class="term-description"><?php echo wpautop( $term->description ); ?></div>
+			<div class="term-description paper"><?php echo wpautop( $term->description ); ?></div>
 		<?php endif; ?>
 				
 		<?php
@@ -32,22 +32,29 @@
 		?>
 
 	  	<?php if ( $documentation->have_posts() ) : ?>
+		
+		<div class="all-documentation-list">
 
 		<?php while ( $documentation->have_posts() ) : $documentation->the_post(); ?>
 
 			<div class="post documentation" id="post-<?php the_ID(); ?>">
 
-				<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
+				<div class="left-col float-left">
+					<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
+					<div class="meta">Updated <?php docredux_timestamp( false, 'modified' ); ?></div>
+				</div>
 				
-				<div class="entry">
+				<div class="entry right-col float-right">
 					<?php the_excerpt(); ?>
 				</div>
 				
-				<div class="meta">Updated <?php docredux_timestamp( false, 'modified' ); ?></div>
+				<div class="clear-both"></div>
 
 			</div><!-- END - .post -->
 
 		<?php endwhile; ?>
+		
+		</div><!-- END .all-documentation-list -->
 
 		<?php else : ?>
 
