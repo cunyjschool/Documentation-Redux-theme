@@ -525,15 +525,6 @@ body.archive .term-description {
 	color: #a8403a;
 }
 
-.post.post-type-staff .meta span {
-	margin-right: 10px;
-}
-
-body.single .content .post .meta {
-	padding: 5px 10px;
-	border: 1px solid #CCCCCC;
-}
-
 .content .post-format-aside .entry, 
 .content .post-format-status .entry {
 	font-size:18px;
@@ -549,6 +540,35 @@ body.single .content .post .meta {
 	font-style: italic;
 	color: #888888;
 	padding-left: 10px;
+}
+
+body.single-docredux_staff .recently-published h3 {
+	font-weight: bold;
+	border-bottom: 2px solid #C74B46;
+}
+
+body.single-docredux_staff .recently-published .paper {
+	padding: 10px;
+}
+
+body.single-docredux_staff .recently-published ul {
+	list-style-type: none;
+}
+
+body.single-docredux_staff .recently-published ul li {
+	margin-left: 10px;
+}
+
+body.single-docredux_staff .recently-published ul li.post-format-aside p,
+body.single-docredux_staff .recently-published ul li.post-format-status p {
+	font-size: 14px;
+	line-height: 21px;
+	padding-bottom: 3px;
+}
+
+body.single-docredux_staff .recently-published .see-all {
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 /* Documentation single */
