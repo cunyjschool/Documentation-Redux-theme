@@ -36,7 +36,7 @@
 							<?php
 								$high_content = new Highlighter( $post->post_content, $search_array );					
 								$high_content->mark_words();
-								echo $high_content->text;
+								echo $high_content->get();
 							?>
 						</div>
 							
@@ -50,7 +50,7 @@
 							<?php
 								$high_content = new Highlighter( $post->post_content, $search_array );
 								$high_content->text = $high_content->strip( $high_content->text );
-								$high_content->zoom( 100, 250 );
+								$high_content->zoom( 10, 175 );
 								$high_content->mark_words();
 							?>
 							<div class="entry">
@@ -87,7 +87,7 @@
 
 				<?php endwhile; ?>
 
-				<?php docredux_pagination(); ?>
+					<?php docredux_pagination(); ?>
 
 				<?php else : ?>
 				    

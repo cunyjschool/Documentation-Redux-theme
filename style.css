@@ -197,6 +197,38 @@ body.search .search-term-match {
 	font-weight: bold;
 }
 
+body.search .content .post h3 {
+	font-size: 16px;
+	line-height: 22px;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+body.search .content .post h3 a {
+	text-decoration: underline;
+}
+
+body.search .content .post h3 a:hover {
+	background-color: #F9F9F9;
+}
+
+body.search .content .post {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+body.search .content .post .entry {
+	font-size: 13px;
+	line-height: 20px;
+	letter-spacing: 0;
+}
+
+body.search .content .post.post-format-status .entry,
+body.search .content .post.post-format-aside .entry {
+	font-size: 14px;
+	line-height: 21px;
+}
+
 .search-results-total {
 	color: #999999;
 }
