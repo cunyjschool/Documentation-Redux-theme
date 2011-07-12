@@ -68,6 +68,9 @@
 								$high_title = new Highlighter( $post->post_title, $search_array );
 								$high_title->mark_words();
 							?>
+							<?php if ( has_post_thumbnail()) { 	   
+	       					   the_post_thumbnail(  'thumbnail', array( 'class' => 'thumb float-right' ) ); 
+	       					}?>
 							<h3><a href="<?php the_permalink() ?>"><?php echo $high_title->get(); ?></a></h3>
 							<?php
 								$high_content = new Highlighter( $post->post_content, $search_array );
@@ -75,11 +78,8 @@
 								$high_content->zoom( 10, 175 );
 								$high_content->mark_words();
 							?>
-							<div class="entry">
-		       					<?php if ( has_post_thumbnail()) { 	   
-		       					   the_post_thumbnail(  'thumbnail', array('class' => 'thumb float-left') ); 
-		       					}?>						
-							<?php echo $high_content->get(); ?>
+							<div class="entry">					
+								<?php echo $high_content->get(); ?>
 							</div>
 							
 							<div class="clear"></div>
