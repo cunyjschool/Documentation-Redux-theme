@@ -4,14 +4,15 @@ Theme URI: http://tech.journalism.cuny.edu/
 Description: Dedicated theme for CUNY J-School tech documentation
 Author: Joe Filippazzo, Daniel Bachhuber
 Author URI: http://tech.journalism.cuny.edu/staff/
-Version: 0.4a
+Version: 0.4b
 License: GNU General Public License
 License URI: license.txt
 */
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, sub, sup, tt, var, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; border-collapse:collapse; outline:none;}
 
-.clear {
+.clear,
+.clear-both {
 	display:block;
 	clear:both;	
 }
@@ -174,24 +175,83 @@ textarea {
 }
 
 code {
-background:none repeat scroll 0 0 #FFFFFF;
-border:1px solid #DDDDDD;
-font-family:"Courier Neue",courier;
-display:block;
-line-height:22px;
-margin:10px 0;
-padding:5px 10px;
+	background:none repeat scroll 0 0 #FFFFFF;
+	border:1px solid #DDDDDD;
+	font-family:"Courier Neue",courier;
+	display:block;
+	line-height:22px;
+	margin:10px 0;
+	padding:5px 10px;
 }
 
 p.code {
-margin:10px 0;
+	margin:10px 0;
 }
 
 /* Search */
 .content .search {
-	padding:10px;
-	margin-top: 10px;
-	margin-bottom: 20px;
+	padding: 10px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+body.search .search-term-match {
+	font-weight: bold;
+}
+
+body.search .all-matching-terms {
+	font-size: 13px;
+	line-height: 20px;
+	padding-bottom: 5px;
+	color: #666666;
+}
+
+body.search .all-matching-terms a {
+	text-decoration: underline;
+}
+
+body.search .all-matching-terms a:hover {
+	background-color: #F9F9F9;		
+}
+
+body.search .content .post h3 {
+	font-size: 16px;
+	line-height: 22px;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.content .post h3 a,
+.content .post h4 a {
+	text-decoration: underline;
+}
+
+.content .post h3 a:hover,
+.content .post h4 a:hover {
+	background-color: #F9F9F9;
+}
+
+body.search .content .post {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+body.search .content .post .entry {
+	font-size: 13px;
+	line-height: 20px;
+	letter-spacing: 0;
+}
+
+body.search .content .post.post-format-status .entry,
+body.search .content .post.post-format-aside .entry {
+	font-size: 14px;
+	line-height: 21px;
+}
+
+.search-results-total {
+	color: #999999;
+	margin-left: 5px;
+	margin-bottom: 5px;
 }
 
 .search input[type="text"] {
@@ -271,13 +331,6 @@ ul#menu-header-menu > li:first-child, ul#menu-header-menu > li:first-child a {
 	border-radius:5px 0 0 5px;
 }
 
-ul#menu-header-menu > li:last-child, ul#menu-header-menu > li:last-child > a {
-	-webkit-border-radius:0 5px 5px 0;
-	-moz-border-radius:0 5px 5px 0;
-	border-radius:0 5px 5px 0;
-	float:right;
-}
-
 ul#menu-header-menu > li a:hover {
 	background: #e1423d url('images/red-gradient-hover.png') repeat-x;
 	background: -moz-linear-gradient(center top, #e1423d, #c74b46) repeat scroll 0 0 #c74b46;
@@ -310,11 +363,6 @@ ul#menu-header-menu ul.sub-menu > li > a {
 	text-decoration:none;
 }
 
-ul#menu-header-menu > li:last-child > ul.sub-menu {
-	margin-top:40px;
-	margin-left:-100px;
-}
-
 ul#menu-header-menu ul.sub-menu > li > a:hover {
 	background: #fff;
 	color:#a8403a;
@@ -323,8 +371,8 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 /* Content */
 
 .main a {
-	text-decoration:none;
-	color:#a8403a;
+	text-decoration: none;
+	color: #a8403a;
 }
 
 .main a:hover {
@@ -342,17 +390,17 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 }
 
 .content .entry .table-row {
-min-height:76px;
-margin-bottom:10px;
+	min-height:76px;
+	margin-bottom:10px;
 }
 
 .content .entry .table-row img.alignleft {
-margin:0 30px 0 0;
+	margin:0 30px 0 0;
 }
 
 .post .avatar {
-float:left;
-margin-right:20px;
+	float:left;
+	margin-right:20px;
 }
 
 /**
@@ -360,12 +408,10 @@ margin-right:20px;
  */
 
 body.home-page .featured {
-	padding-top: 5px;
+	padding-top: 10px;
 	padding-bottom: 5px;
 	font-size: 14px;
 	line-height: 22px;
-	font-weight: 300;
-	letter-spacing: 0.1px;
 }
 
 body.home-page .featured p {
@@ -405,13 +451,51 @@ body.archive .post {
 	padding-bottom: 5px;
 }
 
-.term-name {
-	margin-bottom:10px;
+body.archive .all-documentation-list {
+	padding-bottom: 10px;
+}
+
+body.archive .all-documentation-list .left-col {
+	width: 240px;
+}
+
+body.archive .all-documentation-list .right-col {
+	width: 340px;
+}
+
+body.archive .all-documentation-list .post {
+	border-bottom: 1px solid #CCCCCC;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+body.archive .all-documentation-list .post:first-child {
+	border-top: 1px solid #CCCCCC;
+}
+
+body.archive .all-documentation-list .post .entry {
+	font-size: 13px;
+	line-height: 21px;
+}
+
+body.archive .term-description {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 14px;
+	line-height: 22px;
+	margin-bottom: 20px;
+	color: #222222;
 }
 
 /**
  * Section: .post
  */
+
+.post {
+	color: #222222;
+}
 
 .post .entry {
 	font-size: 14px;
@@ -420,17 +504,25 @@ body.archive .post {
 	font-weight: 400;
 }
 
+.post .entry a {
+	text-decoration: underline;
+}
+
+.post .entry a:hover {
+	background-color: #F9F9F9;
+}
+
 .post .meta {
 	color:#999999;
 }
 
-.post.post-type-staff .meta span {
-	margin-right: 10px;
+.post .meta a {
+	color: #999999;
+	text-decoration: underline;
 }
 
-body.single .content .post .meta {
-	padding: 5px 10px;
-	border: 1px solid #CCCCCC;
+.post .meta a:hover {
+	color: #a8403a;
 }
 
 .content .post-format-aside .entry, 
@@ -448,6 +540,35 @@ body.single .content .post .meta {
 	font-style: italic;
 	color: #888888;
 	padding-left: 10px;
+}
+
+body.single-docredux_staff .recently-published h3 {
+	font-weight: bold;
+	border-bottom: 2px solid #C74B46;
+}
+
+body.single-docredux_staff .recently-published .paper {
+	padding: 10px;
+}
+
+body.single-docredux_staff .recently-published ul {
+	list-style-type: none;
+}
+
+body.single-docredux_staff .recently-published ul li {
+	margin-left: 10px;
+}
+
+body.single-docredux_staff .recently-published ul li.post-format-aside p,
+body.single-docredux_staff .recently-published ul li.post-format-status p {
+	font-size: 14px;
+	line-height: 21px;
+	padding-bottom: 3px;
+}
+
+body.single-docredux_staff .recently-published .see-all {
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 /* Documentation single */
@@ -492,6 +613,42 @@ body.single .content .entry {
 	margin-left:-15px;
 }
 
+.content .cant-find-anything {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.content .cant-find-anything div.no-bottom-corners {
+	padding:10px 20px;
+}
+
+.content .cant-find-anything h4 {
+	padding:5px 8px;
+	color: #FFFFFF;
+	background-color: #A8403A;
+	border-bottom: 2px solid #888888;
+}
+
+.content .cant-find-anything ul li {
+	padding: 5px 0;
+	margin: 0;
+	font-size: 13px;
+	line-height: 20px;
+}
+
+.content .cant-find-anything ul li a {
+	padding:10px 20px;
+	display:block;
+}
+
+.content .cant-find-anything a:hover {
+	background:#f9f9f9;
+}
+
+.content .cant-find-anything li {
+	list-style:none;
+}
+
 .content .entry p {
 	padding-top: 5px;
 	padding-bottom: 5px;
@@ -523,19 +680,19 @@ body.single .content .entry {
 }
 
 .entry img {
-max-width:579px;
+	max-width:579px;
 }
 
 .single-docreduxstaff .entry {
-clear:both;
+	clear:both;
 }
 
 .single-docreduxstaff .avatar {
-margin-left:0;
+	margin-left:0;
 }
 
 .content .entry img.aligncenter, .content .entry img.alignnone {
-margin:20px 0;
+	margin:20px 0;
 }
 
 /* Page Templates */
@@ -549,8 +706,8 @@ margin:20px 0;
 }
 
 .page .entry li {
-margin-left:20px;
-padding:5px;
+	margin-left:20px;
+	padding:5px;
 }
 
 /* Archive */
@@ -572,11 +729,16 @@ padding:5px;
 }
 
 .pagination .current {
+	
+}
+
+.pagination .page-numbers {
+	margin-left: 2px;
+	margin-right: 2px;
 }
 
 .pagination .current, .pagination a.inactive {
 	font-weight:bold;
-	margin:0 5px;
 }
 
 /* Sidebar */
@@ -615,6 +777,11 @@ padding:5px;
 
 .sidebar .widget a:hover {
 	background:#f9f9f9;
+}
+
+.sidebar .widget label {
+	display: inline-block;
+	width: 70px;
 }
 
 .sidebar .widget li, 
@@ -761,5 +928,5 @@ padding:5px;
 }
 
 form#commentform p {
-margin:5px 0;
+	margin:5px 0;
 }

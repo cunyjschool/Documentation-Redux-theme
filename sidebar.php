@@ -10,8 +10,8 @@
 	<div class="widget cant-find">
 		<h4>Can't find what you're looking for?</h4>
 		<ul class="paper no-bottom-corners">
-			<li><a href="<?php bloginfo('url') ?>/documentation/">Browse all documentation</a></li>
-			<li><a href="http://help.journalism.cuny.edu/">Submit a support ticket</a></li>
+			<li><a href="<?php bloginfo('url') ?>/documentation/">Browse all documentation &rarr;</a></li>
+			<li><a href="http://help.journalism.cuny.edu/">Submit a support ticket &rarr;</a></li>
 		</ul>
 	</div><!-- END .widget -->
 	
@@ -37,12 +37,11 @@
 			?>
 			<li class="post sidebar-post-format-<?php echo $post_format ?>">
 				<?php if ( $post_format == 'aside' || $post_format == 'status' ) { ?>
-					<?php the_content() ?>
-					<div class="meta">Published <a href="<?php the_permalink(); ?>"><?php docredux_timestamp(); ?></a></div>					
+					<?php the_content() ?>					
 				<?php } else { ?>
 					<h5><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h5>
-					<div class="meta">Published <?php docredux_timestamp(); ?></div>					
 				 <?php } ?>	
+				<div class="meta">Published <a href="<?php the_permalink(); ?>"><?php docredux_timestamp(); ?></a></div>				
 			</li>
     		<?php endwhile; else: ?>
 			<li>There are currently no blog posts.</li>
@@ -70,7 +69,7 @@
 			<?php while ( $documentation->have_posts() ) : $documentation->the_post(); ?>
 			<li class="post documentation">
 				<h5><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h5>
-				<div class="meta">Updated <?php docredux_timestamp( false, 'modified' ); ?></div>
+				<div class="meta">Updated <a href="<?php the_permalink(); ?>"><?php docredux_timestamp( false, 'modified' ); ?></a></div>
 			</li>
     		<?php endwhile; else: ?>
 			<li>There are currently no documentation.</li>

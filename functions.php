@@ -1,9 +1,10 @@
 <?php
 
-define( 'DOCREDUX_VERSION', '0.4a' );
+define( 'DOCREDUX_VERSION', '0.4b' );
 
 include_once( 'php/class.docredux_doc.php' );
 include_once( 'php/class.docredux_staff.php' );
+include_once( 'php/class.highlighter.php' );
 include_once( 'php/sphinxapi.php' );
 include_once( 'php/class.sphinxsearch.php' );
 
@@ -73,6 +74,8 @@ class docredux {
         register_sidebar( $args );
 	    
 		add_theme_support( 'post-thumbnails' );
+		
+		add_post_type_support( 'page', 'excerpt' );
 		
 		if ( is_admin() ) {
 			add_action( 'admin_menu', array(&$this, 'add_admin_menu_items') );
@@ -626,9 +629,7 @@ function docredux_home_description() {
 	global $docredux;
 	
 	if ( !empty( $docredux->options['home_description'] ) ) {
-		echo $docredux->options['home_description'];		
-	} else {
-		echo "Please add a home description in theme options.";
+		echo wpautop( $docredux->options['home_description'] );
 	}
 	
 } // END docredux_home_description()
@@ -656,7 +657,7 @@ function docredux_timestamp( $post_id = null, $type = 'published' ) {
 	// Only do the relative timestamps for 7 days or less, then just the month and day
 	if ( $post_timestamp > ( $current_timestamp - 604800 ) ) {
 		echo human_time_diff( $post_timestamp ) . ' ago';
-	} else if ( $post_timestamp > ( $current_timestamp - 220752000 ) ) {
+	} else if ( $post_timestamp > ( $current_timestamp - 15552000 ) ) {
 		the_time( 'F jS' );
 	} else {
 		the_time( 'F j, Y' );
@@ -669,40 +670,26 @@ function docredux_timestamp( $post_id = null, $type = 'published' ) {
  * docredux_pagination()
  * Standardized pagination we can use anywhere in the loop
  */
-function docredux_pagination( $pages = '', $range = 2 ) {
-	global $wp_query, $paged;	
+function docredux_pagination() {
+	global $wp_query, $wp_rewrite;
+	$wp_query->query_vars['paged'] > 1 ? $current = $wp_query->query_vars['paged'] : $current = 1;
+
+	$pagination = array(
+		'base' => @add_query_arg('page','%#%'),
+		'format' => '',
+		'total' => $wp_query->max_num_pages,
+		'current' => $current,
+		'type' => 'plain'
+		);
+
+	if( $wp_rewrite->using_permalinks() )
+		$pagination['base'] = user_trailingslashit( trailingslashit( remove_query_arg( 's', get_pagenum_link( 1 ) ) ) . 'page/%#%/', 'paged' );
+
+	if( !empty($wp_query->query_vars['s']) )
+		$pagination['add_args'] = array( 's' => get_query_var( 's' ) );
+
+	echo "<div class='pagination paper'><span class='right'>Total results: " . $wp_query->found_posts . "</span>" . paginate_links( $pagination ) . '</div>';
 	
-	$showitems = ( $range * 2 ) + 1;  
-
-	if ( empty( $paged ) ) $paged = 1;
-
-	if ( '' == $pages ) {
-		$pages = $wp_query->max_num_pages;
-		if ( !$pages ) {
-			$pages = 1;
-		}
-	}	 
-
-	if ( 1 != $pages ) {
-		echo "<div class='pagination paper'><span class='right'>Total results: " . $wp_query->found_posts;
-		echo "</span>Pages:";
-		if ( $paged > 2 && $paged > $range+1 && $showitems < $pages )
-			echo "<a href='" . get_pagenum_link(1) . "'>&laquo;</a>";
-		if ( $paged > 1 && $showitems < $pages )
-			echo "<a href='".get_pagenum_link($paged - 1)."'>&lsaquo;</a>";
-
-		for ( $i=1; $i <= $pages; $i++ ) {
-			if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems )) {
-				 echo ($paged == $i)? "<span class='current'>".$i."</span>":"<a href='".get_pagenum_link($i)."' class='inactive' >".$i."</a>";
-			}
-		}
-
-		if ( $paged < $pages && $showitems < $pages )
-			echo "<a href='".get_pagenum_link($paged + 1)."'>&rsaquo;</a>";  
-		if ( $paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages )
-			echo "<a href='".get_pagenum_link($pages)."'>&raquo;</a>";
-		echo "</div>\n";
-	 }
 } // END docredux_pagination()
 
 // Add custom taxonomies and custom post types counts to dashboard

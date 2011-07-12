@@ -10,17 +10,24 @@
 			
 					<h2>Documentation Archive</h2>			
 
-			  		<?php if ( have_posts()) : ?>
+			  		<?php 
+			  		   
+                        $args=array( 
+                            'post_type' => 'docredux_doc',
+                            'posts_per_page' => -1,
+                            'orderby' => 'date',
+                            'order' => 'DESC'
+                        );
+                        $temp = $wp_query;
+                        $documentation = new WP_Query($args);
+			  				
+			  			if ( $documentation->have_posts()) : ?>
 
-				 	<?php while (have_posts()) : the_post(); ?>
+				 	<?php while ( $documentation->have_posts()) : $documentation->the_post(); ?>
 
 						<div class="doc-index post post-type-docredux_doc" id="post-<?php the_ID(); ?>">
 
 							<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
-							
-							<div class="entry">
-								<?php the_excerpt(); ?>
-							</div>
 
 							<div class="meta">
 								Published <?php docredux_timestamp(); ?>
@@ -44,8 +51,6 @@
 
 				<?php endwhile; ?>
 				
-				<?php docredux_pagination(); ?>
-
 				<?php else : ?>
 
 					<h4 class="center">Beep beep boop beep! Does not compute!</h4>
