@@ -50,7 +50,7 @@
 							<?php
 								$high_content = new Highlighter( $post->post_content, $search_array );
 								$high_content->text = $high_content->strip( $high_content->text );
-								$high_content->zoom();
+								$high_content->zoom( 100, 250 );
 								$high_content->mark_words();
 							?>
 							<div class="entry">
