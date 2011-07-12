@@ -65,14 +65,14 @@ class Highlighter {
 	 * @return string Plain text
 	 **/
 	function strip( $text )	{
-		$text = preg_replace( preg_encoding( '/<script(.*?)<\/script>/s' ), '', $text );
-		$text = preg_replace( preg_encoding( '/<!--(.*?)-->/s' ), '', $text );
+		$text = preg_replace( hl_preg_encoding( '/<script(.*?)<\/script>/s' ), '', $text );
+		$text = preg_replace( hl_preg_encoding( '/<!--(.*?)-->/s' ), '', $text );
 		
 		$text = str_replace( '>', '> ', $text );   // Makes the strip function look better
 		$text = wp_filter_nohtml_kses( $text );
 		$text = stripslashes( $text );
-		$text = preg_replace( preg_encoding( '/<!--(.*?)-->/s' ), '', $text );
-		$text = strip_html( $text );    // Remove all HTML
+		$text = preg_replace( hl_preg_encoding( '/<!--(.*?)-->/s' ), '', $text );
+		$text = hl_strip_html( $text );    // Remove all HTML
 		
 		return $text;
 	}
@@ -164,7 +164,7 @@ class Highlighter {
 			$this->word_pos   = $pos;
 
 			if ( $html )
-				$text = @preg_replace_callback( preg_encoding( '/(?<=>)([^<]+)?('.$word.')(?!=")/i' ), array( &$this, 'highlight_html_word' ), $text );
+				$text = @preg_replace_callback( hl_preg_encoding( '/(?<=>)([^<]+)?('.$word.')(?!=")/i' ), array( &$this, 'highlight_html_word' ), $text );
 			else
 				$text = preg_replace_callback( '/('.$word.')(?!=")/iu', array( &$this, 'highlight_plain_word' ), $text );
 		}
@@ -202,7 +202,7 @@ class Highlighter {
 	}
 }
 
-function preg_encoding( $text ) {
+function hl_preg_encoding( $text ) {
 	static $utf8 = false;
 
 	if ( !$utf8 ) {
@@ -216,7 +216,7 @@ function preg_encoding( $text ) {
 	return $text;
 }
 
-function strip_html( $text ) {
+function hl_strip_html( $text ) {
 	if ( version_compare( phpversion(), '5.0.0', '>=' ) )
 		$text = @html_entity_decode( $text, ENT_NOQUOTES, get_option( 'blog_charset' ) );    // Remove all HTML
 	return wp_kses( stripslashes( $text ), array() );    // Remove all HTML
