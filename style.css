@@ -193,6 +193,14 @@ p.code {
 	margin-bottom: 10px;
 }
 
+body.search .search-term-match {
+	font-weight: bold;
+}
+
+.search-results-total {
+	color: #999999;
+}
+
 .search input[type="text"] {
 	font-size:12px;
 	padding:3px;
