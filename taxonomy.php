@@ -6,7 +6,7 @@
 	
 		<?php get_template_part( 'loop', 'tax' ); ?>
 	
-		<?php get_sidebar(); ?>
+		<?php get_sidebar('tax'); ?>
 	
 		<div class="clear"></div>
 
