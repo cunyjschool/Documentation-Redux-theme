@@ -688,7 +688,7 @@ function docredux_pagination() {
 	if( !empty($wp_query->query_vars['s']) )
 		$pagination['add_args'] = array( 's' => get_query_var( 's' ) );
 
-	echo "<div class='pagination paper'><span class='right'>Total results: " . $wp_query->found_posts . "</span>" . paginate_links( $pagination ) . '</div>';
+	echo "<div class='pagination paper'><span class='right'>Total results: " . $wp_query->found_posts . "</span>" . paginate_links( $pagination ) . '<span class="clear-both"></span></div>';
 	
 } // END docredux_pagination()
 
