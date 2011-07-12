@@ -25,24 +25,39 @@
 						if ( false === $post_format ) {
 							$post_format = 'standard';
 						}
+						$search_array = explode( ' ', get_search_query() );
 					?>
 
 					<div class="post-index post post-format-<?php echo $post_format; ?>" id="post-<?php the_ID(); ?>">
 						
 						<?php if ( $post_format == 'aside' || $post_format == 'status' ): ?>
 						
-						<div class="entry">						
-							<?php the_content() ?>
+						<div class="entry">
+							<?php
+								$high_content = new Highlighter( $post->post_content, $search_array );					
+								$high_content->mark_words();
+								echo $high_content->get();
+							?>
 						</div>
 							
 						<?php else: ?>
 							
-							<h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
+							<?php
+								$high_title = new Highlighter( $post->post_title, $search_array );
+								$high_title->mark_words();
+							?>
+							<h3><a href="<?php the_permalink() ?>"><?php echo $high_title->get(); ?></a></h3>
+							<?php
+								$high_content = new Highlighter( $post->post_content, $search_array );
+								$high_content->text = $high_content->strip( $high_content->text );
+								$high_content->zoom( 10, 175 );
+								$high_content->mark_words();
+							?>
 							<div class="entry">
 		       					<?php if ( has_post_thumbnail()) { 	   
 		       					   the_post_thumbnail(  'thumbnail', array('class' => 'thumb float-left') ); 
 		       					}?>						
-							<?php the_excerpt(); ?>
+							<?php echo $high_content->get(); ?>
 							</div>
 							
 							<div class="clear"></div>
@@ -72,7 +87,7 @@
 
 				<?php endwhile; ?>
 
-				<?php docredux_pagination(); ?>
+					<?php docredux_pagination(); ?>
 
 				<?php else : ?>
 				    
