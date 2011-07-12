@@ -621,11 +621,16 @@ body.single .content .entry {
 }
 
 .pagination .current {
+	
+}
+
+.pagination .page-numbers {
+	margin-left: 2px;
+	margin-right: 2px;
 }
 
 .pagination .current, .pagination a.inactive {
 	font-weight:bold;
-	margin:0 5px;
 }
 
 /* Sidebar */
