@@ -52,6 +52,7 @@ h4 {
 	font-size:15px;
 	line-height: 23px;
 	padding-top: 3px;
+	padding-bottom: 3px;
 }
 
 h5 {
@@ -197,6 +198,17 @@ body.search .search-term-match {
 	font-weight: bold;
 }
 
+body.search .all-matching-terms {
+	font-size: 13px;
+	line-height: 20px;
+	padding-bottom: 5px;
+	color: #666666;
+}
+
+body.search .all-matching-terms a {
+	text-decoration: underline;
+}
+
 body.search .content .post h3 {
 	font-size: 16px;
 	line-height: 22px;
@@ -231,6 +243,8 @@ body.search .content .post.post-format-aside .entry {
 
 .search-results-total {
 	color: #999999;
+	margin-left: 5px;
+	margin-bottom: 5px;
 }
 
 .search input[type="text"] {

@@ -16,7 +16,30 @@
 
 		  		<?php if ( have_posts() ) : ?>
 			
-				<div class="search-results-total">Showing <?php echo $wp_query->post_count; ?> of <?php echo $wp_query->found_posts; ?> results</div>
+				<div class="search-results-total float-right">Showing <?php echo $wp_query->post_count; ?> of <?php echo $wp_query->found_posts; ?> results</div>
+				
+				<?php
+					global $docredux, $wp_query;
+					$search_array = explode( ' ', get_search_query() );
+					$args = array(
+						'search' => get_search_query(),
+						'orderby' => 'none',
+					);
+					if ( $wp_query->query_vars['paged'] <= 1 )
+						$matching_terms = get_terms( $docredux->theme_taxonomies, $args );
+					
+					if ( count( $matching_terms ) ) {					
+						echo '<div class="all-matching-terms">Looking for? ';
+						$all_terms = '';
+						foreach ( $matching_terms as $matching_term ) {
+							$term_name = new Highlighter( $matching_term->name, $search_array );
+							$term_name->mark_words();
+							$all_terms .= '<a href="' . get_term_link( $matching_term, $matching_term->taxonomy ) . '">' . $term_name->get() . '</a>, ';
+						}
+						echo rtrim( $all_terms, ', ' );
+						echo '</div>';
+					}
+				?>
 
 			 	<?php while ( have_posts() ) : the_post(); ?>
 				
@@ -25,7 +48,6 @@
 						if ( false === $post_format ) {
 							$post_format = 'standard';
 						}
-						$search_array = explode( ' ', get_search_query() );
 					?>
 
 					<div class="post-index post post-format-<?php echo $post_format; ?>" id="post-<?php the_ID(); ?>">
