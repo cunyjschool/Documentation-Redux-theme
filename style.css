@@ -4,7 +4,7 @@ Theme URI: http://tech.journalism.cuny.edu/
 Description: Dedicated theme for CUNY J-School tech documentation
 Author: Joe Filippazzo, Daniel Bachhuber
 Author URI: http://tech.journalism.cuny.edu/staff/
-Version: 0.4b
+Version: 0.4
 License: GNU General Public License
 License URI: license.txt
 */
@@ -212,6 +212,11 @@ body.search .all-matching-terms a {
 
 body.search .all-matching-terms a:hover {
 	background-color: #F9F9F9;		
+}
+
+body.search .content .post .thumb {
+	height: 75px;
+	width: 75px;
 }
 
 body.search .content .post h3 {
@@ -452,6 +457,7 @@ body.archive .post {
 }
 
 body.archive .all-documentation-list {
+	margin-top: 10px;
 	padding-bottom: 10px;
 }
 
@@ -485,7 +491,7 @@ body.archive .term-description {
 	padding-right: 10px;
 	font-size: 14px;
 	line-height: 22px;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	color: #222222;
 }
 

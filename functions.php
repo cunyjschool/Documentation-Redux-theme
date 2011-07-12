@@ -1,6 +1,6 @@
 <?php
 
-define( 'DOCREDUX_VERSION', '0.4b' );
+define( 'DOCREDUX_VERSION', '0.4' );
 
 include_once( 'php/class.docredux_doc.php' );
 include_once( 'php/class.docredux_staff.php' );
@@ -688,7 +688,7 @@ function docredux_pagination() {
 	if( !empty($wp_query->query_vars['s']) )
 		$pagination['add_args'] = array( 's' => get_query_var( 's' ) );
 
-	echo "<div class='pagination paper'><span class='right'>Total results: " . $wp_query->found_posts . "</span>" . paginate_links( $pagination ) . '</div>';
+	echo "<div class='pagination paper'><span class='right'>Total results: " . $wp_query->found_posts . "</span>" . paginate_links( $pagination ) . '<span class="clear-both"></span></div>';
 	
 } // END docredux_pagination()
 
