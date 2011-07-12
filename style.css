@@ -685,6 +685,11 @@ body.single .content .entry {
 	background:#f9f9f9;
 }
 
+.sidebar .widget label {
+	display: inline-block;
+	width: 70px;
+}
+
 .sidebar .widget li, 
 .posts ul, 
 .events ul {
