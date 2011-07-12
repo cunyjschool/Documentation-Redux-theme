@@ -209,6 +209,10 @@ body.search .all-matching-terms a {
 	text-decoration: underline;
 }
 
+body.search .all-matching-terms a:hover {
+	background-color: #F9F9F9;		
+}
+
 body.search .content .post h3 {
 	font-size: 16px;
 	line-height: 22px;
@@ -216,11 +220,13 @@ body.search .content .post h3 {
 	padding-bottom: 0;
 }
 
-body.search .content .post h3 a {
+.content .post h3 a,
+.content .post h4 a {
 	text-decoration: underline;
 }
 
-body.search .content .post h3 a:hover {
+.content .post h3 a:hover,
+.content .post h4 a:hover {
 	background-color: #F9F9F9;
 }
 
