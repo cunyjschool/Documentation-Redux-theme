@@ -102,7 +102,6 @@
 									echo ' - ' . rtrim( $all_terms, ', ' );
 								}
 							?>
-							<?php edit_post_link( 'Edit', ' - ', '' ); ?>
 						</div><!-- END .meta -->
 
 					</div><!-- END - .post -->
