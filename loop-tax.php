@@ -54,6 +54,14 @@
 			<div class="message error">Sorry, there's no documentation yet.</div>
 
 		<?php endif; ?>
+		
+		<div class="cant-find-anything">
+			<h4>Can't find what you're looking for?</h4>
+			<ul class="paper no-bottom-corners">
+				<li><a href="<?php bloginfo('url') ?>/documentation/">Browse all documentation &rarr;</a></li>
+				<li><a href="http://help.journalism.cuny.edu/">Submit a support ticket &rarr;</a></li>
+			</ul>
+		</div><!-- END .widget -->
 			
 	</div><!-- END .archive -->
 

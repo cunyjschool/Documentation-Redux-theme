@@ -555,39 +555,39 @@ body.single .content .entry {
 	margin-left:-15px;
 }
 
-.post .cant-find-anything {
-	margin-top: 10px;
+.content .cant-find-anything {
+	margin-top: 20px;
 	margin-bottom: 20px;
 }
 
-.post .cant-find-anything div.no-bottom-corners {
+.content .cant-find-anything div.no-bottom-corners {
 	padding:10px 20px;
 }
 
-.post .cant-find-anything h4 {
+.content .cant-find-anything h4 {
 	padding:5px 8px;
 	color: #FFFFFF;
 	background-color: #A8403A;
 	border-bottom: 2px solid #888888;
 }
 
-.post .cant-find-anything ul li {
+.content .cant-find-anything ul li {
 	padding: 5px 0;
 	margin: 0;
 	font-size: 13px;
 	line-height: 20px;
 }
 
-.post .cant-find-anything ul li a {
+.content .cant-find-anything ul li a {
 	padding:10px 20px;
 	display:block;
 }
 
-.post .cant-find-anything a:hover {
+.content .cant-find-anything a:hover {
 	background:#f9f9f9;
 }
 
-.post .cant-find-anything li {
+.content .cant-find-anything li {
 	list-style:none;
 }
 
