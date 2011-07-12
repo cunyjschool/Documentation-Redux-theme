@@ -16,7 +16,7 @@
 		<?php
 			$args = array(
 				'order' => 'ASC',
-				'orderby' => 'title',
+				'orderby' => 'modified',
 				'nopaging' => true,
 				'posts_per_page' => '-1',
 				'post_type' => 'docredux_doc',
