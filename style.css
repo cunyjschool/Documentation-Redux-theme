@@ -399,6 +399,12 @@ ul#menu-header-menu ul.sub-menu > li > a:hover {
 	margin-bottom:10px;
 }
 
+.post .entry blockquote {
+	font-style:italic;
+	padding-left:15px;
+	padding-right:15px;
+}
+
 .content .entry .table-row img.alignleft {
 	margin:0 30px 0 0;
 }
