@@ -796,6 +796,21 @@ body.single .content .entry {
 	width: 70px;
 }
 
+.sidebar .widget.doc-meta p {
+	padding-top: 3px;
+	padding-bottom: 3px;
+	border-top: 1px solid #DDDDDD;
+}
+
+.sidebar .widget.doc-meta p:first-child {
+	border-top: none;
+}
+
+.sidebar .widget.doc-meta p span {
+	margin-left: 70px;
+	display: block;
+}
+
 .sidebar .widget li, 
 .posts ul, 
 .events ul {
