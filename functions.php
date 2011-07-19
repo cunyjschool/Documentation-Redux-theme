@@ -1,6 +1,6 @@
 <?php
 
-define( 'DOCREDUX_VERSION', '0.4' );
+define( 'DOCREDUX_VERSION', '0.5a' );
 
 include_once( 'php/class.docredux_doc.php' );
 include_once( 'php/class.docredux_staff.php' );
@@ -75,6 +75,9 @@ class docredux {
 	    
 		add_theme_support( 'post-thumbnails' );
 		
+		if ( is_admin_bar_showing() )
+			add_action( 'admin_bar_menu', array( &$this, 'add_admin_bar_items' ), 70 );
+		
 		add_post_type_support( 'page', 'excerpt' );
 		
 		if ( is_admin() ) {
@@ -114,6 +117,24 @@ class docredux {
 		add_submenu_page( 'themes.php', 'Documentation Redux Theme Options', 'Theme Options', 'manage_options', 'docredux_options', array( &$this, 'options_page' ) );			
 
 	} // END add_admin_menu_items()	
+	
+	/**
+	 * Custom items for the Documentation Redux theme to WordPress' admin bar
+	 */
+	function add_admin_bar_items() {
+		global $wp_admin_bar;
+		
+		// Add theme management links for users who can	
+		if ( current_user_can('edit_theme_options') ) {
+			$args = array(
+				'title' => 'Theme Options',
+				'href' => admin_url( 'themes.php?page=docredux_options' ),
+				'parent' => 'appearance',
+			);
+			$wp_admin_bar->add_menu( $args );
+		}
+		
+	}	
 	
 	/**
 	 * enqueue_resources()

@@ -40,6 +40,8 @@
 						echo '</div>';
 					}
 				?>
+				
+				<div class="clear-both"></div>
 
 			 	<?php while ( have_posts() ) : the_post(); ?>
 				
