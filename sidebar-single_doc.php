@@ -36,6 +36,8 @@
 		<?php if ( $wpplugins = get_the_term_list( $post->ID, 'docredux_wpplugins', '', ', ', '' ) ) : ?>
 			<p><label class="float-left">WordPress plugins:</label> <span><?php echo $wpplugins; ?></span></p>
 		<?php endif; ?>
+		
+		<div class="clear-left"></div>		
 		</div><!-- END .no-bottom-corners -->
 	</div><!-- END .widget -->
 		
