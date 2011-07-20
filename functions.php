@@ -667,9 +667,9 @@ function docredux_timestamp( $post_id = null, $type = 'published' ) {
 	}
 	
 	if ( $type == 'published' ) {
-		$post_timestamp = get_the_time( 'U', $post_id );
+		$post_timestamp = get_post_time( 'U', true, $post_id );
 	} else if ( $type == 'modified' ) {
-		$post_timestamp = get_the_modified_time( 'U', $post_id );
+		$post_timestamp = get_post_modified_time( 'U', true, $post_id );
 	} else {
 		return false;
 	}
