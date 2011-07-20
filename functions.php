@@ -1,6 +1,6 @@
 <?php
 
-define( 'DOCREDUX_VERSION', '0.5a' );
+define( 'DOCREDUX_VERSION', '0.5' );
 
 include_once( 'php/class.docredux_doc.php' );
 include_once( 'php/class.docredux_staff.php' );
@@ -667,9 +667,9 @@ function docredux_timestamp( $post_id = null, $type = 'published' ) {
 	}
 	
 	if ( $type == 'published' ) {
-		$post_timestamp = get_the_time( 'U', $post_id );
+		$post_timestamp = get_post_time( 'U', true, $post_id );
 	} else if ( $type == 'modified' ) {
-		$post_timestamp = get_the_modified_time( 'U', $post_id );
+		$post_timestamp = get_post_modified_time( 'U', true, $post_id );
 	} else {
 		return false;
 	}
