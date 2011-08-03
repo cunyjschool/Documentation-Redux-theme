@@ -13,7 +13,7 @@
 		<h4><?php _e( 'About This Document' ); ?></h4>
 		
 		<div class="paper no-bottom-corners">
-			<p><label class="float-left">Maintained:</label> <span><?php if ( function_exists( 'coauthors_posts_links' ) ) { coauthors_posts_links(); } else { the_author_posts_link(); } ?></span></p>
+			<p><label class="float-left">Maintained:</label> <span><?php if ( function_exists( 'coauthors_posts_links' ) ) { coauthors_posts_links(); } else { the_author_posts_link(); } ?><?php edit_post_link('Edit this post', ' — ', ''); ?></span></p>
 			<p><label class="float-left">Updated:</label> <?php docredux_timestamp( false, 'modified' ); ?></p>
 		<?php if ( $contexts = get_the_term_list( $post->ID, 'docredux_contexts', '', ', ', '' ) ) : ?>
 			<p><label class="float-left">Contexts:</label> <span><?php echo $contexts; ?></span></p>
