@@ -799,7 +799,7 @@ body.single .content .entry {
 
 .sidebar .widget label {
 	display: inline-block;
-	width: 70px;
+	width: 75px;
 }
 
 .sidebar .widget.doc-meta p {
@@ -813,7 +813,7 @@ body.single .content .entry {
 }
 
 .sidebar .widget.doc-meta p span {
-	margin-left: 70px;
+	margin-left: 75px;
 	display: block;
 }
 

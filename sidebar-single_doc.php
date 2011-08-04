@@ -31,10 +31,10 @@
 			<p><label class="float-left">Software:</label> <span><?php echo $software; ?></span></p>
 		<?php endif; ?>
 		<?php if ( $wpthemes = get_the_term_list( $post->ID, 'docredux_wpthemes', '', ', ', '' ) ) : ?>
-			<p><label class="float-left">WordPress themes:</label> <span><?php echo $wpthemes; ?></span></p>
+			<p><label class="float-left">WP Themes:</label> <span><?php echo $wpthemes; ?></span></p>
 		<?php endif; ?>
 		<?php if ( $wpplugins = get_the_term_list( $post->ID, 'docredux_wpplugins', '', ', ', '' ) ) : ?>
-			<p><label class="float-left">WordPress plugins:</label> <span><?php echo $wpplugins; ?></span></p>
+			<p><label class="float-left">WP Plugins:</label> <span><?php echo $wpplugins; ?></span></p>
 		<?php endif; ?>
 		
 		<div class="clear-left"></div>		
